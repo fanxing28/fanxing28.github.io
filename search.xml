@@ -2,69 +2,68 @@
 <search>
   <entry>
     <title>Hexo 博客新建文章</title>
-    <url>/2022/03/15/Hexo%20%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
+    <url>/%E5%8D%9A%E5%AE%A2/3ac94d98.html</url>
     <content><![CDATA[<h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><p>输入如下命令，创建一篇新的文章</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>layout 是文章的布局，默认为post，可以先不写。<br>title 是文章的标题，也是文件的名字，存储在source&#x2F;_posts下。</p>
+<p>layout 是文章的布局，默认为post，可以先不写。<br>title 是文章的标题，也是文件的名字，存储在source/_posts下。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost blog]#hexo new &quot;我的第一篇文章&quot;</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\blog_hexo\myblog\source\_posts\我的第一篇文章.md</span><br></pre></td></tr></table></figure>
-
-<p>可以看到创建的文件在&#x2F;source&#x2F;_posts路径下，之后在MarkDown编辑器上打开就可以编辑你的文章内容。</p>
+<p>可以看到创建的文件在/source/_posts路径下，之后在MarkDown编辑器上打开就可以编辑你的文章内容。</p>
 <span id="more"></span>
-
 <p>打开创建的MarkDown文件，默认内容如下，我们可以在新建的文件里用MarkDown语法编辑文章</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 我的第一篇文章</span><br><span class="line">date: 2022-03-15 17:57:05</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
 <h2 id="Front-matter-设置"><a href="#Front-matter-设置" class="headerlink" title="Front-matter 设置"></a>Front-matter 设置</h2><p>Front-matter 是文章最上方以—分隔的区域，用于指定文章的变量设置 </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center"></th>
+<th style="text-align:center"></th>
 <th></th>
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"></td>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center"></td>
+<td style="text-align:center"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center"></td>
+<td style="text-align:center"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center"></td>
+<td style="text-align:center"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center"></td>
+<td style="text-align:center"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center"></td>
+<td style="text-align:center"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center"></td>
+<td style="text-align:center"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center"></td>
-<td></td>
+<td style="text-align:center"></td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 ]]></content>
       <categories>
         <category>博客</category>

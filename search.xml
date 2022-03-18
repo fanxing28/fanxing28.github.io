@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo 博客新建文章</title>
+    <url>/%E5%8D%9A%E5%AE%A2/3ac94d98.html</url>
+    <content><![CDATA[<h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><p>输入如下命令，创建一篇新的文章</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>layout 是文章的布局，默认为post，可以先不写。</p>
+</li>
+<li><p>title 是文章的标题，也是文件的名字，存储在source/_posts下。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost blog]#hexo new &quot;我的第一篇文章&quot;</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\blog_hexo\myblog\source\_posts\我的第一篇文章.md</span><br></pre></td></tr></table></figure>
+<p>可以看到创建的文件在/source/_posts路径下，之后在MarkDown编辑器上打开就可以编辑你的文章内容。</p>
+<span id="more"></span>
+<p>打开创建的MarkDown文件，默认内容如下，我们可以在新建的文件里用MarkDown语法编辑文章</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 我的第一篇文章</span><br><span class="line">date: 2022-03-15 17:57:05</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和 <code>draft</code>在创建者三种不同类型的文件时，它们将会被保存到不同的路径。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">布局</th>
+<th style="text-align:center">路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">post</td>
+<td style="text-align:center">source/_posts</td>
+</tr>
+<tr>
+<td style="text-align:center">page</td>
+<td style="text-align:center">source</td>
+</tr>
+<tr>
+<td style="text-align:center">draft</td>
+<td style="text-align:center">source/_drafts</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>如果你不想你的文章被处理，你可以将 Front-Matter 中的layout: 设为 false 。</strong></p>
+<h2 id="Front-matter-参数"><a href="#Front-matter-参数" class="headerlink" title="Front-matter 参数"></a>Front-matter 参数</h2><p>Front-matter 是文章最上方以—分隔的区域，用于指定文章的变量设置 </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">layout</td>
+<td style="text-align:center">布局</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">title</td>
+<td style="text-align:center">标题</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">建立日期</td>
+<td style="text-align:center">文件建立日期</td>
+</tr>
+<tr>
+<td style="text-align:center">updated</td>
+<td style="text-align:center">更新日期</td>
+<td style="text-align:center">文件更新日期</td>
+</tr>
+<tr>
+<td style="text-align:center">comments</td>
+<td style="text-align:center">开启文章的评论功能</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:center">tags</td>
+<td style="text-align:center">标签</td>
+<td style="text-align:center">（不适合分页）</td>
+</tr>
+<tr>
+<td style="text-align:center">categories</td>
+<td style="text-align:center">分类</td>
+<td style="text-align:center">（不适合分页）</td>
+</tr>
+<tr>
+<td style="text-align:center">permalink</td>
+<td style="text-align:center">覆盖文章网址</td>
+<td style="text-align:center">无</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>写完文章后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<p>就可以发布了</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>新建文章</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>添加分类、标签并实现标签云（球状）</title>
+    <url>/%E5%8D%9A%E5%AE%A2/2b0b45d5.html</url>
+    <content><![CDATA[<h2 id="添加分类页面"><a href="#添加分类页面" class="headerlink" title="添加分类页面"></a>添加分类页面</h2><ul>
+<li>1.新建页面</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>在终端窗口下，定位到 <strong>Hexo</strong> 站点目录下。使用 hexo new page 新建一个页面，命名为 categories。</p>
+<ul>
+<li>2.设置页面类型</li>
+</ul>
+<p>编辑刚新建的页面，将页面的 type 设置为 categories ，主题将自动为这个页面显示分类。页面内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2022-03-15 22:02:26</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<ul>
+<li>3.修改菜单</li>
+</ul>
+<p>编辑 ==主题配置文件==，将menu中categories前的#去掉。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">	#categories: /categories/ || fa fa-th</span><br></pre></td></tr></table></figure>
+<p>在下载NEXT主题时，主题配置文件中menu默认有categories，只需将前面的#去掉即可。</p>
+<h2 id="添加标签页面"><a href="#添加标签页面" class="headerlink" title="添加标签页面"></a>添加标签页面</h2><ul>
+<li>1.新建页面</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>在终端窗口下，定位到 <strong>Hexo</strong> 站点目录下。使用 hexo new page 新建一个页面，命名为 tags。</p>
+<ul>
+<li>2.设置页面类型</li>
+</ul>
+<p>编辑刚新建的页面，将页面的 type 设置为 categories ，主题将自动为这个页面显示分类。页面内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2022-03-15 22:12:04</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.修改菜单</li>
+</ul>
+<p>编辑 ==主题配置文件==，将menu中tags前的#去掉。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">	#tags: /tags/ || fa fa-tags</span><br></pre></td></tr></table></figure>
+<p>在下载NEXT主题时，主题配置文件中menu默认有tags，只需将前面的#去掉即可。</p>
+<h2 id="Next-7-0-TagCanvas-球形标签云"><a href="#Next-7-0-TagCanvas-球形标签云" class="headerlink" title="Next 7.0+ TagCanvas 球形标签云"></a>Next 7.0+ TagCanvas 球形标签云</h2><p>Next版本在 7.0+ 可以使用球形标签云的 <code>tagcanvas.js</code> 插件进行样式修改，具体修改步骤如下：</p>
+<ul>
+<li>1.下载插件</li>
+</ul>
+<p>关于球形标签云 <code>tagcanvas.js</code> 插件下载链接：<a href="http://www.goat1000.com/tagcanvas.php#links">点击这里</a></p>
+<p>将下载的压缩包中excanvas.js文件，放入 <code>/theme/next/source/js</code> 目录下</p>
+<ul>
+<li>2.新建标签云 swig 文件</li>
+</ul>
+<p>在 <code>/theme/next/layout/_partials</code> 目录下，建一个名为 <code>tagcanvas.swig</code> 的文件，并写入如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;tags&quot; id=&quot;myTags&quot;&gt;</span><br><span class="line">  &lt;canvas width=&quot;500&quot; height=&quot;500&quot; id=&quot;my3DTags&quot;&gt;</span><br><span class="line">    &lt;p&gt;Anything in here will be replaced on browsers that support the canvas element&lt;/p&gt;</span><br><span class="line">  &lt;/canvas&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;tags&quot; id=&quot;tags&quot;&gt;</span><br><span class="line">  &lt;ul style=&quot;display: none&quot;&gt;</span><br><span class="line">    &#123;&#123; tagcloud(&#123;</span><br><span class="line">        min_font   : theme.tagcloud.min,</span><br><span class="line">        max_font   : theme.tagcloud.max,</span><br><span class="line">        amount     : theme.tagcloud.amount,</span><br><span class="line">        color      : true,</span><br><span class="line">        start_color: theme.tagcloud.start,</span><br><span class="line">        end_color  : theme.tagcloud.end&#125;)</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/tagcanvas.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; &gt;</span><br><span class="line">  window.onload = function() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      TagCanvas.Start(&#x27;my3DTags&#x27;,&#x27;tags&#x27;,&#123;</span><br><span class="line">        textFont: &#x27;Georgia,Optima&#x27;,</span><br><span class="line">        textColour: null,</span><br><span class="line">        outlineColour: &#x27;black&#x27;,</span><br><span class="line">        weight: true,</span><br><span class="line">        reverse: true,</span><br><span class="line">        depth: 0.8,</span><br><span class="line">        maxSpeed: 0.05,</span><br><span class="line">        bgRadius: 1,</span><br><span class="line">        freezeDecel: true</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; catch(e) &#123;</span><br><span class="line">      document.getElementById(&#x27;myTags&#x27;).style.display = &#x27;none&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.修改 page.swig</li>
+</ul>
+<p>首先将 <code>/theme/next/layout/page.swig</code> 文件中的如下代码删除或注释：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;tag-cloud-tags&quot;&gt;</span><br><span class="line">              &#123;&#123; tagcloud(&#123;</span><br><span class="line">                min_font   : theme.tagcloud.min,</span><br><span class="line">                max_font   : theme.tagcloud.max,</span><br><span class="line">                amount     : theme.tagcloud.amount,</span><br><span class="line">                color      : true,</span><br><span class="line">                start_color: theme.tagcloud.start,</span><br><span class="line">                end_color  : theme.tagcloud.end&#125;)</span><br><span class="line">              &#125;&#125;</span><br><span class="line">            &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>然后在相应位置添加如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;# tagcanvas plugin 球型云标签 #&#125;</span><br><span class="line">&#123;% include &#x27;_partials/tagcanvas.swig&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>4.修改主题配置文件（_config.yml）</li>
+</ul>
+<p>打开 <code>/theme/config.yml</code>，找到 <code>tagcloud</code> 字段，根据实际需要进行修改即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 标签云设置页面</span><br><span class="line">tagcloud:</span><br><span class="line">    min: 12 # 最小字体尺寸，以px为单位</span><br><span class="line">    max: 30 # 最大字体尺寸，以px为单位</span><br><span class="line">    start: &quot;#ccc&quot; # 开始颜色 (hex, rgba, hsla or color keywords)</span><br><span class="line">    end: &quot;#111&quot; # 结束颜色 (hex, rgba, hsla or color keywords)</span><br><span class="line">    amount: 200 # 标签数量，当大于200个后，请进行更改</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>标签云</tag>
+      </tags>
+  </entry>
+</search>

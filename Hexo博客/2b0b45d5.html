@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-bounce.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="添加分类页面 1.新建页面  12$ cd your-hexo-site$ hexo new page categories 在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories。  2.设置页面类型  编辑刚新建的页面，将页面的 type 设置为 categories ，主题将自动为这个页面显示分类。页面内容如下： 12345-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="添加分类、标签云（球状）、彩色标签">
+<meta property="og:url" content="http://example.com/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html">
+<meta property="og:site_name" content="‖ 繁星っ">
+<meta property="og:description" content="添加分类页面 1.新建页面  12$ cd your-hexo-site$ hexo new page categories 在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories。  2.设置页面类型  编辑刚新建的页面，将页面的 type 设置为 categories ，主题将自动为这个页面显示分类。页面内容如下： 12345-">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE%E9%A1%B5.jpg?x-oss-process=style/imagesfx">
+<meta property="og:image" content="http://example.com/E-drive-188937/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%BA%93/blog/images/%E5%BA%95%E9%83%A8%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE-16480933980493.jpg">
+<meta property="article:published_time" content="2022-03-17T15:17:11.000Z">
+<meta property="article:modified_time" content="2022-03-24T03:43:22.606Z">
+<meta property="article:author" content="浅陌●繁星">
+<meta property="article:tag" content="标签云">
+<meta property="article:tag" content="分类">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE%E9%A1%B5.jpg?x-oss-process=style/imagesfx">
+
+
+<link rel="canonical" href="http://example.com/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html","path":"Hexo博客/2b0b45d5.html","title":"添加分类、标签云（球状）、彩色标签"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>添加分类、标签云（球状）、彩色标签 | ‖ 繁星っ</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:rgb(0, 0, 0);--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:rgb(136, 135, 135);--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:rgb(29, 1, 1);--btn-default-hover-bg:#666;--btn-default-hover-color:rgb(204, 23, 23);--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">‖ 繁星っ</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">添加分类页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">添加标签页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-7-0-TagCanvas-%E7%90%83%E5%BD%A2%E6%A0%87%E7%AD%BE%E4%BA%91"><span class="nav-number">3.</span> <span class="nav-text">Next 7.0+ TagCanvas 球形标签云</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next8-10-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE"><span class="nav-number">4.</span> <span class="nav-text">Next8.10+主题添加彩色标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%B7%BB%E5%8A%A0%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE"><span class="nav-number">4.1.</span> <span class="nav-text">标签页添加彩色标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E6%B7%BB%E5%8A%A0%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE"><span class="nav-number">4.2.</span> <span class="nav-text">在文章底部添加彩色标签</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="浅陌●繁星"
+      src="/images/favicon.png">
+  <p class="site-author-name" itemprop="name">浅陌●繁星</p>
+  <div class="site-description" itemprop="description">分享生活与经历</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fanxing28" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fanxing28" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wei861097416@outlook.com" title="E-Mail → mailto:wei861097416@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_45867247?spm=1000.2115.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_45867247?spm&#x3D;1000.2115.3001.5343" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/Hexo%E5%8D%9A%E5%AE%A2/7cd511d5.html" title="Hexo-Next 花式配置" target="_blank">Hexo-Next 花式配置</a>
+          </li>
+        
+          <li>
+            <a href="/Hexo%E5%8D%9A%E5%AE%A2/827959a4.html" title="NEXT主题点击爆炸效果" target="_blank">NEXT主题点击爆炸效果</a>
+          </li>
+        
+          <li>
+            <a href="/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html" title="添加分类、标签云（球状）、彩色标签" target="_blank">添加分类、标签云（球状）、彩色标签</a>
+          </li>
+        
+          <li>
+            <a href="/Hexo%E5%8D%9A%E5%AE%A2/3ac94d98.html" title="Hexo 博客新建文章" target="_blank">Hexo 博客新建文章</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+ +     <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>     
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.png">
+      <meta itemprop="name" content="浅陌●繁星">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="‖ 繁星っ">
+      <meta itemprop="description" content="分享生活与经历">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="添加分类、标签云（球状）、彩色标签 | ‖ 繁星っ">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          添加分类、标签云（球状）、彩色标签
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-17 23:17:11" itemprop="dateCreated datePublished" datetime="2022-03-17T23:17:11+08:00">2022-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-24 11:43:22" itemprop="dateModified" datetime="2022-03-24T11:43:22+08:00">2022-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">Hexo博客</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html" class="post-meta-item leancloud_visitors" data-flag-title="添加分类、标签云（球状）、彩色标签" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="添加分类、标签云（球状）、彩色标签" href="/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::b3e4f334fd3760b561701009b4c831c6" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="添加分类页面"><a href="#添加分类页面" class="headerlink" title="添加分类页面"></a>添加分类页面</h2><ul>
+<li><strong>1.新建页面</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>在终端窗口下，定位到 <strong>Hexo</strong> 站点目录下。使用 <code>hexo new page</code> 新建一个页面，命名为 categories。</p>
+<ul>
+<li><strong>2.设置页面类型</strong></li>
+</ul>
+<p>编辑刚新建的页面，将页面的 type 设置为 categories ，主题将自动为这个页面显示分类。页面内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2022-03-15 22:02:26</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<ul>
+<li><strong>3.修改菜单</strong></li>
+</ul>
+<p>编辑 ==主题配置文件==，将menu中categories前的#去掉。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">	#categories: /categories/ || fa fa-th</span><br></pre></td></tr></table></figure>
+<p>在下载NEXT主题时，主题配置文件中menu默认有categories，只需将前面的#去掉即可。</p>
+<h2 id="添加标签页面"><a href="#添加标签页面" class="headerlink" title="添加标签页面"></a>添加标签页面</h2><ul>
+<li><strong>1.新建页面</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>在终端窗口下，定位到 <strong>Hexo</strong> 站点目录下。使用 <code>hexo new page</code> 新建一个页面，命名为 tags。</p>
+<ul>
+<li><strong>2.设置页面类型</strong></li>
+</ul>
+<p>编辑刚新建的页面，将页面的 type 设置为 categories ，主题将自动为这个页面显示分类。页面内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2022-03-15 22:12:04</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>3.修改菜单</strong></li>
+</ul>
+<p>编辑 ==主题配置文件==，将menu中tags前的#去掉。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">	#tags: /tags/ || fa fa-tags</span><br></pre></td></tr></table></figure>
+<p>在下载NEXT主题时，主题配置文件中menu默认有tags，只需将前面的#去掉即可。</p>
+<h2 id="Next-7-0-TagCanvas-球形标签云"><a href="#Next-7-0-TagCanvas-球形标签云" class="headerlink" title="Next 7.0+ TagCanvas 球形标签云"></a>Next 7.0+ TagCanvas 球形标签云</h2><p>Next版本在 7.0+ 可以使用球形标签云的 <code>tagcanvas.js</code> 插件进行样式修改，具体修改步骤如下：</p>
+<ul>
+<li><strong>1.下载插件</strong></li>
+</ul>
+<p>关于球形标签云 <code>tagcanvas.js</code> 插件下载链接：<a target="_blank" rel="noopener" href="http://www.goat1000.com/tagcanvas.php#links">点击这里</a></p>
+<p>将下载的压缩包中excanvas.js文件，放入 <code>/theme/next/source/js</code> 目录下</p>
+<ul>
+<li><strong>2.新建标签云 swig 文件</strong></li>
+</ul>
+<p>在 <code>\theme\next\layout\_partials</code> 目录下，建一个名为 <code>tagcanvas.swig</code> 的文件，并写入如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;tags&quot; id=&quot;myTags&quot;&gt;</span><br><span class="line">  &lt;canvas width=&quot;500&quot; height=&quot;500&quot; id=&quot;my3DTags&quot;&gt;</span><br><span class="line">    &lt;p&gt;Anything in here will be replaced on browsers that support the canvas element&lt;/p&gt;</span><br><span class="line">  &lt;/canvas&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;tags&quot; id=&quot;tags&quot;&gt;</span><br><span class="line">  &lt;ul style=&quot;display: none&quot;&gt;</span><br><span class="line">    &#123;&#123; tagcloud(&#123;</span><br><span class="line">        min_font   : theme.tagcloud.min,</span><br><span class="line">        max_font   : theme.tagcloud.max,</span><br><span class="line">        amount     : theme.tagcloud.amount,</span><br><span class="line">        color      : true,</span><br><span class="line">        start_color: theme.tagcloud.start,</span><br><span class="line">        end_color  : theme.tagcloud.end&#125;)</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/tagcanvas.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; &gt;</span><br><span class="line">  window.onload = function() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      TagCanvas.Start(&#x27;my3DTags&#x27;,&#x27;tags&#x27;,&#123;</span><br><span class="line">        textFont: &#x27;Georgia,Optima&#x27;,</span><br><span class="line">        textColour: null,</span><br><span class="line">        outlineColour: &#x27;black&#x27;,</span><br><span class="line">        weight: true,</span><br><span class="line">        reverse: true,</span><br><span class="line">        depth: 0.8,</span><br><span class="line">        maxSpeed: 0.05,</span><br><span class="line">        bgRadius: 1,</span><br><span class="line">        freezeDecel: true</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; catch(e) &#123;</span><br><span class="line">      document.getElementById(&#x27;myTags&#x27;).style.display = &#x27;none&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>3.修改 page.swig</strong></li>
+</ul>
+<p>首先将 <code>\theme\next\layout\page.swig</code> 文件中的如下代码删除或注释：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;tag-cloud-tags&quot;&gt;</span><br><span class="line">              &#123;&#123; tagcloud(&#123;</span><br><span class="line">                min_font   : theme.tagcloud.min,</span><br><span class="line">                max_font   : theme.tagcloud.max,</span><br><span class="line">                amount     : theme.tagcloud.amount,</span><br><span class="line">                color      : true,</span><br><span class="line">                start_color: theme.tagcloud.start,</span><br><span class="line">                end_color  : theme.tagcloud.end&#125;)</span><br><span class="line">              &#125;&#125;</span><br><span class="line">            &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>然后在相应位置添加如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;# tagcanvas plugin 球型云标签 #&#125;</span><br><span class="line">&#123;% include &#x27;_partials/tagcanvas.swig&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>4.修改主题配置文件（_config.yml）</strong></li>
+</ul>
+<p>打开 <code>\theme\config.yml</code>，找到 <code>tagcloud</code> 字段，根据实际需要进行修改即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 标签云设置页面</span><br><span class="line">tagcloud:</span><br><span class="line">    min: 12 # 最小字体尺寸，以px为单位</span><br><span class="line">    max: 30 # 最大字体尺寸，以px为单位</span><br><span class="line">    start: &quot;#ccc&quot; # 开始颜色 (hex, rgba, hsla or color keywords)</span><br><span class="line">    end: &quot;#111&quot; # 结束颜色 (hex, rgba, hsla or color keywords)</span><br><span class="line">    amount: 200 # 标签数量，当大于200个后，请进行更改</span><br></pre></td></tr></table></figure>
+<h2 id="Next8-10-主题添加彩色标签"><a href="#Next8-10-主题添加彩色标签" class="headerlink" title="Next8.10+主题添加彩色标签"></a>Next8.10+主题添加彩色标签</h2><h3 id="标签页添加彩色标签"><a href="#标签页添加彩色标签" class="headerlink" title="标签页添加彩色标签"></a>标签页添加彩色标签</h3><p>每个标签都有自己单一的标签，且每次刷新都会有不同的颜色。</p>
+<ul>
+<li>在themes\next\layout下新建<code>tag-color.njk</code>，修改里面的内容为：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">  &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">     var alltags = document.getElementsByClassName(&#x27;tag-cloud-tags&#x27;);</span><br><span class="line">     var tags = alltags[0].getElementsByTagName(&#x27;a&#x27;);</span><br><span class="line">     for (var i = tags.length - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">       var golden_ratio = 0.618033988749895;</span><br><span class="line">       var s = 0.5;</span><br><span class="line">       var v = 0.999;</span><br><span class="line">       var h = golden_ratio + Math.random()*0.8 - 0.5;</span><br><span class="line">       var h_i = parseInt(h * 6);</span><br><span class="line">       var f = h * 6 - h_i;</span><br><span class="line">       var p = v * (1 - s);</span><br><span class="line">       var q = v * (1 - f * s);</span><br><span class="line">       var t = v * (1 - (1 - f) * s);</span><br><span class="line">       var r, g, b;</span><br><span class="line">       switch (h_i) &#123;</span><br><span class="line">          case 0:</span><br><span class="line">              r = v;</span><br><span class="line">              g = t;</span><br><span class="line">              b = p;</span><br><span class="line">              break;</span><br><span class="line">          case 1:</span><br><span class="line">              r = q;</span><br><span class="line">              g = v;</span><br><span class="line">              b = p;</span><br><span class="line">              break;</span><br><span class="line">          case 2:</span><br><span class="line">              r = p;</span><br><span class="line">              g = v;</span><br><span class="line">              b = t;</span><br><span class="line">              break;</span><br><span class="line">          case 3 :</span><br><span class="line">              r = p;</span><br><span class="line">              g = q;</span><br><span class="line">              b = v;</span><br><span class="line">              break;</span><br><span class="line">          case 4:</span><br><span class="line">              r = t;</span><br><span class="line">              g = p;</span><br><span class="line">              b = v;</span><br><span class="line">              break;</span><br><span class="line">          case 5:</span><br><span class="line">              r = v;</span><br><span class="line">              g = p;</span><br><span class="line">              b = q;</span><br><span class="line">              break;</span><br><span class="line">          default:</span><br><span class="line">              r = 1;</span><br><span class="line">              g = 1;</span><br><span class="line">              b = 1;</span><br><span class="line">        &#125;</span><br><span class="line">       tags[i].style.background = &quot;rgba(&quot;+parseInt(r*255)+&quot;,&quot;+parseInt(g*255)+&quot;,&quot;+parseInt(b*255)+&quot;,&quot;+0.5+&quot;)&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .tag-cloud-tags&#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    counter-reset: tags;</span><br><span class="line">  &#125;</span><br><span class="line">  .tag-cloud-tags a&#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    border: 0px;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    padding: 0px 10px;</span><br><span class="line">    margin: 8px;</span><br><span class="line">    color: rgba(34, 34, 34, 0.8);</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">/* 文字前添加相应的符号，content后的Unicode可以自定义*/</span><br><span class="line">  .tag-cloud-tags a:before&#123;</span><br><span class="line">    font-family: &#x27;Font Awesome 5 Free&#x27;;</span><br><span class="line">    content: &quot;\f02b&quot;;</span><br><span class="line">    font-weight: 900;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .tag-cloud-tags a:hover&#123;</span><br><span class="line">     box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);</span><br><span class="line">     transform: scale(1.1);</span><br><span class="line">     transition-duration: 0.15s;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开<code>theme\next\layout\page.njk</code> ，搜索<code>&lt;div class=&quot;post-body</code>，修改代码如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">      &lt;div class=&quot;post-body&#123;% if page.direction and page.direction.toLowerCase() === &#x27;rtl&#x27; %&#125; rtl&#123;% endif %&#125;&quot;&gt;</span><br><span class="line">        &#123;%- if page.type === &#x27;tags&#x27; %&#125;</span><br><span class="line">          &#123;%- include &#x27;_partials/page/tags.njk&#x27; -%&#125;</span><br><span class="line">        &#123;% elif page.type === &#x27;categories&#x27; %&#125;</span><br><span class="line">          &#123;%- include &#x27;_partials/page/categories.njk&#x27; -%&#125;</span><br><span class="line">        &#123;% elif page.type === &#x27;schedule&#x27; %&#125;</span><br><span class="line">          &#123;%- include &#x27;_partials/page/schedule.njk&#x27; -%&#125;</span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">          &#123;&#123; page.content &#125;&#125;</span><br><span class="line">        &#123;%- endif %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">+      &#123;% include &#x27;tag-color.njk&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果图：</p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE%E9%A1%B5.jpg?x-oss-process=style/imagesfx" alt=""></p>
+<h3 id="在文章底部添加彩色标签"><a href="#在文章底部添加彩色标签" class="headerlink" title="在文章底部添加彩色标签"></a>在文章底部添加彩色标签</h3><ul>
+<li>打开<code>themes\next\layout\_macro\post.njk</code>文件，搜索<code>for tag in post.tags.toArray()</code>，在下面添加我们之前写好的黄金分割生成的随机颜色代码，如下:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;post-tags&quot;&gt;</span><br><span class="line">           &#123;%- for tag in post.tags.toArray() %&#125;</span><br><span class="line">             &lt;a href=&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot; rel=&quot;tag&quot;&gt;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt; &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br><span class="line">           &#123;%- endfor %&#125;</span><br><span class="line">         &lt;/div&gt;</span><br><span class="line">         &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">           var tagsall=document.getElementsByClassName(&quot;post-tags&quot;)</span><br><span class="line">           for (var i = tagsall.length - 1; i &gt;= 0; i--)&#123;</span><br><span class="line">               var tags=tagsall[i].getElementsByTagName(&quot;a&quot;);</span><br><span class="line">               for (var j = tags.length - 1; j &gt;= 0; j--) &#123;</span><br><span class="line">                   var golden_ratio = 0.618033988749895;</span><br><span class="line">                   var s = 0.5;</span><br><span class="line">                   var v = 0.999;</span><br><span class="line">                   var h = golden_ratio + Math.random()*0.8 - 0.5;</span><br><span class="line">                   var h_i = parseInt(h * 6);</span><br><span class="line">                   var f = h * 6 - h_i;</span><br><span class="line">                   var p = v * (1 - s);</span><br><span class="line">                   var q = v * (1 - f * s);</span><br><span class="line">                   var t = v * (1 - (1 - f) * s);</span><br><span class="line">                   var r, g, b;</span><br><span class="line">                   switch (h_i) &#123;</span><br><span class="line">                       case 0:</span><br><span class="line">                           r = v;</span><br><span class="line">                           g = t;</span><br><span class="line">                           b = p;</span><br><span class="line">                           break;</span><br><span class="line">                       case 1:</span><br><span class="line">                           r = q;</span><br><span class="line">                           g = v;</span><br><span class="line">                           b = p;</span><br><span class="line">                           break;</span><br><span class="line">                       case 2:</span><br><span class="line">                           r = p;</span><br><span class="line">                           g = v;</span><br><span class="line">                           b = t;</span><br><span class="line">                           break;</span><br><span class="line">                       case 3 :</span><br><span class="line">                           r = p;</span><br><span class="line">                           g = q;</span><br><span class="line">                           b = v;</span><br><span class="line">                           break;</span><br><span class="line">                       case 4:</span><br><span class="line">                           r = t;</span><br><span class="line">                           g = p;</span><br><span class="line">                           b = v;</span><br><span class="line">                           break;</span><br><span class="line">                       case 5:</span><br><span class="line">                           r = v;</span><br><span class="line">                           g = p;</span><br><span class="line">                           b = q;</span><br><span class="line">                           break;</span><br><span class="line">                       default:</span><br><span class="line">                           r = 1;</span><br><span class="line">                           g = 1;</span><br><span class="line">                           b = 1;</span><br><span class="line">                     &#125;</span><br><span class="line">                   tags[j].style.background = &quot;rgba(&quot;+parseInt(r*255)+&quot;,&quot;+parseInt(g*255)+&quot;,&quot;+parseInt(b*255)+&quot;,&quot;+0.5+&quot;)&quot;;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;                        </span><br><span class="line">           &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后打开根目录下的<code>source\_data</code>文件夹新建styles.styl，添加以下代码：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//文章底部彩色标签样式</span><br><span class="line">.posts-expand .post-tags a &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    font-size: 0.8em;</span><br><span class="line">    padding: 0px 10px;</span><br><span class="line">    border-radius: 8px;</span><br><span class="line">    color: rgb(85, 85, 85);</span><br><span class="line">    border: 0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果图：</p>
+<p><img src="../../../../E-drive-188937/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%BA%93/blog/images/%E5%BA%95%E9%83%A8%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE-16480933980493.jpg" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>赞赏一杯咖啡</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="浅陌●繁星 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="浅陌●繁星 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%A0%87%E7%AD%BE%E4%BA%91/" rel="tag"># 标签云</a>
+              <a href="/tags/%E5%88%86%E7%B1%BB/" rel="tag"># 分类</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.5+")";
+                }
+            }                        
+            </script>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Hexo%E5%8D%9A%E5%AE%A2/3ac94d98.html" rel="prev" title="Hexo 博客新建文章">
+                  <i class="fa fa-chevron-left"></i> Hexo 博客新建文章
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Hexo%E5%8D%9A%E5%AE%A2/827959a4.html" rel="next" title="NEXT主题点击爆炸效果">
+                  NEXT主题点击爆炸效果 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="b3e4f334fd3760b561701009b4c831c6"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">浅陌●繁星</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">19k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">18 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/code-unfold.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"YpHM0h2SFhXHL4kP6n7B1fuE-gzGzoHsz","app_key":"QMBbyXWx1Jkt3at9MYSuMnLR","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvY4Le4f","appkey":"99e3e3f5ef969390ad49f6046778ac63"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

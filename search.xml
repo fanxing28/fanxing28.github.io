@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hexo 博客新建文章</title>
-    <url>/Hexo%E5%8D%9A%E5%AE%A2/3ac94d98.html</url>
+    <url>/Hexo-%E5%8D%9A%E5%AE%A2/3ac94d98.html</url>
     <content><![CDATA[<h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><p>输入如下命令，创建一篇新的文章</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -96,20 +96,261 @@
 </tbody>
 </table>
 </div>
-<p>写完文章后输入</p>
+<p>写完文章后输入：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-<p>就可以发布了</p>
+<p>就成功发布了</p>
 ]]></content>
       <categories>
-        <category>Hexo博客</category>
+        <category>Hexo 博客</category>
       </categories>
       <tags>
         <tag>新建文章</tag>
       </tags>
   </entry>
   <entry>
+    <title>微信小程序笔记</title>
+    <url>/%E7%AC%94%E8%AE%B0/bf8659a0.html</url>
+    <content><![CDATA[<h1 id="微信小程序笔记"><a href="#微信小程序笔记" class="headerlink" title="微信小程序笔记"></a>微信小程序笔记</h1><h2 id="什么是微信小程序？"><a href="#什么是微信小程序？" class="headerlink" title="什么是微信小程序？"></a>什么是微信小程序？</h2><p>微信小程序，简称小程序，英文名Wechat Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。</p>
+<h2 id="为什么要使用微信小程序？"><a href="#为什么要使用微信小程序？" class="headerlink" title="为什么要使用微信小程序？"></a>为什么要使用微信小程序？</h2><p>在我们的日常生活中，每个人的手机里都安装了许多的应用app，这使得许多用户手机内存不够，而且每款应用都需要安装卸载很麻烦。但使用微信小程序后，用户就不用关心是否安装太多应用的问题。应用将无处不在，随时可用，而且又无需安装卸载。它能够满足简单的基础应用，适合生活服务类线下商铺以及非刚需低频应用的转换。微信小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与微信小程序之间相互跳转。</p>
+<h2 id="小程序开发"><a href="#小程序开发" class="headerlink" title="小程序开发"></a>小程序开发</h2><p><a href="https://mp.weixin.qq.com/">小程序官网</a></p>
+<p><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=2018315">微信小程序开发工具下载</a></p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/">微信官方文档</a></p>
+<h3 id="开发小程序预先储备知识："><a href="#开发小程序预先储备知识：" class="headerlink" title="开发小程序预先储备知识："></a>开发小程序预先储备知识：</h3><ul>
+<li>1.Flex 布局</li>
+</ul>
+<p><strong>学习地址</strong>：<a href="http://www.runoob.com/w3cnote/flex-grammar.html">http://www.runoob.com/w3cnote/flex-grammar.html</a></p>
+<ul>
+<li>2.移动端相关知识 </li>
+</ul>
+<p><strong>物理像素：</strong></p>
+<p>1) 屏幕的分辨率</p>
+<p>2) 设备能控制显示的最小单元，可以把物理像素看成是对应的像素点</p>
+<p><strong>设备独立像素&amp; css 像素：</strong> </p>
+<p>​        设备独立像素(也叫密度无关像素)，可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用并控制的虚拟像素(比如：CSS 像素,只是在 android 机中 CSS 像素就不叫”CSS 像素”了而是叫”设备独立像素”)，然后由相关系统转换为物理像素。</p>
+<p><strong>dpr</strong>：设备像素比，物理像素/设备独立像素 = dpr， 一般以 Iphon6 的 dpr 为准 dpr = 2</p>
+<p><strong>PPI</strong>: 一英寸显示屏上的像素点个数</p>
+<p><strong>DPI</strong>：最早指的是打印机在单位面积上打印的墨点数，墨点越多越清晰</p>
+<ul>
+<li>移动端适配方案</li>
+</ul>
+<p><strong>viewport</strong> <strong>适配</strong></p>
+<ol>
+<li>为什么做 viewport 适配</li>
+</ol>
+<p>​        a) 手机厂商在生产手机的时候大部分手机默认页面宽度为 980px</p>
+<p>​        b) 手机实际视口宽度都要小于 980px，如: iphone6 为 375px</p>
+<p>​        c) 开发需求： 需要将 980 的页面完全显示在手机屏幕上且没有滚动条</p>
+<ol>
+<li><p>实现：</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1.0&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>rem</strong> <strong>适配</strong></p>
+<ol>
+<li>为什么做 rem 适配</li>
+</ol>
+<p>​        a) 机型太多，不同的机型屏幕大小不一样</p>
+<p>​        b) 需求： 一套设计稿的内容在不同的机型上呈现的效果一致，根据屏幕大小不同的变化，页面中的内容也相应变化</p>
+<ol>
+<li><p>实现：</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">remRefresh</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="keyword">let</span> clientWidth = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientWidth</span>; <span class="comment">// 将屏幕等分 10 份</span></span><br><span class="line"><span class="keyword">let</span> rem = clientWidth / <span class="number">10</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">style</span>.<span class="property">fontSize</span> = rem + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">fontSize</span> = <span class="string">&#x27;12px&#x27;</span>; &#125;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;pageshow&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line"><span class="title function_">remRefresh</span>()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 函数防抖</span></span><br><span class="line"><span class="keyword">let</span> timeoutId;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;resize&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">timeoutId &amp;&amp; <span class="built_in">clearTimeout</span>(timeoutId);</span><br><span class="line">timeoutId = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span>&#123;</span><br><span class="line"><span class="title function_">remRefresh</span>()</span><br><span class="line">&#125;, <span class="number">300</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p> 3.第三方库实现</p>
+<p> lib-flexible + px2rem-loader</p>
+</li>
+</ol>
+<h3 id="小程序特点"><a href="#小程序特点" class="headerlink" title="小程序特点"></a>小程序特点</h3><ol>
+<li><p>没有 DOM</p>
+</li>
+<li><p>组件化开发： 具备特定功能效果的代码集合</p>
+</li>
+<li><p>体积小，单个压缩包体积不能大于 2M，否则无法上线</p>
+</li>
+<li><p>小程序的四个重要的文件</p>
+</li>
+</ol>
+<p>​        a) *.js </p>
+<p>​        b) *.wxml —-&gt; view 结构 ——&gt; html</p>
+<p>​        c) *.wxss —-&gt; view 样式 ——-&gt; css</p>
+<p>​        d) *. json ——&gt; view 数据 ——-&gt; json 文件</p>
+<ol>
+<li>小程序适配方案: rpx (responsive pixel 响应式像素单位)</li>
+</ol>
+<p>​        a) 小程序适配单位： rpx</p>
+<p>​        b) 规定任何屏幕下宽度为 750rpx</p>
+<p>​        c) 小程序会根据屏幕的宽度不同自动计算 rpx 值的大小</p>
+<p>​        d) Iphone6 下： 1rpx = 1 物理像素 = 0.5px</p>
+<h2 id="wxml-语法"><a href="#wxml-语法" class="headerlink" title="wxml 语法"></a>wxml 语法</h2><h3 id="1-数据绑定"><a href="#1-数据绑定" class="headerlink" title="1.  数据绑定"></a>1.  数据绑定</h3><h4 id="初始化数据"><a href="#初始化数据" class="headerlink" title="初始化数据"></a>初始化数据</h4><p>页面.js 的 data 选项中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 页面的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    msg :<span class="string">&#x27;初始化测试数据&#x27;</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="使用数据"><a href="#使用数据" class="headerlink" title="使用数据"></a>使用数据</h4><ol>
+<li><p>模板结构中使用双大括号 </p>
+</li>
+<li><p>注意事项: 小程序中为单项数据流 model —-&gt; view</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h4><ol>
+<li><p>this.setData({message: ‘修改之后的数据’}, callback)</p>
+</li>
+<li><p>特点：</p>
+</li>
+</ol>
+<p>​        a) 同步修改： this.data 值被同步修改</p>
+<p>​        b) 异步更新： 异步将 setData 函数用于将数据从逻辑层发送到视图层（异步）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">	<span class="attr">data</span>:&#123;</span><br><span class="line">		<span class="attr">text</span>:<span class="string">&#x27;初始数据&#x27;</span>,</span><br><span class="line">		<span class="attr">num</span>:<span class="number">0</span>,</span><br><span class="line">		<span class="attr">array</span>:[&#123;<span class="attr">text</span>:<span class="string">&#x27;初始数据&#x27;</span>&#125;]</span><br><span class="line">		<span class="attr">object</span>:&#123;</span><br><span class="line">		<span class="attr">text</span>:<span class="string">&#x27;初始数据&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">     <span class="attr">changeText</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    	<span class="comment">//this.data.text=&#x27;修改数据&#x27;//不要直接修改this.data</span></span><br><span class="line">    	<span class="comment">//应按使用setData</span></span><br><span class="line">    	<span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">            <span class="attr">text</span>:<span class="string">&#x27;修改数据&#x27;</span></span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><p><strong>事件分类</strong></p>
+<p>1) 冒泡事件</p>
+<p>​        a) 定义：冒泡事件：当一个组件上的事件被触发后，该事件会向父节点传递。</p>
+<p>​        b) 冒泡事件列表：</p>
+<p><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html">https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html</a></p>
+<p>2) 非冒泡事件</p>
+<p>​        a) 定义：当一个组件上的事件被触发后，该事件不会向父节点传递。</p>
+<p>​        b) 非冒泡事件：表单事件和自定义事件通常是非冒泡事件</p>
+<p><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html">https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html</a></p>
+<p><strong>绑定事件</strong></p>
+<ol>
+<li><p><strong>bind</strong> 绑定：事件绑定不会阻止冒泡事件向上冒泡</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">bindtap</span>=<span class="string">&quot;handleParent&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">bindtap</span>=<span class="string">&quot;handleChild&quot;</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>catch</strong> 绑定: 事件绑定可以阻止冒泡事件向上冒泡</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">catchtap</span>=<span class="string">&quot;handleParent&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">catchtap</span>=<span class="string">&quot;handleChild&quot;</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>webpack 笔记</title>
+    <url>/%E7%AC%94%E8%AE%B0/3ac94d98.html</url>
+    <content><![CDATA[<h1 id="webpack-笔记"><a href="#webpack-笔记" class="headerlink" title="webpack 笔记"></a>webpack 笔记</h1><h2 id="第-1-章：webpack-简介"><a href="#第-1-章：webpack-简介" class="headerlink" title="第 1 章：webpack 简介"></a>第 1 章：webpack 简介</h2><h3 id="什么是webpack"><a href="#什么是webpack" class="headerlink" title="什么是webpack?"></a>什么是webpack?</h3><p>官方下定义：本质上，<em>webpack</em> 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 <em>bundle</em>。</p>
+<p>webpack可以将按需加载的模块进行代码分离，等到实际需要时再异步加载。通过loader转换，任何形式的资源都可以当做模块，比如CommonsJS、AMD、ES6、 CSS、JSON、CoffeeScript、LESS等;</p>
+<h3 id="webpack下载"><a href="#webpack下载" class="headerlink" title="webpack下载"></a>webpack下载</h3><p><strong>前提条件</strong></p>
+<p>在开始之前，请确保安装了 <a href="https://nodejs.org/en/">Node.js</a> 的最新版本。使用 Node.js 最新的长期支持版本(LTS - Long Term Support)，是理想的起步。使用旧版本，你可能遇到各种问题，因为它们可能缺少 webpack 功能以及/或者缺少相关 package 包。</p>
+<p><strong>如果你不清楚你下载的nodejs是否是最新的版本，本文下方有详细讲解。</strong></p>
+<p>下载方式：打开cmd,cd到你想要储存的文件目录，输入以下命令其中一条：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install --save-dev webpack</span><br><span class="line">npm install --save-dev webpack@&lt;version&gt;</span><br></pre></td></tr></table></figure>
+<p>前一条命令为：webpack最新版本；后一条命令为：webpack特定版本。</p>
+<p>示例图：</p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/webpack%E4%B8%8B%E8%BD%BD.jpg?x-oss-process=style/imagesfx" alt="webpack下载"></p>
+<h4 id="nodejs下载官方下载链接：nodejs下载"><a href="#nodejs下载官方下载链接：nodejs下载" class="headerlink" title="nodejs下载官方下载链接：nodejs下载"></a>nodejs下载官方下载链接：<a href="https://nodejs.org/en/">nodejs下载</a></h4><p>至于下载的选择上建议选择LTS（x64），LTS是长期稳定版本。</p>
+<h4 id="检查nodejs版本号"><a href="#检查nodejs版本号" class="headerlink" title="检查nodejs版本号"></a>检查nodejs版本号</h4><p><strong>在windows上查看nodejs的版本号</strong></p>
+<ul>
+<li><p>1、在开始菜单的搜索框中输入cmd，点击cmd.exe打开cmd命令窗口或者使用快捷键windows+R，输入cmd，按下回车。</p>
+</li>
+<li><p>2、使用命令查看node.js的版本号</p>
+</li>
+</ul>
+<p>在cmd命令行中使用cd命令进入nodejs安装目录 ，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd C:\Program Files\nodejs</span><br></pre></td></tr></table></figure>
+<p>接着再输入 <code>node -v</code>命令，就可查看到node的版本号，例如我的版本号就是v16.14.2。</p>
+<p><strong>在Linux上查看nodejs的版本号</strong></p>
+<p>打开终端，直接使用以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//查版本号</span><br><span class="line">node --version</span><br><span class="line">// v16.14.2</span><br></pre></td></tr></table></figure>
+<h3 id="webpack-五个核心概念"><a href="#webpack-五个核心概念" class="headerlink" title="webpack 五个核心概念"></a>webpack 五个核心概念</h3><p><strong>1. Entry</strong> </p>
+<p>​        入口(Entry)指示 webpack 以哪个文件为入口起点开始打包，分析构建内部依赖图。</p>
+<p><strong>2. Output</strong> </p>
+<p>​        输出(Output)指示 webpack 打包后的资源 bundles 输出到哪里去，以及如何命名。 </p>
+<p><strong>3. Loader</strong> </p>
+<p>​        Loader 让 webpack 能 够 去 处 理 那 些 非 JavaScript 文 件 (webpack 自 身 只 理 解JavaScript)  </p>
+<p><strong>4. Plugins</strong> </p>
+<p>​        插件(Plugins)可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量等。 </p>
+<p><strong>5. Mode</strong> </p>
+<p>​        模式(Mode)指示 webpack 使用相应模式的配置。 </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:left">描述</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">development</td>
+<td style="text-align:left">会将 DefinePlugin 中 process.env.NODE_ENV 的值设置为 development。启用 NamedChunksPlugin 和 NamedModulesPlugin。</td>
+<td>能让代码本地调试运行的环境</td>
+</tr>
+<tr>
+<td style="text-align:center">production</td>
+<td style="text-align:left">会将 DefinePlugin 中 process.env.NODE_ENV 的值设置为 production。                                  启用FlagDependencyUsagePlugin,FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 TerserPlugin。</td>
+<td>能让代码优化上线运行的环境</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="第-2-章：webpack-的初体验"><a href="#第-2-章：webpack-的初体验" class="headerlink" title="第 2 章：webpack 的初体验"></a>第 2 章：webpack 的初体验</h2><h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><ul>
+<li><p>初始化 package.json </p>
+<p>  输入指令: </p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载并安装 webpack</p>
+<p>  输入指令:</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install webpack webpack-cli -g </span><br><span class="line">npm install webpack webpack-cli -D</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="编译打包应用"><a href="#编译打包应用" class="headerlink" title="编译打包应用"></a>编译打包应用</h3><ul>
+<li><p>1.创建文件</p>
+</li>
+<li><p>2.运行指令</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">index.<span class="property">js</span>: webpack入口起点文件</span><br><span class="line">    开发环境指令：webpack ./src/index.<span class="property">js</span> -o ./build/built.<span class="property">js</span> --mode=development</span><br><span class="line">    webpack会以 ./src/index.<span class="property">js</span> 为入口文件开始打包，打包后输出到./build/built.<span class="property">js</span></span><br><span class="line">    功能：webpack 能够编译打包 js 和 json 文件，并且能将 es6 的模块化语法转换成浏览器能识别的语法。</span><br><span class="line">    生产环境指令：webpack ./src/index.<span class="property">js</span> -o ./build/built.<span class="property">js</span> --mode=production</span><br><span class="line">    webpack会以 ./src/index.<span class="property">js</span> 为入口文件开始打包，打包后输出到 ./build/built.<span class="property">js</span></span><br><span class="line">  	功能：在开发配置功能上多一个功能，压缩代码  </span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.结论：</li>
+</ul>
+<p>（1）webpack能处理js/json资源，不能处理css/img等其他资源</p>
+<p>（2）生产环境和开发环境将ES6模块化编译成浏览器能识别的模块化~</p>
+<p>（3）生产环境比开发环境多一个压缩js代码。</p>
+<ul>
+<li>4.问题</li>
+</ul>
+<p>（1）不能编译打包 css、img 等文件。 </p>
+<p>（2）不能将 js 的 es6 基本语法转化为 es5 以下语法。 </p>
+<h2 id="第-3-章：webpack-开发环境的基本配置"><a href="#第-3-章：webpack-开发环境的基本配置" class="headerlink" title="第 3 章：webpack 开发环境的基本配置"></a>第 3 章：webpack 开发环境的基本配置</h2><h3 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><ul>
+<li><p>1.创建文件 webpack.config.js</p>
+</li>
+<li><p>2.配置内容如下：</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>); <span class="comment">// node 内置核心模块，用来处理路径问题。</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; </span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/js/index.js&#x27;</span>, <span class="comment">// 入口文件 </span></span><br><span class="line">    <span class="attr">output</span>: &#123; <span class="comment">// 输出配置 </span></span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;./built.js&#x27;</span>, <span class="comment">// 输出文件名 </span></span><br><span class="line">        <span class="attr">path</span>: <span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;build/js&#x27;</span>) <span class="comment">// 输出文件路径配置 </span></span><br><span class="line">    &#125;,<span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span> <span class="comment">//开发环境 </span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.运行指令: webpack</li>
+</ul>
+<h3 id="打包样式资源"><a href="#打包样式资源" class="headerlink" title="打包样式资源"></a>打包样式资源</h3><ul>
+<li>1.创建文件</li>
+</ul>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/webpack%E6%A0%B7%E5%BC%8F.jpg" alt=""></p>
+<ul>
+<li>2.下载安装 loader 包</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i css-loader style-loader less-loader less -D</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.修改配置文件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  webpack.config.js  webpack的配置文件</span></span><br><span class="line"><span class="comment">    作用: 指示 webpack 干哪些活（当你运行 webpack 指令时，会加载里面的配置）</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    所有构建工具都是基于nodejs平台运行的~模块化默认采用commonjs。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// resolve用来拼接绝对路径的方法</span></span><br><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// webpack配置</span></span><br><span class="line">  <span class="comment">// 入口起点</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  <span class="comment">// 输出</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="comment">// 输出文件名</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;built.js&#x27;</span>,</span><br><span class="line">    <span class="comment">// 输出路径</span></span><br><span class="line">    <span class="comment">// __dirname nodejs的变量，代表当前文件的目录绝对路径</span></span><br><span class="line">    <span class="attr">path</span>: <span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;build&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// loader的配置</span></span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      <span class="comment">// 详细loader配置</span></span><br><span class="line">      <span class="comment">// 不同文件必须配置不同loader处理</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// 匹配哪些文件</span></span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="comment">// 使用哪些loader进行处理</span></span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="comment">// use数组中loader执行顺序：从右到左，从下到上 依次执行</span></span><br><span class="line">          <span class="comment">// 创建style标签，将js中的样式资源插入进行，添加到head中生效</span></span><br><span class="line">          <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">          <span class="comment">// 将css文件变成commonjs模块加载js中，里面内容是样式字符串</span></span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.less$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">          <span class="comment">// 将less文件编译成css文件</span></span><br><span class="line">          <span class="comment">// 需要下载 less-loader和less</span></span><br><span class="line">          <span class="string">&#x27;less-loader&#x27;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// plugins的配置</span></span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 详细plugins的配置</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 模式</span></span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>, <span class="comment">// 开发模式</span></span><br><span class="line">  <span class="comment">// mode: &#x27;production&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>4.运行指令: webpack</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+        <tag>node.js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo-Next 花式配置</title>
-    <url>/Hexo%E5%8D%9A%E5%AE%A2/7cd511d5.html</url>
+    <url>/Hexo-%E5%8D%9A%E5%AE%A2/7cd511d5.html</url>
     <content><![CDATA[<h2 id="近期文章（侧边栏）"><a href="#近期文章（侧边栏）" class="headerlink" title="近期文章（侧边栏）"></a>近期文章（侧边栏）</h2><ul>
 <li>首先，在根目录下的<code>.\source</code>新建 <code>_data\sidebar.njk</code> 文件，并把下面的代码放到 <code>sidebar.njk</code> 中</li>
 </ul>
@@ -124,7 +365,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">recent_posts_title: 近期文章</span><br><span class="line">recent_posts_layout: block</span><br><span class="line">recent_posts: true</span><br></pre></td></tr></table></figure>
 <p>效果预览：</p>
-<p><img src="../../../../E-drive-188937/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%BA%93/blog/images/imagesfx.jpeg" alt=""></p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E8%BF%91%E6%9C%9F%E6%96%87%E7%AB%A0.jpg?x-oss-process=style/imagesfx" alt=""></p>
 <h2 id="粒子时钟"><a href="#粒子时钟" class="headerlink" title="粒子时钟"></a>粒子时钟</h2><ul>
 <li><strong>首先，在<code>.\themes\next\layout</code>新建一个<code>clock.swig</code>文件，并在带文件里加入以下代码：</strong></li>
 </ul>
@@ -132,7 +373,7 @@
 <p>然后，打开 <code>.\theme\next\layout\_macro\sidebar.njk</code>，修改代码如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      &#123;%- if theme.back2top.enable and theme.back2top.sidebar %&#125;</span><br><span class="line">        &lt;div class=&quot;back-to-top motion-element&quot;&gt;</span><br><span class="line">          &lt;i class=&quot;fa fa-arrow-up&quot;&gt;&lt;/i&gt;</span><br><span class="line">          &lt;span&gt;0%&lt;/span&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">+     &#123;% include &#x27;../clock.swig&#x27; %&#125;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/aside&gt;</span><br><span class="line">  &lt;div id=&quot;sidebar-dimmer&quot;&gt;&lt;/div&gt;</span><br><span class="line">&#123;% endmacro %&#125;</span><br></pre></td></tr></table></figure>
 <p>效果图：</p>
-<p><img src="../../../../E-drive-188937/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%BA%93/blog/images/%E7%B2%92%E5%AD%90%E6%97%B6%E9%92%9F-16480932445074.jpg" alt=""></p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E7%B2%92%E5%AD%90%E6%97%B6%E9%92%9F.jpg" alt=""></p>
 <h2 id="Hexo博客添加live2d卡通人物"><a href="#Hexo博客添加live2d卡通人物" class="headerlink" title="Hexo博客添加live2d卡通人物"></a>Hexo博客添加live2d卡通人物</h2><ul>
 <li><strong>1.安装hexo-helper-live2d</strong></li>
 </ul>
@@ -153,18 +394,18 @@
 <p>其他模型名称：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">live2d-widget-model-chitose</span><br><span class="line">live2d-widget-model-epsilon2_1</span><br><span class="line">live2d-widget-model-gf</span><br><span class="line">live2d-widget-model-haru/01 (use npm install --save live2d-widget-model-haru)</span><br><span class="line">live2d-widget-model-haru/02 (use npm install --save live2d-widget-model-haru)</span><br><span class="line">live2d-widget-model-haruto</span><br><span class="line">live2d-widget-model-hibiki</span><br><span class="line">live2d-widget-model-hijiki</span><br><span class="line">live2d-widget-model-izumi</span><br><span class="line">live2d-widget-model-koharu</span><br><span class="line">live2d-widget-model-miku</span><br><span class="line">live2d-widget-model-ni-j</span><br><span class="line">live2d-widget-model-nico</span><br><span class="line">live2d-widget-model-nietzsche</span><br><span class="line">live2d-widget-model-nipsilon</span><br><span class="line">live2d-widget-model-nito</span><br><span class="line">live2d-widget-model-shizuku</span><br><span class="line">live2d-widget-model-tororo</span><br><span class="line">live2d-widget-model-tsumiki</span><br><span class="line">live2d-widget-model-unitychan</span><br><span class="line">live2d-widget-model-wanko</span><br><span class="line">live2d-widget-model-z16</span><br></pre></td></tr></table></figure>
 <p><code>live2d-widget-model-wanko</code>的效果图：</p>
-<p><img src="../../../../E-drive-188937/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%BA%93/blog/images/imagesfx-16480933136916.jpeg" alt=""></p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/live2d-wanko.jpg?x-oss-process=style/imagesfx" alt=""></p>
 ]]></content>
       <categories>
-        <category>Hexo博客</category>
+        <category>Hexo 博客</category>
       </categories>
       <tags>
-        <tag>-侧边栏</tag>
+        <tag>侧边栏</tag>
       </tags>
   </entry>
   <entry>
     <title>NEXT主题点击爆炸效果</title>
-    <url>/Hexo%E5%8D%9A%E5%AE%A2/827959a4.html</url>
+    <url>/Hexo-%E5%8D%9A%E5%AE%A2/827959a4.html</url>
     <content><![CDATA[<h2 id="添加点击页面的爆炸效果操作如下："><a href="#添加点击页面的爆炸效果操作如下：" class="headerlink" title="添加点击页面的爆炸效果操作如下："></a>添加点击页面的爆炸效果操作如下：</h2><ul>
 <li>1.在<code>博客目录\themes\next\![爆炸效果](D:\blog_hexo\myblog\source\images\爆炸效果.jpg)\js\src</code>目录下新建一个js文件，命名为<code>fireworks.js</code>。将下面的代码复制到这个js文件中。</li>
 </ul>
@@ -184,9 +425,10 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd 博客目录</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 <p>即可看到点击特效。</p>
-<h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2>]]></content>
+<h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2><p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E7%82%B9%E5%87%BB%E7%88%86%E7%82%B8%E6%95%88%E6%9E%9C.png?x-oss-process=style/imagesfx" alt=""></p>
+]]></content>
       <categories>
-        <category>Hexo博客</category>
+        <category>Hexo 博客</category>
       </categories>
       <tags>
         <tag>页面点击效果</tag>
@@ -194,7 +436,7 @@
   </entry>
   <entry>
     <title>添加分类、标签云（球状）、彩色标签</title>
-    <url>/Hexo%E5%8D%9A%E5%AE%A2/2b0b45d5.html</url>
+    <url>/Hexo-%E5%8D%9A%E5%AE%A2/2b0b45d5.html</url>
     <content><![CDATA[<h2 id="添加分类页面"><a href="#添加分类页面" class="headerlink" title="添加分类页面"></a>添加分类页面</h2><ul>
 <li><strong>1.新建页面</strong></li>
 </ul>
@@ -212,6 +454,20 @@
 <p>编辑 ==主题配置文件==，将menu中categories前的#去掉。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">	#categories: /categories/ || fa fa-th</span><br></pre></td></tr></table></figure>
 <p>在下载NEXT主题时，主题配置文件中menu默认有categories，只需将前面的#去掉即可。</p>
+<h2 id="NexT主题-多层级分类"><a href="#NexT主题-多层级分类" class="headerlink" title="NexT主题 多层级分类"></a>NexT主题 多层级分类</h2><p>1.单层分类</p>
+<p>如果你的一篇文章只分一类，可以像如下方式设置分类名：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Hexo 博客</span><br></pre></td></tr></table></figure>
+<p>2.父子分类</p>
+<p>如果你想让一篇文章处于父类中的子类中，可以像如下方式设置分类名：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- 前端</span><br><span class="line">- 笔记</span><br></pre></td></tr></table></figure>
+<p>3.并列分类</p>
+<p>如果你想让一篇文章处于同一层的不同类中，可以像如下方式设置分类名：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [后端]</span><br><span class="line">- [笔记]</span><br></pre></td></tr></table></figure>
+<p>4.同一父类不同子类</p>
+<p>如果你想让一篇文章处于同一父类的不同类中，可以像如下方式设置分类名：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [学习,html]</span><br><span class="line">- [学习,http]</span><br></pre></td></tr></table></figure>
+<p>总体效果图：</p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E5%A4%9A%E5%B1%82%E7%BA%A7%E5%88%86%E7%B1%BB.jpg?x-oss-process=style/imagesfx" alt=""></p>
 <h2 id="添加标签页面"><a href="#添加标签页面" class="headerlink" title="添加标签页面"></a>添加标签页面</h2><ul>
 <li><strong>1.新建页面</strong></li>
 </ul>
@@ -261,20 +517,26 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      &lt;div class=&quot;post-body&#123;% if page.direction and page.direction.toLowerCase() === &#x27;rtl&#x27; %&#125; rtl&#123;% endif %&#125;&quot;&gt;</span><br><span class="line">        &#123;%- if page.type === &#x27;tags&#x27; %&#125;</span><br><span class="line">          &#123;%- include &#x27;_partials/page/tags.njk&#x27; -%&#125;</span><br><span class="line">        &#123;% elif page.type === &#x27;categories&#x27; %&#125;</span><br><span class="line">          &#123;%- include &#x27;_partials/page/categories.njk&#x27; -%&#125;</span><br><span class="line">        &#123;% elif page.type === &#x27;schedule&#x27; %&#125;</span><br><span class="line">          &#123;%- include &#x27;_partials/page/schedule.njk&#x27; -%&#125;</span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">          &#123;&#123; page.content &#125;&#125;</span><br><span class="line">        &#123;%- endif %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">+      &#123;% include &#x27;tag-color.njk&#x27; %&#125;</span><br></pre></td></tr></table></figure>
 <p>效果图：</p>
-<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE%E9%A1%B5.jpg?x-oss-process=style/imagesfx" alt=""></p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E6%A0%87%E7%AD%BE%E9%A1%B5.jpg?x-oss-process=style/imagesfx" alt=""></p>
 <h3 id="在文章底部添加彩色标签"><a href="#在文章底部添加彩色标签" class="headerlink" title="在文章底部添加彩色标签"></a>在文章底部添加彩色标签</h3><ul>
 <li>打开<code>themes\next\layout\_macro\post.njk</code>文件，搜索<code>for tag in post.tags.toArray()</code>，在下面添加我们之前写好的黄金分割生成的随机颜色代码，如下:</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;post-tags&quot;&gt;</span><br><span class="line">           &#123;%- for tag in post.tags.toArray() %&#125;</span><br><span class="line">             &lt;a href=&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot; rel=&quot;tag&quot;&gt;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt; &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br><span class="line">           &#123;%- endfor %&#125;</span><br><span class="line">         &lt;/div&gt;</span><br><span class="line">         &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">           var tagsall=document.getElementsByClassName(&quot;post-tags&quot;)</span><br><span class="line">           for (var i = tagsall.length - 1; i &gt;= 0; i--)&#123;</span><br><span class="line">               var tags=tagsall[i].getElementsByTagName(&quot;a&quot;);</span><br><span class="line">               for (var j = tags.length - 1; j &gt;= 0; j--) &#123;</span><br><span class="line">                   var golden_ratio = 0.618033988749895;</span><br><span class="line">                   var s = 0.5;</span><br><span class="line">                   var v = 0.999;</span><br><span class="line">                   var h = golden_ratio + Math.random()*0.8 - 0.5;</span><br><span class="line">                   var h_i = parseInt(h * 6);</span><br><span class="line">                   var f = h * 6 - h_i;</span><br><span class="line">                   var p = v * (1 - s);</span><br><span class="line">                   var q = v * (1 - f * s);</span><br><span class="line">                   var t = v * (1 - (1 - f) * s);</span><br><span class="line">                   var r, g, b;</span><br><span class="line">                   switch (h_i) &#123;</span><br><span class="line">                       case 0:</span><br><span class="line">                           r = v;</span><br><span class="line">                           g = t;</span><br><span class="line">                           b = p;</span><br><span class="line">                           break;</span><br><span class="line">                       case 1:</span><br><span class="line">                           r = q;</span><br><span class="line">                           g = v;</span><br><span class="line">                           b = p;</span><br><span class="line">                           break;</span><br><span class="line">                       case 2:</span><br><span class="line">                           r = p;</span><br><span class="line">                           g = v;</span><br><span class="line">                           b = t;</span><br><span class="line">                           break;</span><br><span class="line">                       case 3 :</span><br><span class="line">                           r = p;</span><br><span class="line">                           g = q;</span><br><span class="line">                           b = v;</span><br><span class="line">                           break;</span><br><span class="line">                       case 4:</span><br><span class="line">                           r = t;</span><br><span class="line">                           g = p;</span><br><span class="line">                           b = v;</span><br><span class="line">                           break;</span><br><span class="line">                       case 5:</span><br><span class="line">                           r = v;</span><br><span class="line">                           g = p;</span><br><span class="line">                           b = q;</span><br><span class="line">                           break;</span><br><span class="line">                       default:</span><br><span class="line">                           r = 1;</span><br><span class="line">                           g = 1;</span><br><span class="line">                           b = 1;</span><br><span class="line">                     &#125;</span><br><span class="line">                   tags[j].style.background = &quot;rgba(&quot;+parseInt(r*255)+&quot;,&quot;+parseInt(g*255)+&quot;,&quot;+parseInt(b*255)+&quot;,&quot;+0.5+&quot;)&quot;;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;                        </span><br><span class="line">           &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>然后打开根目录下的<code>source\_data</code>文件夹新建styles.styl，添加以下代码：</li>
+<li>然后打开根目录下的<code>source\_data</code>文件新建styles.styl，添加以下代码：</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//文章底部彩色标签样式</span><br><span class="line">.posts-expand .post-tags a &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    font-size: 0.8em;</span><br><span class="line">    padding: 0px 10px;</span><br><span class="line">    border-radius: 8px;</span><br><span class="line">    color: rgb(85, 85, 85);</span><br><span class="line">    border: 0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>文章底部标签#改为图标（打开根目录下的\themes\next\layout_macro\post.njk 文件，找到如下代码：)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+<p>将代码中的#改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
 <p>效果图：</p>
-<p><img src="../../../../E-drive-188937/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%BA%93/blog/images/%E5%BA%95%E9%83%A8%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE-16480933980493.jpg" alt=""></p>
+<p><img src="https://imagesfx.oss-cn-shanghai.aliyuncs.com/img/%E5%BA%95%E9%83%A8%E6%A0%87%E7%AD%BE.jpg" alt=""></p>
 ]]></content>
       <categories>
-        <category>Hexo博客</category>
+        <category>Hexo 博客</category>
       </categories>
       <tags>
         <tag>标签云</tag>

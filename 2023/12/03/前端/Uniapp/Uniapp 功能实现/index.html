@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>Uniapp 功能实现 | FanXing28</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+        <script src="/js/valine/index.js"></script>
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="FanXing28" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
+</div>
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">FanXing28</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/friends" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-link" aria-hidden="true"></i>
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a href="/null">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">FanXing28</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/friends" class="menu-item-link" title="友情链接">
+                  
+                    <i class="fas fa-link" aria-hidden="true"></i>
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a href="" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        Uniapp 功能实现
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-12-03 |
+        </span>
+      
+
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h2 id="时间轴"><a href="#时间轴" class="headerlink" title="时间轴"></a>时间轴</h2><p><strong>代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;scroll-view class=&quot;time-line-wrap&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;time-line&quot;&gt;</span><br><span class="line">            &lt;!-- 标题 --&gt;</span><br><span class="line">            &lt;view class=&quot;time-line-title&quot;&gt;</span><br><span class="line">                &#123;&#123;title&#125;&#125;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">            &lt;!-- 时间轴 --&gt;</span><br><span class="line">            &lt;view class=&quot;time-line-container&quot; :class=&quot;addTypeClass&quot;&gt;</span><br><span class="line">                &lt;!-- 时间轴内容块列表 --&gt;</span><br><span class="line">                &lt;view class=&quot;time-line-list&quot;&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;!-- 时间轴内容块 --&gt;</span><br><span class="line">                    &lt;view class=&quot;time-line-info&quot; :key=&quot;index&quot; :class=&quot;[layoutClass(index)]&quot; :id=&quot;&#x27;timeline&#x27;+index&quot; v-for=&quot;(item,index) of time_line_list&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                        &lt;!-- 内容块内容 --&gt;</span><br><span class="line">                        &lt;view class=&quot;line-info-content&quot; &gt;</span><br><span class="line"></span><br><span class="line">                            &lt;!-- 时间轴圆点 --&gt;</span><br><span class="line">                            &lt;view class=&quot;line-on-round&quot; :style=&quot;&#123; opacity: current[index]&amp;&amp;current[index].is==&#x27;ok&#x27;?1:0,top:&#x27;50px&#x27;&#125;&quot; :class=&quot;current[index]&amp;&amp;current[index].is==&#x27;ok&#x27;?comeani:&#x27;&#x27;&quot;&gt;&lt;/view&gt;</span><br><span class="line"></span><br><span class="line">                            &lt;view class=&quot;info-content-wrap&quot; :style=&quot;&#123; opacity: current[index]&amp;&amp;current[index].is==&#x27;ok&#x27;?1:0&#125;&quot; :class=&quot;current[index]&amp;&amp;current[index].is==&#x27;ok&#x27;?comeani:&#x27;&#x27;&quot;&gt;</span><br><span class="line">                                &lt;!-- 标题 --&gt;</span><br><span class="line">                                &lt;view class=&quot;info-title&quot;&gt;</span><br><span class="line">                                    &#123;&#123;item.title&#125;&#125;&lt;span&gt;&#123;&#123;item.title_span&#125;&#125;&lt;/span&gt;</span><br><span class="line">                                &lt;/view&gt;</span><br><span class="line"></span><br><span class="line">                                &lt;!-- 内容 --&gt;</span><br><span class="line">                                &lt;view class=&quot;info-content&quot;&gt;</span><br><span class="line">                                    &lt;!-- 内容 --&gt;</span><br><span class="line">                                    &lt;view class=&quot;info-txt&quot;&gt;&#123;&#123;item.content&#125;&#125;&lt;/view&gt;</span><br><span class="line">                                &lt;/view&gt;</span><br><span class="line">                            &lt;/view&gt;</span><br><span class="line"></span><br><span class="line">                        &lt;/view&gt;</span><br><span class="line">                    &lt;/view&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/scroll-view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default&#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return&#123;</span><br><span class="line">                // 数据</span><br><span class="line">                time_line_list:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2015.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;匆匆&#x27;,</span><br><span class="line">                        content:&#x27;燕子去了，有再来的时候；杨柳枯了，有再青的时候；桃花谢了，有再开的时候。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2016.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;日子&#x27;,</span><br><span class="line">                        content:&#x27;我不知道他们给了我多少日子，但我的手确乎是渐渐空虚了。我不禁头涔涔而泪潸潸了。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2017.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;时间就像海绵里的水，只要愿挤，总还是有的。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2018.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;倘只看书，便变成书橱。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2019.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;不满是向上的车轮，能够载着不自满的人前进。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2020.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;小的时候，不把他当人，大了以后也做不了人。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2021.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;无情未必真豪杰，怜子如何不丈夫。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2022.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;凡事总须研究，才会明白。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2023.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;哪里有天才，我是把别人喝咖啡的工夫都用在了工作上了。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2024.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;让别人过得舒服些，自己没有幸福不要紧，看见别人得到幸福生活也是舒服的。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2024.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;我觉察他去的匆匆了，伸出手遮挽时，他又从遮挽着的手边过去，天黑时，我躺在床上，他便伶伶俐俐地从我身上跨过，从我脚边飞去了。等我睁开眼和太阳再见，这算又溜走了一日。我掩着面叹息。但是新来的日子的影儿又开始在叹息里闪过了。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        title:&#x27;2024.11.11&#x27;,</span><br><span class="line">                        title_span:&#x27;你好&#x27;,</span><br><span class="line">                        content:&#x27;我觉察他去的匆匆了，伸出手遮挽时，他又从遮挽着的手边过去，天黑时，我躺在床上，他便伶伶俐俐地从我身上跨过，从我脚边飞去了。等我睁开眼和太阳再见，这算又溜走了一日。我掩着面叹息。但是新来的日子的影儿又开始在叹息里闪过了。&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                ],</span><br><span class="line">                HEIGHT:0,//屏幕高度</span><br><span class="line">                result:[],//监听的结果</span><br><span class="line">                current:[],//当前在屏幕内的</span><br><span class="line">                sum:0,//加载完成个数</span><br><span class="line">                comeani:&#x27;come-ani&#x27;,//入场动画</span><br><span class="line">                isScroll:true,//是否加载动画</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        props:&#123;</span><br><span class="line">            location:&#123;</span><br><span class="line">                type:String,</span><br><span class="line">                default:&#x27;center&#x27;,</span><br><span class="line">            &#125;,</span><br><span class="line">            title:&#123;</span><br><span class="line">                type:String,</span><br><span class="line">                default:&#x27;时间轴&#x27;</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        computed:&#123;</span><br><span class="line">            addTypeClass()&#123;</span><br><span class="line">                let _class=&quot;&quot;;</span><br><span class="line">                let arrType =[&quot;left&quot;,&quot;right&quot;,&quot;center&quot;];</span><br><span class="line">                if (arrType.indexOf(this.location)!==-1&amp;&amp;this.location!==&#x27;center&#x27;) &#123;</span><br><span class="line">                    _class+=this.location+&quot;-time-line&quot;;</span><br><span class="line">                &#125;</span><br><span class="line">                return _class;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        mounted() &#123;</span><br><span class="line">            this.init();</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            init()&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    // 获取屏幕高度</span><br><span class="line">                    const res = uni.getSystemInfoSync();</span><br><span class="line">                    this.HEIGHT=res.screenHeight;</span><br><span class="line">                    // 添加标志位</span><br><span class="line">                    for(let i=0;i&lt;this.time_line_list.length;i++)&#123;</span><br><span class="line">                        this.current.push(&#123;tag:&#x27;timeline&#x27;+i,is:&#x27;no&#x27;&#125;);</span><br><span class="line">                    &#125;   </span><br><span class="line">                    // 开始获取位置信息</span><br><span class="line">                    this.getScroll();       </span><br><span class="line">                &#125; catch (e) &#123;</span><br><span class="line">                    // error</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;,</span><br><span class="line">            loadani()&#123;</span><br><span class="line">                for(let i=0;i&lt;this.result.length;i++)&#123;</span><br><span class="line">                    for(let j=0;j&lt;this.result[i].info.length;j++)&#123;</span><br><span class="line">                        // 是否没加载动画</span><br><span class="line">                        if(this.current[j].is!=&#x27;ok&#x27;)&#123;</span><br><span class="line">                            // 是否进入视野</span><br><span class="line">                            if(this.current[j].tag==this.result[i].info[j].tag &amp;&amp;</span><br><span class="line">                               this.result[i].info[j].domTop+90&lt;this.HEIGHT)&#123;</span><br><span class="line">                                // 加载动画</span><br><span class="line">                                this.current[j].is=&#x27;ok&#x27;;</span><br><span class="line">                                this.sum=j+1;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    // 移除当前</span><br><span class="line">                    this.result.splice(i,1);</span><br><span class="line">                &#125;</span><br><span class="line">                // 是否全部加载完成</span><br><span class="line">                if(this.sum==this.time_line_list.length)&#123;this.isScroll=false;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            async getScroll()&#123;</span><br><span class="line">                if(!this.isScroll)&#123;return;&#125;</span><br><span class="line">                let info=[];</span><br><span class="line">                // 返回位置信息加入数组</span><br><span class="line">                for(let i=0;i&lt;this.time_line_list.length;i++)&#123;</span><br><span class="line">                    await this.getNodeList(&#x27;timeline&#x27;+i,i).then(res =&gt; &#123;</span><br><span class="line">                        info.push(res);</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                this.result.push(&#123;info:info&#125;);</span><br><span class="line">                // 加载动画</span><br><span class="line">                this.loadani();</span><br><span class="line">            &#125;,</span><br><span class="line">            getNodeList(id,i)&#123;</span><br><span class="line">                // 获取位置信息并返回</span><br><span class="line">                return new Promise(resolve=&gt;&#123;</span><br><span class="line">                    const query = uni.createSelectorQuery().in(this);</span><br><span class="line">                    query.select(&#x27;#&#x27;+id).boundingClientRect(data =&gt; &#123;</span><br><span class="line">                      // console.log(&quot;得到布局位置信息&quot; + JSON.stringify(data));</span><br><span class="line">                      // console.log(&quot;节点离页面顶部的距离为&quot; + data.top);</span><br><span class="line">                      resolve(&#123;domInfo:data.height,domTop:data.top,tag:id&#125;)</span><br><span class="line">                    &#125;).exec();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;,</span><br><span class="line">            // 添加动画</span><br><span class="line">            layoutClass(index)&#123;</span><br><span class="line">                let _class=&quot;&quot;;</span><br><span class="line">                if(this.location==&#x27;center&#x27;&amp;&amp;index%2!=0)&#123;</span><br><span class="line">                    _class=&#x27;right-info&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">                return _class;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot;&gt;</span><br><span class="line">    .time-line-wrap&#123;</span><br><span class="line">        width: 100%;</span><br><span class="line">        overflow-x: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">    .time-line-wrap&#123;</span><br><span class="line">        font-family: sans-serif;</span><br><span class="line">        .time-line&#123;</span><br><span class="line">            padding: 4% 1%;</span><br><span class="line">            .time-line-title&#123;</span><br><span class="line">                font-size: 25px;</span><br><span class="line">                font-weight: 800;</span><br><span class="line">                text-align: center;</span><br><span class="line">                margin-bottom: 15px;</span><br><span class="line">            &#125;</span><br><span class="line">            // 中间的轴</span><br><span class="line">            .time-line-container&#123;</span><br><span class="line">                padding: 3% 1%;</span><br><span class="line">                position: relative;</span><br><span class="line">                &amp;::before&#123;</span><br><span class="line">                    content: &#x27;&#x27;;</span><br><span class="line">                    position: absolute;</span><br><span class="line">                    top: 0;</span><br><span class="line">                    left: 0;</span><br><span class="line">                    right: 0;</span><br><span class="line">                    margin: 0 auto;</span><br><span class="line">                    height: 100%;</span><br><span class="line">                    width: 4px;</span><br><span class="line">                    background: #1177dd;</span><br><span class="line">                &#125;</span><br><span class="line">                .time-line-list&#123;</span><br><span class="line">                    width: 100%;</span><br><span class="line">                    .time-line-info&#123;    </span><br><span class="line">                        position: relative;</span><br><span class="line">                        .line-info-content&#123;</span><br><span class="line">                            will-change: auto;</span><br><span class="line">                            width: 43%;</span><br><span class="line">                            display: flex;</span><br><span class="line">                            flex-direction: column;</span><br><span class="line">                            .line-on-round&#123;</span><br><span class="line">                                height: 20px;</span><br><span class="line">                                width: 20px;</span><br><span class="line">                                border: 4px solid #1177dd;</span><br><span class="line">                                border-radius: 50%;</span><br><span class="line">                                background: #fff;</span><br><span class="line">                                position: absolute;</span><br><span class="line">                                left: 0;</span><br><span class="line">                                right: 0;</span><br><span class="line">                                margin: 0 auto;</span><br><span class="line">                                top: 50px;</span><br><span class="line">                                box-shadow: 0px 2px 1px 1px rgba(0,0,0,.1);</span><br><span class="line">                                z-index: 10;</span><br><span class="line">                                &amp;.come-ani&#123;</span><br><span class="line">                                    animation: come-round .8s ease-in-out;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                            .info-content-wrap&#123;</span><br><span class="line">                                position: relative;</span><br><span class="line">                                .info-title&#123;</span><br><span class="line">                                    min-height: 30px;</span><br><span class="line">                                    word-break: break-word;</span><br><span class="line">                                    text-align: right;</span><br><span class="line">                                    margin: 5px 0;</span><br><span class="line">                                    font-size: 34rpx;</span><br><span class="line">                                    font-weight: 500;</span><br><span class="line">                                    span&#123;color: #1177dd;font-size: 38rpx;font-weight: 600;padding-left: 3px;&#125;</span><br><span class="line"></span><br><span class="line">                                &#125;</span><br><span class="line">                                .info-content&#123;</span><br><span class="line">                                    box-shadow: 1px 1px 1px 1px #d7e4ed;</span><br><span class="line">                                    border-radius: 8px;</span><br><span class="line">                                    padding: 5px;</span><br><span class="line">                                    min-height: 40px;</span><br><span class="line">                                    position: relative; </span><br><span class="line">                                    .info-txt&#123;&#125;</span><br><span class="line">                                    &amp;::before&#123;</span><br><span class="line">                                        content: &#x27;&#x27;;</span><br><span class="line">                                        border: 7px solid;</span><br><span class="line">                                        border-color: transparent transparent transparent #aaa;</span><br><span class="line">                                        position: absolute;</span><br><span class="line">                                        left: 100%;</span><br><span class="line">                                        top: 18px;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                                &amp;.come-ani&#123;</span><br><span class="line">                                    animation: come-in-left .6s ease-in-out;</span><br><span class="line">                                &#125;       </span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    .right-info&#123;</span><br><span class="line">                        transform: rotateY(180deg);</span><br><span class="line">                        .line-info-content&#123;</span><br><span class="line">                            .info-content-wrap&#123;</span><br><span class="line">                                .info-title&#123;</span><br><span class="line">                                    transform: rotateY(180deg);</span><br><span class="line">                                    text-align: left;</span><br><span class="line">                                &#125;</span><br><span class="line">                                .info-content&#123;</span><br><span class="line">                                    .info-txt&#123;transform: rotateY(180deg)&#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 轴在左边</span><br><span class="line">            .left-time-line&#123;</span><br><span class="line">                &amp;::before&#123;</span><br><span class="line">                    margin: 0;</span><br><span class="line">                    left: 15px;</span><br><span class="line">                &#125;</span><br><span class="line">                .time-line-list&#123;</span><br><span class="line">                    .time-line-info&#123;    </span><br><span class="line">                        .line-info-content&#123;</span><br><span class="line">                            width: auto;</span><br><span class="line">                            .line-on-round&#123;</span><br><span class="line">                                left: 0;</span><br><span class="line">                                margin: 0;</span><br><span class="line">                            &#125;</span><br><span class="line">                            .info-content-wrap&#123;</span><br><span class="line">                                margin-left: 45px;</span><br><span class="line">                                margin-bottom: 15px;</span><br><span class="line">                                .info-title&#123;</span><br><span class="line">                                    text-align: left;   </span><br><span class="line">                                &#125;</span><br><span class="line">                                .info-content&#123;</span><br><span class="line">                                    &amp;::before&#123;</span><br><span class="line">                                        border-color: transparent #aaa transparent transparent;</span><br><span class="line">                                        left: -15px;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                                &amp;.come-ani&#123;</span><br><span class="line">                                    animation: come-in-right .6s ease-in-out;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 轴在右边</span><br><span class="line">            .right-time-line&#123;</span><br><span class="line">                &amp;::before&#123;</span><br><span class="line">                    margin: 0;</span><br><span class="line">                    left: 92.8%;</span><br><span class="line">                &#125;</span><br><span class="line">                .time-line-list&#123;</span><br><span class="line">                    .time-line-info&#123;    </span><br><span class="line">                        .line-info-content&#123;</span><br><span class="line">                            width: auto;</span><br><span class="line">                            .line-on-round&#123;</span><br><span class="line">                                left: 90%;</span><br><span class="line">                                margin: 0;</span><br><span class="line">                            &#125;</span><br><span class="line">                            .info-content-wrap&#123;</span><br><span class="line">                                margin-right: 55px;</span><br><span class="line">                                margin-bottom: 15px;</span><br><span class="line">                                .info-content&#123;</span><br><span class="line">                                    &amp;::before&#123;</span><br><span class="line">                                        border-color: transparent transparent transparent #aaa;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line"></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @keyframes come-in-left &#123;</span><br><span class="line">        0% &#123;</span><br><span class="line">            transform: translateX(-120%);</span><br><span class="line">        &#125;</span><br><span class="line">        70% &#123;</span><br><span class="line">            transform: translateX(8%);</span><br><span class="line">        &#125;</span><br><span class="line">        100% &#123;</span><br><span class="line">            transform: translateX(0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    @keyframes come-in-right &#123;</span><br><span class="line">        0% &#123;</span><br><span class="line">            transform: translateX(120%);</span><br><span class="line">        &#125;</span><br><span class="line">        70% &#123;</span><br><span class="line">            transform: translateX(-8%);</span><br><span class="line">        &#125;</span><br><span class="line">        100% &#123;</span><br><span class="line">            transform: translateX(0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    @keyframes come-round &#123;</span><br><span class="line">        0% &#123;</span><br><span class="line">            transform: scale(0);</span><br><span class="line">            opacity: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        40% &#123;</span><br><span class="line">            opacity: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        60% &#123;</span><br><span class="line">            transform: scale(1.2);</span><br><span class="line">        &#125;</span><br><span class="line">        100% &#123;</span><br><span class="line">            transform: scale(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>参数列表：</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>time_line_list</td>
+<td>时间轴数据</td>
+</tr>
+<tr>
+<td>HEIGHT</td>
+<td>屏幕高度</td>
+</tr>
+<tr>
+<td>result</td>
+<td>监听的结果</td>
+</tr>
+<tr>
+<td>current</td>
+<td>当前在屏幕内的</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>加载完成个数</td>
+</tr>
+<tr>
+<td>comeani</td>
+<td>入场动画</td>
+</tr>
+<tr>
+<td>isScroll</td>
+<td>是否加载动画</td>
+</tr>
+<tr>
+<td>location</td>
+<td>时间轴位置：left：左边；center：中间；right：右边；</td>
+</tr>
+<tr>
+<td>title</td>
+<td>主文本</td>
+</tr>
+<tr>
+<td><strong>效果图：</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/front/wexx/uniapp/Uniapp%E6%97%B6%E9%97%B4%E8%BD%B4.png" class="lazyload placeholder" data-srcset="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/front/wexx/uniapp/Uniapp%E6%97%B6%E9%97%B4%E8%BD%B4.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Uniapp时间轴.png"></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="文件预览"><a href="#文件预览" class="headerlink" title="文件预览"></a>文件预览</h2><p><strong>代码：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">filPereview</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> fileName = <span class="string">&#x27;test.pdf&#x27;</span></span><br><span class="line">    uni.<span class="title function_">downloadFile</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&quot;http://eirmv2.zjdzcg.com/2023-10-13.pdf&quot;</span>,</span><br><span class="line">        <span class="attr">filePath</span>: wx.<span class="property">env</span>.<span class="property">USER_DATA_PATH</span> + <span class="string">&#x27;/&#x27;</span> + fileName,</span><br><span class="line">        <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> filePath = res.<span class="property">tempFilePath</span>;</span><br><span class="line">            uni.<span class="title function_">openDocument</span>(&#123;</span><br><span class="line">                <span class="attr">filePath</span>: wx.<span class="property">env</span>.<span class="property">USER_DATA_PATH</span> + <span class="string">&#x27;/&#x27;</span> + fileName,</span><br><span class="line">                fileName,</span><br><span class="line">                <span class="attr">showMenu</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;打开文档成功&#x27;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="文件分享"><a href="#文件分享" class="headerlink" title="文件分享"></a>文件分享</h2><p><strong>代码：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fileShare</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> downloadUrl = <span class="string">&#x27;http://eirmv2.zjdzcg.com/2023-10-13.pdf&#x27;</span>;</span><br><span class="line">    <span class="keyword">const</span> fileName = <span class="string">&#x27;test.pdf&#x27;</span>﻿;</span><br><span class="line">    uni.<span class="title function_">downloadFile</span>(&#123;</span><br><span class="line">      <span class="attr">url</span>: downloadUrl,</span><br><span class="line">      <span class="attr">filePath</span>: wx.<span class="property">env</span>.<span class="property">USER_DATA_PATH</span> + <span class="string">&#x27;/&#x27;</span> + fileName,</span><br><span class="line">      <span class="title function_">success</span>(<span class="params">res</span>) &#123;            </span><br><span class="line">        uni.<span class="title function_">shareFileMessage</span>(&#123;</span><br><span class="line">          <span class="attr">filePath</span>: wx.<span class="property">env</span>.<span class="property">USER_DATA_PATH</span> + <span class="string">&#x27;/&#x27;</span> + fileName,</span><br><span class="line">          fileName</span><br><span class="line">        &#125;)    </span><br><span class="line">      &#125;   </span><br><span class="line">    &#125;) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="客服"><a href="#客服" class="headerlink" title="客服"></a>客服</h2><p><strong>代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button style=&quot;height: 40px; width: 33.3%; font-size: 14px; line-height: 40px;&quot; open-type=&quot;contact&quot;&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>描述：uniapp中button自带属性：</strong> open-type&#x3D;”contact”时启动客服功能（<strong>注：</strong> 客服人员需在微信开放平台添加）</p>
+<h2 id="仿朋友圈发布"><a href="#仿朋友圈发布" class="headerlink" title="仿朋友圈发布"></a>仿朋友圈发布</h2><p><strong>代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;view class=&quot;content&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;!-- 输入框 --&gt;</span><br><span class="line">            &lt;textarea placeholder=&quot;想说什么...&quot; @blur=&quot;inputBlur&quot; :focus=&quot;inputFocus&quot; :auto-height=&quot;true&quot;</span><br><span class="line">                :show-confirm-bar=&quot;false&quot; maxlength=&quot;1500&quot; v-model=&quot;form.content&quot; class=&quot;post-txt&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">            &lt;!-- 上传图片or视频 --&gt;</span><br><span class="line">            &lt;view class=&quot;img-list&quot;&gt;</span><br><span class="line">                &lt;view v-for=&quot;(item,index) in form.imageList&quot; :key=&#x27;index&#x27; class=&quot;img-list-box&quot;&gt;</span><br><span class="line">                    &lt;image v-if=&quot;!form.video&quot; :src=&quot;item&quot; class=&quot;img-item&quot; @tap=&quot;imgTypeSelect(item)&quot;&gt;&lt;/image&gt;</span><br><span class="line">                    &lt;video v-else :src=&quot;item&quot; @longpress=&quot;videoTypeSelect(item)&quot;&gt;&lt;/video&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">                &lt;view v-if=&quot;form.imageList.length &lt; 9 &amp;&amp; !form.video&quot; class=&quot;icon-camera&quot; @tap=&quot;selectType&quot;&gt;</span><br><span class="line">                    &lt;uni-icons type=&quot;camera&quot; size=&quot;27&quot; color=#D3D4D6&gt;&lt;/uni-icons&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line"></span><br><span class="line">            &lt;!-- 选择位置 --&gt;</span><br><span class="line">            &lt;view @click=&quot;chooseLocation&quot; class=&quot;choose-location&quot;&gt;</span><br><span class="line">                &lt;u-icon name=&quot;map&quot; size=&quot;30rpx&quot;&gt;&lt;/u-icon&gt;</span><br><span class="line">                &lt;text class=&quot;txt&quot;&gt;&#123;&#123; form.address || &#x27;你在哪里?&#x27; &#125;&#125;&lt;/text&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">        &lt;!-- 选择板块 --&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 底部确定按钮 --&gt;</span><br><span class="line">        &lt;view @click=&quot;clickCreate&quot; class=&quot;yue-base-button&quot;&gt;</span><br><span class="line">            &lt;view&gt;确定发布&lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                // 默认输入框获得焦点</span><br><span class="line">                inputFocus: true,</span><br><span class="line">                form: &#123;</span><br><span class="line">                    content: &#x27;&#x27;,</span><br><span class="line">                    address: &#x27;&#x27;,</span><br><span class="line">                    imageList: [],</span><br><span class="line">                    saveSize: [], </span><br><span class="line">                    video: &#x27;&#x27;,</span><br><span class="line">                &#125;,      </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            // 选择媒体类型</span><br><span class="line">            selectType() &#123;</span><br><span class="line">                let that = this</span><br><span class="line">                let itemL = that.form.imageList.length!=0 ? !that.form.imageList.video ? [&#x27;拍照&#x27;, &#x27;从相册选择照片&#x27;]: &#x27;&#x27; : [&#x27;拍照&#x27;, &#x27;从相册选择照片&#x27;, &#x27;从相册选择视频&#x27;]</span><br><span class="line">                uni.showActionSheet(&#123;</span><br><span class="line">                    itemList: itemL,</span><br><span class="line">                    success: function(res) &#123;</span><br><span class="line">                        if (res.tapIndex == 0) &#123;</span><br><span class="line">                            uni.chooseImage(&#123;</span><br><span class="line">                                sourceType: [&#x27;camera&#x27;], // 拍照选择</span><br><span class="line">                                success: function(res) &#123;</span><br><span class="line">                                    that.form.imageList.push(res.tempFilePaths)</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;);</span><br><span class="line">                        &#125;</span><br><span class="line">                        if (res.tapIndex == 1) &#123;</span><br><span class="line">                            uni.chooseImage(&#123;</span><br><span class="line">                                count: 9 - that.form.imageList.length,</span><br><span class="line">                                sourceType: [&#x27;album&#x27;], //从相册选择</span><br><span class="line">                                success: function(res) &#123;</span><br><span class="line">                                    res.tempFilePaths.forEach((path,index) =&gt; &#123;</span><br><span class="line">                                        res.tempFiles.forEach((item,idx) =&gt; &#123;</span><br><span class="line">                                            if(that.form.saveSize.includes(item.size))&#123;</span><br><span class="line">                                                console.log(&#x27;size已经存在！！！&#x27;);</span><br><span class="line">                                            &#125;else if(index == idx)&#123;</span><br><span class="line">                                                    that.form.imageList.push(path);</span><br><span class="line">                                            &#125;</span><br><span class="line">                                        &#125;)</span><br><span class="line"></span><br><span class="line">                                    &#125;)</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;);</span><br><span class="line">                        &#125;</span><br><span class="line">                        if (res.tapIndex == 2) &#123;</span><br><span class="line">                            uni.chooseVideo(&#123;</span><br><span class="line">                                sourceType: [&#x27;album&#x27;], // 从相册选择视频</span><br><span class="line">                                success: function(res) &#123;</span><br><span class="line">                                    if (res.size &gt; 20971520) &#123;</span><br><span class="line">                                        uni.showToast(&#123;</span><br><span class="line">                                            title: &quot;视频文件过大&quot;,</span><br><span class="line">                                            duration: 2000</span><br><span class="line">                                        &#125;);</span><br><span class="line">                                        return;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                    that.form.video = true;</span><br><span class="line">                                    that.form.imageList.push(res.tempFilePath)</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            // 图片状态选择</span><br><span class="line">            imgTypeSelect(item) &#123;</span><br><span class="line">                let that = this</span><br><span class="line">                uni.showActionSheet(&#123;</span><br><span class="line">                    itemList: [&#x27;预览&#x27;, &#x27;删除&#x27;],</span><br><span class="line">                    success: function(res) &#123;</span><br><span class="line">                        if (res.tapIndex == 0) &#123;</span><br><span class="line">                            uni.previewImage(&#123;</span><br><span class="line">                                current: item,</span><br><span class="line">                                urls: that.form.imageList</span><br><span class="line">                            &#125;)</span><br><span class="line">                        &#125;</span><br><span class="line">                        if (res.tapIndex == 1) &#123;</span><br><span class="line">                            let index = that.form.imageList.findIndex(url =&gt; url === item);</span><br><span class="line">                            if (index !== -1) &#123;</span><br><span class="line">                                that.form.imageList.splice(index, 1);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            // 视频状态选择</span><br><span class="line">            videoTypeSelect()&#123;</span><br><span class="line">                uni.showActionSheet(&#123;</span><br><span class="line">                    itemList: [&#x27;删除&#x27;],</span><br><span class="line">                    success: function(res) &#123;</span><br><span class="line">                        if (res.tapIndex == 0) &#123;</span><br><span class="line">                            let index = that.form.imageList.findIndex(url =&gt; url === item);</span><br><span class="line">                            if (index !== -1) &#123;</span><br><span class="line">                                that.form.imageList.splice(index, 1);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            // 文字内容</span><br><span class="line">            inputBlur(event) &#123;</span><br><span class="line">                this.inputCursor = event.detail.cursor;</span><br><span class="line">                this.inputFocus = false;</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            // 位置选择</span><br><span class="line">            chooseLocation() &#123;</span><br><span class="line">                let that = this;</span><br><span class="line">                uni.chooseLocation(&#123;</span><br><span class="line">                    success: function(res) &#123;</span><br><span class="line">                        that.form.address = res.name;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            // 发布</span><br><span class="line">            clickCreate() &#123;</span><br><span class="line">                // console.log(this.form); </span><br><span class="line">                console.log(this.form.saveSize);</span><br><span class="line">                if (!this.form.content) &#123;</span><br><span class="line">                    uni.showToast(&#123;</span><br><span class="line">                        title: &quot;请输入内容&quot;,</span><br><span class="line">                        icon: &quot;error&quot;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                this.$request.post(&quot;/api/article/save&quot;, &#123;</span><br><span class="line">                    &quot;type&quot;: 1,</span><br><span class="line">                    &quot;content&quot;: this.form.content,</span><br><span class="line">                &#125;).then((res) =&gt; &#123;</span><br><span class="line">                    if (res.message == &#x27;保存成功&#x27;) &#123;</span><br><span class="line">                        uni.showToast(&#123;</span><br><span class="line">                            title: &#x27;发布成功&#x27;,</span><br><span class="line">                            duration: 1500,</span><br><span class="line">                            mask: true</span><br><span class="line">                        &#125;);</span><br><span class="line">                        setTimeout(() =&gt; &#123;</span><br><span class="line">                            uni.redirectTo(&#123;</span><br><span class="line">                                url: &#x27;/pages/community/community&#x27;</span><br><span class="line">                            &#125;);</span><br><span class="line">                        &#125;, 1500)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">    .content &#123;</span><br><span class="line">        height: 100vh;</span><br><span class="line">        background-color: #FFFFFF;</span><br><span class="line">        border-radius: 30upx 30upx 0upx 0upx;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .container &#123;</span><br><span class="line">        padding: 20rpx 40rpx;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .post-txt &#123;</span><br><span class="line">        width: 100%;</span><br><span class="line">        min-height: 300rpx;</span><br><span class="line">        line-height: 1rpx;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* 选择位置 */</span><br><span class="line">    .choose-location &#123;</span><br><span class="line">        display: inline-flex;</span><br><span class="line">        align-items: center;</span><br><span class="line">        background-color: #eee;</span><br><span class="line">        font-size: 28rpx;</span><br><span class="line">        border-radius: 100rpx;</span><br><span class="line">        padding: 10rpx 20rpx;</span><br><span class="line">        margin-left: 5rpx;</span><br><span class="line">        line-height: 1;</span><br><span class="line">        color: #616161;</span><br><span class="line"></span><br><span class="line">        .txt &#123;</span><br><span class="line">            margin-left: 10rpx;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .yue-base-button &#123;</span><br><span class="line">        position: fixed;</span><br><span class="line">        display: flex;</span><br><span class="line">        align-items: center;</span><br><span class="line">        justify-content: center;</span><br><span class="line">        bottom: 0;</span><br><span class="line">        width: 100%;</span><br><span class="line">        padding: 40rpx 0;</span><br><span class="line">        z-index: 3;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .yue-base-button view &#123;</span><br><span class="line">        width: 560rpx;</span><br><span class="line">        text-align: center;</span><br><span class="line">        height: 96rpx;</span><br><span class="line">        line-height: 96rpx;</span><br><span class="line">        border-radius: 96rpx;</span><br><span class="line">        font-size: 32rpx;</span><br><span class="line">        font-weight: 400;</span><br><span class="line">        color: #FFFFFF;</span><br><span class="line">        background: #07C062;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 相机icon</span><br><span class="line">    .icon-camera &#123;</span><br><span class="line">        display: flex;</span><br><span class="line">        justify-content: center;</span><br><span class="line">        align-items: center;</span><br><span class="line">        width: 210rpx;</span><br><span class="line">        height: 210rpx;</span><br><span class="line">        border-radius: 6rpx;</span><br><span class="line">        margin: 5rpx 0rpx 0rpx 5rpx;</span><br><span class="line">        background-color: #f4f5f7;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 媒体列表</span><br><span class="line">    .img-list &#123;</span><br><span class="line">        display: flex;</span><br><span class="line">        flex-wrap: wrap;</span><br><span class="line">        margin-bottom: 20rpx;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .img-list-box &#123;</span><br><span class="line">        display: flex;</span><br><span class="line">        justify-content: center;</span><br><span class="line">        align-items: center;</span><br><span class="line">        position: relative;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .img-item &#123;</span><br><span class="line">        width: 210rpx;</span><br><span class="line">        height: 210rpx;</span><br><span class="line">        margin: 5rpx;</span><br><span class="line">        border-radius: 6rpx</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>效果图：</strong><br>    <img src="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/front/wexx/uniapp/Uniapp%E4%BB%BF%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%8F%91%E5%B8%83%E7%95%8C%E9%9D%A2.png" class="lazyload placeholder" data-srcset="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/front/wexx/uniapp/Uniapp%E4%BB%BF%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%8F%91%E5%B8%83%E7%95%8C%E9%9D%A2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Uniapp仿朋友圈发布界面.png"></p>
+<h2 id="自定义导航栏"><a href="#自定义导航栏" class="headerlink" title="自定义导航栏"></a>自定义导航栏</h2><h3 id="头部"><a href="#头部" class="headerlink" title="头部"></a>头部</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;view class=&quot;nav-box&quot; @click=&quot;getHeadHeight&quot; :style=&quot;&#123;&#x27;height&#x27;: height + &#x27;px&#x27;, &#x27;background&#x27; : bgColor&#125;&quot;&gt;</span><br><span class="line">        &lt;!-- 状态栏占位 --&gt;</span><br><span class="line">        &lt;view class=&quot;status_bar&quot; :style=&quot;&#123;&#x27;height&#x27;: statusBarHeight + &#x27;px&#x27;&#125;&quot;&gt;&lt;/view&gt;</span><br><span class="line">        &lt;!-- 导航内容 --&gt;</span><br><span class="line">        &lt;view class=&quot;nav-main&quot; :style=&quot;&#123;&#x27;height&#x27;: navBarHeight + &#x27;px&#x27;&#125;&quot;&gt;</span><br><span class="line">            &lt;!-- 回退图标 --&gt;</span><br><span class="line">            &lt;image src=&quot;../static/images/back.png&quot; mode=&quot;&quot; class=&quot;back&quot; @click=&quot;back(path)&quot; v-if=&quot;backIcon == true&quot;&gt;</span><br><span class="line">            &lt;image src=&quot;../static/images/back.png&quot; mode=&quot;&quot; class=&quot;back&quot; @click=&quot;backInfo()&quot; v-if=&quot;loginbackIcon == true&quot;&gt;</span><br><span class="line">            &lt;/image&gt;</span><br><span class="line">            &lt;!-- 标题 --&gt;</span><br><span class="line">            &lt;text class=&quot;nav-main-title&quot; :style=&quot;!backIcon ? &#x27;display: block; padding-right: 20rpx;&#x27; : &#x27;&#x27;&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/text&gt;</span><br><span class="line">            &lt;!-- &lt;text class=&quot;nav-main-title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/text&gt; --&gt;</span><br><span class="line">            &lt;!-- 弹性盒占位 --&gt;</span><br><span class="line">            &lt;view v-if=&quot;backIcon&quot;&gt;&lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        props: &#123;</span><br><span class="line">            bgColor: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">                default: &quot;#fff&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            backIcon: &#123;</span><br><span class="line">                type: Boolean,</span><br><span class="line">                default: false</span><br><span class="line">            &#125;,</span><br><span class="line">            loginbackIcon: &#123;</span><br><span class="line">                type: Boolean,</span><br><span class="line">                default: false</span><br><span class="line">            &#125;,</span><br><span class="line">            title: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">                default: &quot;我的&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            path: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                height: 0,</span><br><span class="line">                menuButtonRect: &#123;&#125;,</span><br><span class="line">                statusBarHeight: 0,</span><br><span class="line">                navBarHeight: 0</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        created() &#123;</span><br><span class="line">            this.getHeight();</span><br><span class="line">            this.getHeadHeight()</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            getHeadHeight() &#123;</span><br><span class="line">                this.$emit(&#x27;getHeadHeight&#x27;, this.height)</span><br><span class="line">            &#125;,</span><br><span class="line">            //计算导航栏总高度</span><br><span class="line">            getHeight() &#123;</span><br><span class="line">                // 判断获取微信小程序胶囊API是否可用</span><br><span class="line">                if (uni.canIUse(&#x27;getMenuButtonBoundingClientRect&#x27;)) &#123;</span><br><span class="line">                    let sysInfo = uni.getSystemInfoSync();</span><br><span class="line">                    this.statusBarHeight = sysInfo.statusBarHeight;</span><br><span class="line">                    let rect = uni.getMenuButtonBoundingClientRect();</span><br><span class="line">                    this.menuButtonRect = JSON.parse(JSON.stringify(rect));</span><br><span class="line">                    let navBarHeight = (rect.top - sysInfo.statusBarHeight) * 2 + rect.height;</span><br><span class="line">                    this.navBarHeight = navBarHeight;</span><br><span class="line">                    this.height = sysInfo.statusBarHeight + navBarHeight;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    uni.showToast(&#123;</span><br><span class="line">                        title: &#x27;您的微信版本过低，界面可能会显示不正常&#x27;,</span><br><span class="line">                        icon: &#x27;none&#x27;,</span><br><span class="line">                        duration: 4000</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            //返回上一级</span><br><span class="line">            back(path) &#123;</span><br><span class="line">                uni.navigateBack()</span><br><span class="line">            &#125;,</span><br><span class="line">            // 返回首页</span><br><span class="line">            backInfo()&#123;</span><br><span class="line">                uni.switchTab(&#123;</span><br><span class="line">                    url: &#x27;/pages/info/info&#x27;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">    .nav-box&#123;</span><br><span class="line">        width: 100vw;</span><br><span class="line">        .status_bar &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .nav-main &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            align-items: center;</span><br><span class="line">            padding: 0 40rpx 0 20rpx;</span><br><span class="line"></span><br><span class="line">            .back &#123;</span><br><span class="line">                width: 50rpx;</span><br><span class="line">                height: 50rpx;</span><br><span class="line">                margin-right: 20rpx;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            .nav-main-title &#123;</span><br><span class="line">                color: #000;</span><br><span class="line">                font-weight: bold;</span><br><span class="line">                font-size: 36rpx;</span><br><span class="line">                width: 100%;</span><br><span class="line">                text-align: center;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="底部"><a href="#底部" class="headerlink" title="底部"></a>底部</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;view class=&quot;tabBar&quot;&gt;</span><br><span class="line">        &lt;view v-for=&quot;(item,index) in tabBar&quot; :key=&quot;item.url&quot; class=&quot;tabbar_item&quot;</span><br><span class="line">            :class=&quot;&#123;&#x27;active&#x27;:item.url == currentPage&#125;&quot; @click=&quot;navTo(item)&quot;&gt;</span><br><span class="line">            &lt;image v-if=&quot;item.url == currentPage&quot; :src=&quot;item.imgClick&quot; mode=&quot;&quot;&gt;&lt;/image&gt;</span><br><span class="line">            &lt;image v-else :src=&quot;item.imgNormal&quot; mode=&quot;&quot;&gt;&lt;/image&gt;</span><br><span class="line">            &lt;view class=&quot;text&quot;&gt;&#123;&#123;item.text&#125;&#125;&lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        props: &#123;</span><br><span class="line">            currentPage: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">                default: &#x27;index&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                tabBar: [&#123;</span><br><span class="line">                        url: &#x27;info&#x27;,</span><br><span class="line">                        // text:&#x27;资料&#x27;,</span><br><span class="line">                        imgNormal: &#x27;/static/tabBar/infoNoSelect.png&#x27;,</span><br><span class="line">                        imgClick: &#x27;/static/tabBar/infoSelected.png&#x27;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        url: &#x27;project&#x27;,</span><br><span class="line">                        // text:&#x27;项目&#x27;,</span><br><span class="line">                        imgNormal: &#x27;/static/tabBar/projectNoSelect.png&#x27;,</span><br><span class="line">                        imgClick: &#x27;/static/tabBar/projectSelected.png&#x27;</span><br><span class="line"></span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        url: &#x27;mine&#x27;,</span><br><span class="line">                        // text:&#x27;我的&#x27;,</span><br><span class="line">                        imgNormal: &#x27;/static/tabBar/mineNoSelect.png&#x27;,</span><br><span class="line">                        imgClick: &#x27;/static/tabBar/mineSelected.png&#x27;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">        created() &#123;</span><br><span class="line">            uni.hideTabBar(&#123;&#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        computed: &#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            navTo(item) &#123;</span><br><span class="line">                if (item.url !== this.currentPage) &#123;</span><br><span class="line">                    var isUrl = `/pages/$&#123;item.url&#125;/$&#123;item.url&#125;`</span><br><span class="line">                    const that = this</span><br><span class="line">                    uni.switchTab(&#123;</span><br><span class="line">                        url: isUrl</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    this.$parent.toTop()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">    // 导航栏设置</span><br><span class="line">    $isRadius: 20upx; </span><br><span class="line">    $isWidth: 100vw; </span><br><span class="line">    $isBorder: 0px solid white; </span><br><span class="line">    $isBg: white; </span><br><span class="line">    $chooseTextColor: #000; </span><br><span class="line">    $chooseBgColor: transparent; </span><br><span class="line">    $normalTextColor: #999;</span><br><span class="line"></span><br><span class="line">    .tabBar &#123;</span><br><span class="line">        width: $isWidth;</span><br><span class="line">        height: 70px;</span><br><span class="line">        position: fixed;</span><br><span class="line">        bottom: 0;</span><br><span class="line">        left: 0;</span><br><span class="line">        right: 0;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        z-index: 998;</span><br><span class="line">        background-color: $isBg;</span><br><span class="line">        color: $normalTextColor;</span><br><span class="line">        border-left: $isBorder;</span><br><span class="line">        border-top: $isBorder;</span><br><span class="line">        border-right: $isBorder;</span><br><span class="line">        display: flex;</span><br><span class="line">        justify-content: space-around;</span><br><span class="line">        box-sizing: border-box;</span><br><span class="line">        overflow: hidden;</span><br><span class="line"></span><br><span class="line">        .tabbar_item &#123;</span><br><span class="line">            width: 25%;</span><br><span class="line">            font-size: 12px;</span><br><span class="line">            display: flex;</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            align-items: center;</span><br><span class="line"></span><br><span class="line">            &amp;.active &#123;</span><br><span class="line">                border-left: $isBorder;</span><br><span class="line">                border-top: $isBorder;</span><br><span class="line">                background: $chooseBgColor;</span><br><span class="line">                color: $chooseTextColor;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        image &#123;</span><br><span class="line">            width: 20px;</span><br><span class="line">            height: 31px;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>注：使用的使用直接引入注册使用组件就行</strong></p>
+<h2 id="滚动区域设置"><a href="#滚动区域设置" class="headerlink" title="滚动区域设置"></a>滚动区域设置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;scroll-view scroll-y=&quot;true&quot; :style=&quot;&#x27;height: calc(100vh - &#x27; + (HeadNavHeight + 184) + &#x27;px);&#x27;&quot;</span><br><span class="line">    @scrolltolower=&quot;loadingPulldown&quot;&gt;</span><br><span class="line">    &lt;!-- 项目项 --&gt;</span><br><span class="line">    &lt;template&gt;</span><br><span class="line">        &lt;view class=&quot;proItem&quot; v-for=&quot;(item, index) in searchResult&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">            &lt;!-- 序号 --&gt;</span><br><span class="line">            &lt;view class=&quot;proItemNum&quot;&gt;</span><br><span class="line">                &#123;&#123;index + 1&#125;&#125;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">            &lt;view class=&quot;proItemCenter&quot;&gt;</span><br><span class="line">                &lt;view class=&quot;proItemName&quot;&gt;</span><br><span class="line">                    项目名称：&#123;&#123;item.project_name&#125;&#125;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">                &lt;view class=&quot;proItemcTime&quot;&gt;</span><br><span class="line">                    创建时间：&#123;&#123;item.create_time&#125;&#125;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">            &lt;view class=&quot;proItemRight&quot; @tap=&quot;toDetail(index)&quot;&gt;</span><br><span class="line">                查看详情</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/scroll-view&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>描述：</strong> 使用<code>&lt;scroll-view&gt;</code>标签，并使用calc设置可滚动区域高度、加上<code>scroll-y=&quot;true&quot;</code>属性使其在Y轴上出现滚动条即可。</p>
+<h2 id="携带参数跳转详情界面"><a href="#携带参数跳转详情界面" class="headerlink" title="携带参数跳转详情界面"></a>携带参数跳转详情界面</h2><p>跳转页代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">toDetail</span>(<span class="params">index</span>)&#123;</span><br><span class="line">    uni.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&#x27;/pages/projectDetail/projectDetail?id=&#x27;</span> + index,</span><br><span class="line">        <span class="comment">// url: &#x27;/pages/projectDetail/projectDetail?id=&#x27; + index + &quot;&amp;name&quot; + name,</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>详情页代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">id</span> = e.<span class="property">id</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = e.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>描述：</strong> 在触发跳转详情界面的方法时，使用uni.navigateTo();进行详情路由跳转，在跳转的路径后面<strong>使用?携带要传递的参数</strong>（需要携带多个参数时使用&amp;拼接）即可，而<strong>详情界面</strong>的onLoad()生命周期中使用参数e进行接收。<br><strong>注：</strong> 使用uni.navigateTo();的url中的路由需在pages.json中进行路由添加。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" class="">
+              前端
+            </a>
+          
+            <a href="/tags/Uniapp/" class="">
+              Uniapp
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>繁星ツ</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2023/12/03/前端/Uniapp/Uniapp 功能实现/" target="_blank" title="Uniapp 功能实现">https://fanxing28.github.io/2023/12/03/前端/Uniapp/Uniapp 功能实现/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/JavaScript/%E3%80%90ES6%E3%80%91%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">【ES6】 新特性</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+ES6是对于ES2015+的俗称，也可以说是通常叫法。 ES 全称是ECAMScript，它是JavaScript基础
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Uniapp 基础知识</div>
+      </div>
+      <!-- <div class="content">
+        官网介绍： uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、And
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/hexo_blog/author.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>繁星ツ</h2>
+        
+        
+        
+          <p><span id="jinrishici-sentence">FanXing28</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:wei861097416@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/yuang01/hexo-theme-bamboo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=861097416"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E8%BD%B4"><span class="toc-text">时间轴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E9%A2%84%E8%A7%88"><span class="toc-text">文件预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E4%BA%AB"><span class="toc-text">文件分享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%9C%8D"><span class="toc-text">客服</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BF%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%8F%91%E5%B8%83"><span class="toc-text">仿朋友圈发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="toc-text">自定义导航栏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E9%83%A8"><span class="toc-text">头部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%95%E9%83%A8"><span class="toc-text">底部</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%9A%E5%8A%A8%E5%8C%BA%E5%9F%9F%E8%AE%BE%E7%BD%AE"><span class="toc-text">滚动区域设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%BA%E5%B8%A6%E5%8F%82%E6%95%B0%E8%B7%B3%E8%BD%AC%E8%AF%A6%E6%83%85%E7%95%8C%E9%9D%A2"><span class="toc-text">携带参数跳转详情界面</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/JavaScript/%E3%80%90ES6%E3%80%91%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-03</span>
+                
+              </div>
+              <a class="post-title" href="/2023/12/03/%E5%89%8D%E7%AB%AF/JavaScript/%E3%80%90ES6%E3%80%91%E6%96%B0%E7%89%B9%E6%80%A7/">【ES6】 新特性</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-03</span>
+                
+              </div>
+              <a class="post-title" href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/">Uniapp 功能实现</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-03</span>
+                
+              </div>
+              <a class="post-title" href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Uniapp 基础知识</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/12/03/%E5%85%B6%E4%BB%96/MarkDown/MarkDown%E8%AF%AD%E6%B3%95%20%E6%B7%BB%E5%8A%A0emoji%E8%A1%A8%E6%83%85/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-03</span>
+                
+              </div>
+              <a class="post-title" href="/2023/12/03/%E5%85%B6%E4%BB%96/MarkDown/MarkDown%E8%AF%AD%E6%B3%95%20%E6%B7%BB%E5%8A%A0emoji%E8%A1%A8%E6%83%85/">MarkDown语法 添加emoji表情</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/12/02/%E5%B7%A5%E5%85%B7/%E5%8A%9F%E8%83%BD%E4%BB%A3%E7%A0%81%E5%9D%97/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-02</span>
+                
+              </div>
+              <a class="post-title" href="/2023/12/02/%E5%B7%A5%E5%85%B7/%E5%8A%9F%E8%83%BD%E4%BB%A3%E7%A0%81%E5%9D%97/">功能代码块</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('false') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2023 - 2024 | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<!-- <span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span> -->
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 6,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+
+    <script type="text/javascript">
+  loadScript("https://unpkg.com/scrollreveal@4.0.6/dist/scrollreveal.min.js")
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.reveal', {
+      distance: '120px',
+      duration: '400',
+      interval: '30',
+      scale: '1',
+      origin: 'bottom', // 动画开始的方向
+      easing: 'ease'
+    });
+  }
+  $(function () {
+    var checkScrollReveal = setInterval(function () {
+      if ($("#safearea").css("display") != "block") return
+      if (typeof ScrollReveal == "undefined") return
+      clearInterval(checkScrollReveal)
+      pjax_scrollrebeal();
+    }, 100)
+  });
+  document.addEventListener('pjax:complete', function () {
+    pjax_scrollrebeal();
+  })
+</script>
+   
+
+<!-- 评论所需js -->
+
+  
+    <!-- 弹幕所需的css和js -->
+    
+<!-- 具体js，请前往valine/script.ejs查看 -->
+
+    <script>
+  var requiredFields = '';
+  requiredFields = requiredFields.split(',');
+  comment_el = '.comment';
+  let looperValine = null;
+  load_valine = function () {
+    if ($(comment_el).length) {
+      var valine = new Valine({
+        el: '#vcomment',
+        path: window.location.pathname,
+        notify: false,
+        verify: false,
+        app_id: "isqoQMMUC00VrpvEaGRTIwDP-gzGzoHsz",
+        app_key: "ElZQ3q17Usf98VTdluTkq0ox",
+        placeholder: "客官，说点什么吧",
+        avatar: "",
+        master: "繁星",   //博主邮箱md5
+        tagMeta: ["博主","小伙伴","访客"],     //标识字段名
+        friends: "",
+        metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
+        requiredFields: requiredFields,
+        enableQQ: true,
+      });
+      function debounce(fn) {
+        var timerID = null
+        return function () {
+          var arg = arguments[0]   //获取事件
+          if (timerID) {
+            clearTimeout(timerID)
+          }
+          timerID = setTimeout(function () {
+            fn(arg)              //事件传入函数
+          }, 200)
+        }
+      }
+      //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
+      var themeDanmu = eval('false');
+      var themeLoop = eval('false');
+      var themeLooperTime = '5000' || 5000;
+      var speed = '40' || 20;
+      var isBarrager = true;
+      if (themeDanmu == true) {
+        do_barrager();
+        if ($('.danmuBox').length <= 0) {
+          $('.navbar').append('<div class="danmuBox"><div class="danmuBtn open"><span class="danmuCircle"></span><span class="danmuText">弹幕</span></div></div>');
+        }
+        $('.danmuBtn').on('click', debounce(
+          function () {
+            if ($('.danmuBtn').hasClass('open')) {
+              $('.danmuBtn').removeClass('open')
+              clearInterval(looperValine);
+              $.fn.barrager.removeAll();
+            } else {
+              $('.danmuBtn').addClass("open");
+              do_barrager();
+            }
+          }
+        ))
+      }
+      function do_barrager() {
+        isBarrager && valine.Q(window.location.pathname).find().then(function (comments) {
+          // var num = 0; // 可以记录条数，循环调用的时候只取最新的评论放入弹幕中
+          var run_once = true;
+          var looper_time = themeLooperTime;
+          var total = comments.length;
+          // var looper = null;
+          var index = 0;
+          if (total > 0) {
+            barrager();
+          } else {
+            // 当评论数为0的时候，自动关闭弹幕
+            // $('.danmuBtn').removeClass('open');
+          }
+          function barrager() {
+            if (run_once) {
+              //如果是首次执行,则设置一个定时器,并且把首次执行置为false
+              looperValine = setInterval(barrager, looper_time);
+              run_once = false;
+            }
+            var content = comments[index]._serverData.comment;
+            var email = comments[index]._serverData.mail;
+            var link = comments[index]._serverData.link;
+            var newcontent = content.substring(0, 50).replace(/<[^>]+>/g, "");
+            //发布一个弹幕
+            const item = {
+              img: `https://q1.qlogo.cn/g?b=qq&nk=${email}&s=640`, //图片 
+              info: newcontent, //文字 
+              href: link, //链接 
+              close: true, //显示关闭按钮 
+              speed: speed, //延迟,单位秒,默认6 
+              color: '#fff', //颜色,默认白色 
+              old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
+            }
+            $('body').barrager(item);
+            //索引自增
+            index++;
+            //所有弹幕发布完毕，清除计时器。
+            if (index == total) {
+              clearInterval(looperValine);
+              if (themeLoop === true) {
+                setTimeout(function () {
+                  do_barrager();
+                }, 5000);
+              } else {
+                $('.danmuBtn').removeClass('open');
+              }
+              return false;
+            }
+
+          }
+        })
+      }
+    }
+  };
+  $(document).ready(load_valine);
+  document.addEventListener('pjax:send', function (e) {
+    
+  })
+  document.addEventListener('pjax:complete', function () {
+    load_valine();
+  });
+</script>
+
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  </body>
+</html>

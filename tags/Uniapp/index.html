@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>SQL语言概述 | FanXing28</title>
+  <title>标签: Uniapp | FanXing28</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -522,924 +522,153 @@
 </header>
         <!-- 内容区域 -->
         
- <!-- prismjs 代码高亮 -->
- 
 
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
+<div class="bg-light-floor-tagDetail" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
 
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
-
-
-  <!-- 文章详情页顶部图片和标题 -->
-
-
-
-
-<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp')">
-  <div class="post-detail-header-mask"></div>
-  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
-  
-  <div class="post-detail-header_info-box">
-    <div class="title-box">
-      <span class="title">
-        SQL语言概述
-      </span>
-    </div>
-    
-    
-      
-        <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2023-11-28 |
-        </span>
-      
-
-      
-        <span class="post-detail-header_categories">
-          <i class="iconfont iconbookmark1"></i> 分类：
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-detail-header_category">
-              数据库
-            </a>
-          
-        </span>
-      
-
-      
-    
+<div class="tag-header" style="background-image: url('https://pic1.zhimg.com/80/v2-604a15cef201cf177943af2d915eb2e7_1440w.jpg?source=1940ef5c');">
+  <div class="tag-header-title">
+    tag
   </div>
+  <div class="tag-header-desc">
   
-  
-    <script src="/js/bubble/bubble.js"></script>
-  
-</div>
-
-
-
-
-
-<div class="post-detail-content post-row" 
-  style="padding-top: 0px;">
-  <div class="main-content">
-    <article class="post post-detail">
-      <div class="post-content">
-        <h2 id="SQL发展"><a href="#SQL发展" class="headerlink" title="SQL发展"></a>SQL发展</h2><p>1972年，IBM在System R中实现SQUARE语言。 1974年，Boyce和Chamberlin改进SQUARE为SEQUEL。 1981年，IBM推出SQL&#x2F;DS，用SQL代替SEQUEL。 1986年ANSI公布第一个SQL标准。 1987年ISO将SQL采纳为国际标准。 ​</p>
-<h2 id="SQL语言功能"><a href="#SQL语言功能" class="headerlink" title="SQL语言功能"></a><strong>SQL语言功能</strong></h2><p><strong>定义</strong></p>
-<ul>
-<li>创建CREATE</li>
-<li>修改ALTER</li>
-<li>删除DROP<br><strong>查询</strong></li>
-<li>选择SELECT<br><strong>更新</strong></li>
-<li>插入INSERT</li>
-<li>更新UPDATE</li>
-<li>删除DELETE<br><strong>控制</strong></li>
-<li>授权GRANT</li>
-<li>收权REVOKE</li>
-</ul>
-<h2 id="SQL的数据定义"><a href="#SQL的数据定义" class="headerlink" title="SQL的数据定义"></a>SQL的数据定义</h2><h3 id="创建和使用数据库"><a href="#创建和使用数据库" class="headerlink" title="创建和使用数据库"></a>创建和使用数据库</h3><p><strong>CREATE DATABASE&lt;数据库名&gt;</strong></p>
-<blockquote>
-<p>创建“学生选课”数据库 例：CREATE DATABASE 学生选课；</p>
-</blockquote>
-<p><strong>USE&lt;数据库名&gt;</strong></p>
-<blockquote>
-<p>打开“学生选课”数据库 例：USE 学生选课；</p>
-</blockquote>
-<p><strong>基本表创建的一般格式：</strong></p>
-<blockquote>
-<p>CREATE TABLE&lt;表名&gt; （ &lt;属性列名&gt;&lt;数据类型&gt;[列名完整性约束条件] [,&lt;属性列名&gt;&lt;数据类型&gt;[列名完整性约束条件],…] [,&lt;表级完整性约束条件&gt;] ​） 例：CREATE TABLE S ​( SNO CHAR(6), SN CHAR(10), SD CHAR(16), SB DATA ​);</p>
-</blockquote>
-<p><strong>注意点</strong></p>
-<ul>
-<li>在一个数据库中，不允许有两个基本表同名。</li>
-<li>一个表中不能有两列同名。<br><strong>数据类型及其含义</strong></li>
-<li>CHAR (n) 长度为n的定长字符串</li>
-<li>VARCHAR (n) 最大长度为n的变长字符串</li>
-<li>INT 长整数</li>
-<li>SMALLINT 短整数</li>
-<li>REAL 取决于机器精度的浮点数</li>
-<li>FLOAT(n) 浮点数，精度至少为n位</li>
-<li>定点数，由p位数字(符号、小数点除外)组成，小数后面有d位数字</li>
-<li>NUMERIC(p,d)</li>
-<li>DECIMAL(p,d)</li>
-<li>DATE 日期，包含年、月、日，格式为YYYY-MM-DD</li>
-<li>TIME 时间，包含一日的时、分、秒，格式为HH:MM:SS<br><strong>定义主键</strong><br>保证属性值的唯一性和非空型。<blockquote>
-<p>PRIMARY KEY[(&lt;属性列（组）&gt;)]</p>
-</blockquote>
-</li>
-</ul>
-<p>例：CREATE TABLE S ( SNO CHAR(6) <em>PRIMARY KEY</em>, SN CHAR(10), SD CHAR(16), SB DATA ); 或者 CREATE TABLE S ( SNO CHAR(6), CHAR(10), SD CHAR(16), SB DATA, PRIMARY KEY(SNO) ​);<br><strong>定义外键</strong></p>
-<blockquote>
-<p>FOREIGN KEY (&lt;外键&gt;) REFERENCES&lt;被参照表名&gt;(&lt;与外键对应的主键名&gt;)</p>
-</blockquote>
-<p>CREATE TABLE SC ( SNO CHAR(6), CNO CHAR(6), GRADE DEC(4,1), PRIMARY KEY (SNO, CNO), FOREIGN KEY (SNO) REFERENCES S(SNO), FOREIGN KEY (CNO) REFERENCES C(CNO) );<br><strong>增加列或表约束规则</strong></p>
-<blockquote>
-<p>ALTER TABLE &lt;表名&gt; ADD &lt;属性列名&gt; &lt;数据类型&gt; [完整性约束| &lt;完整性约束&gt;;</p>
-</blockquote>
-<p>例：在学生表S中加入一属性列SH表示学生的籍贯ALTER TABLE S ADD SH CHAR(30);在学生关系表S补充定义SNO为主键ALTER TABLE S ADD PRIMARY KEY (SNO);<br><strong>注意点</strong>：新增加的属性不能定义为NOT NULL。<br><strong>修改原有列的类型</strong></p>
-<blockquote>
-<p>ALTER TABLE &lt;表名&gt; ALTER COLUMN &lt;属性列名&gt; &lt;数据类型&gt; ;</p>
-</blockquote>
-<p>例：将基本表S中的学生姓名SN长度修改为12 ALTER TABLE S ALTER COLUMN SN CHAR(12);<br><strong>删除原有的列或约束规则</strong></p>
-<blockquote>
-<p>ALTER TABLE &lt;表名&gt; DROP {[CONSTRAINT] &lt;完整性约束&gt;| COLUMN &lt;列名&gt; [CASCADE|RESTRICT]}:</p>
-</blockquote>
-<p>RESTRICT:在没有视图或约束引用该属性列时，该属性列才能被删除 CASCADE:表示删除某列时，所有引|用该列的视图和约束也被自动删除 例：删除基本表S中学生的性别SEX属性列 ALTER TABLE S DROP COLUMN SEX; 例：删除基本表S ALTER TABLE S<br><strong>INSERT INTO向表中追加元组的值</strong><br>例：将一个新学生记录，插入学生关系表S中。 (‘S31’,’王浩’,’计算机’,’1999-10-15’,’男’) INSERT INTO S （SNO，SN，SD，SB，SEX） VALUES (‘S31’, ‘王浩’, ‘计算机’, ‘1999-10-15’, ‘男’) ； 例：向表SC中插入一条选课元组(‘S31’，‘C01’） ​INSERT INTO S （SNO，CNO） ​VALUES (‘S31’,’C01’)<br><strong>查询结果的显示</strong><br><strong>一个完整的数据查询语句的格式</strong><br>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[&lt;目标列表达2&gt;, …] FROM &lt;表名或视图名1&gt; [, &lt;表名或视图名2&gt;, …] [ WHERE &lt;元组选择条件表达式&gt;] [ GROUP BY &lt;属性列名1&gt;[ ,&lt;属性列名2&gt;, …] [ HAVING &lt;组选择条件表达式&gt;]] [ORDER BY &lt;目标列名1&gt; [ASC|DESC] [,&lt;目标列名2&gt; [ASC|DESC], …]]<br><strong>投影属性列</strong><br>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[&lt;目标列表达2&gt;, …] FROM &lt;表名&gt;<br>查询显示所有学生的信息<br>SELECT * ​FROM S;<br>表示所有属性信息<br><strong>去掉重复元组</strong><br>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[&lt;目标列表达2&gt;, …] FROM &lt;表名&gt;<br>查询选修了课程的学生的学号<br>SELECT DISTINCT SNO ​FROM SC;<br>DISTINCT：去掉结果中重复行<br><strong>查询结果的计算</strong><br>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[&lt;目标列表达2&gt;, …] FROM &lt;表名&gt;<br>统计学生的总人数<br>​SELECT COUNT( * ) ​FROM S<br>查询所有学生的学号和年龄<br>SELECT SNO, datediff(Year, SB, Getdate()) + 1 ​FROM S;<br>Getdata():获取系统当前的日期<br>datediff(datepart, startdate, enddate)<br><strong>聚集函数</strong></p>
-<ul>
-<li>COUNT( * ) 统计元组个数</li>
-<li>COUNT([DISTINCT|ALL] &lt;列名&gt;) 统计一列中值的个数</li>
-<li>SUM([DISTINCT|ALL] &lt;列名&gt;) 计算一列值的总和(此列必须是数值型)</li>
-<li>AVG([DISTINCT|ALL] &lt;列名&gt;) 计算一-列值的平均值(此列必须是数值型)</li>
-<li>MAX([DISTINCT|ALL] &lt;列名&gt;) 求一列值中的最大值</li>
-<li>MIN([DISTINCT|ALL] &lt;列名&gt;) 求一列值中的最小值<br><strong>目标列命名</strong><br>查询所有学生的学号和年龄<blockquote>
-<p>SELECT SNO (AS) ‘学号’, ‘年龄’ &#x3D; datediff(Year, SB, Getdate()) + 1 ​FROM S;</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>查询结果的排序</strong></p>
-<blockquote>
-<p>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[ ,&lt;目标列表达式2&gt;, …] FROM &lt;表名&gt; ORDER BY &lt;目标列1&gt; [ASC|DESC][，&lt;目标列2 &gt; [ASCIDESC]，…]</p>
-</blockquote>
-<p>查询所有选修信息，按课程号升序排列，同一课程内的学生成绩降序排列</p>
-<blockquote>
-<p>SELECT * ​FROM SC ​ORDER BY CNO ,GRADE DESC 或用CNO和GRADE对应的第几列数字表示</p>
-</blockquote>
-<ul>
-<li>&lt;目标列1&gt;：先按第一列排序 </li>
-<li>ASC:升序（默认值）</li>
-<li>DESC:降序</li>
-<li>&lt;目标列2&gt;：第一列相同，再按第二列排序</li>
-<li>关键字：ORDER BY<br><strong>查询满足条件的元组</strong><blockquote>
-<p>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[ ,&lt;目标列表达式2&gt;, …] FROM &lt;表名或视图名1&gt; [,&lt;表名或视图名2&gt;, …] [ WHERE &lt;元组选择条件表达式&gt;]</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>运算符</strong></p>
-<ul>
-<li><p>算术运算 +, -, *, &#x2F;, % (取余)</p>
-</li>
-<li><p>比较运算 &#x3D;, &lt;&gt;, &gt;&#x3D;, &gt;, &lt;&#x3D;, &lt;</p>
-</li>
-<li><p>逻辑运算 AND，OR，NOT</p>
-</li>
-<li><p>谓词运算</p>
-</li>
-<li><p>[NOT] BETWEEN…AND</p>
-</li>
-<li><p>[NOT] LIKE</p>
-</li>
-<li><p>[NOT] IN</p>
-</li>
-<li><p>IS [NOT] NULL<br><strong>运算符的优先顺序（由高到低）</strong></p>
-</li>
-<li><p>算术运算 +, -, *, &#x2F;, % (取余)</p>
-</li>
-<li><p>比较运算 &#x3D;, &lt;&gt;, &gt;&#x3D;, &gt;, &lt;&#x3D;, &lt;</p>
-</li>
-<li><p>谓词运算</p>
-</li>
-<li><p>[NOT] BETWEEN…AND</p>
-</li>
-<li><p>[NOT] LIKE</p>
-</li>
-<li><p>[NOT] IN</p>
-</li>
-<li><p>IS [NOT] NULL</p>
-</li>
-<li><p>逻辑运算 AND，OR，NOT<br><strong>BETWEEN谓词</strong><br>BETWEEN谓词用于判断某个值是否属于一个指定的区间<br>一般形式为:<br>E [NOT] BETWEEN E1 AND E2<br>其语义为:<br>[NOT] (E&gt;&#x3D;E1 AND E&lt;&#x3D;E2) E、E1和E2都是表达式，且E1&lt;E2。<br>查询出生时间在1998-01-01到1999-12-31之间的学生的姓名和出生时间<br>SELECT SN,SB FROM S WHERE SB BETWEEN ‘1998-01-01’ AND ‘1999-12-31’; 或 WHERE SB&gt;&#x3D; ‘1998-01-01’ AND SB&lt;&#x3D;’1999-12-31’;<br><strong>LIKE谓词</strong><br>LIKE谓词用于部分匹配查询（模糊查询）<br>一般形式为:</p>
-</li>
-<li><p>“字符串表达式”中通配符:</p>
-</li>
-<li><p>字符”_”:代表任意一个单字符</p>
-</li>
-<li><p>字符“%”:代表长度可为零的任意长字符串<br>&lt;属性列名&gt; [NOT] LIKE字符串表达式<br>查询姓“王”的所有学生的学号和姓名。<br>SELECT SNO,SN FROM S WHERE SN LIKE ‘ % _ 王（ % ）’；<br>“ \ ” 转义字符:用于去掉一些特殊字符的特定含义，使其被作为普通字符看待, 如用“%”去匹配字符%，用_ 去匹配字符_<br><strong>IN谓词</strong><br>IN谓词适用于判断一一个值是否属于一个集合<br>与比较运算符中“&#x3D;”含义相同。<br>一般形式为:<br>E [NOT] IN (V1, V2,…, Vn)<br>其语义为:<br>[NOT] (E&#x3D; V1 OR E&#x3D; V2 OR… OR E&#x3D; Vn)<br>查询非数学系和非计算机系的学生的学号、姓名和所在系<br>SELECT SNO,SN,SD FROM S WHERE SD NOT IN(‘数学’，‘计算机’)；<br><strong>NULL谓词</strong><br>NULL谓词适用于判断属性值是否为空<br>一般形式为：<br>&lt;属性列名&gt;IS [NOT] NULL<br>查询所有缺少选课成绩的学生的学号和相应的课程号<br>SELECT SNO,CNO FROM SC WHERE GRADE IS NULL;<br><strong><del>ANY或ALL谓词</del></strong><br>常与比较运算符连用<br>查询其他专业中比软件工程专业所有老师年龄大的教师姓名年龄<br>SELECT TN,AGE FROM T WHERE AGE&gt;ALL(SELECT AGE FROM T WHERE DEPT&#x3D;’软件工程’) and DEPT&lt;&gt;’软件工程’ order by age desc<br>ANY、ALL谓词与集函数及IN谓词的等价关系</p>
-</li>
-<li><p>ANY ALL</p>
-</li>
-<li><p>&#x3D; IN -</p>
-</li>
-<li><p>&lt; &lt;MAX &lt;MIN</p>
-</li>
-<li><p>&lt;&#x3D; &lt;&#x3D;MAX &lt;&#x3D;MIN</p>
-</li>
-<li><blockquote>
-<blockquote>
-<p>MAX &gt;MIN</p>
-</blockquote>
-</blockquote>
-</li>
-<li><blockquote>
-<p>&#x3D; &gt;&#x3D;MAX &gt;&#x3D;MIN</p>
-</blockquote>
-</li>
-<li><p>&lt;&gt;或!&#x3D; - NOT IN<br><strong>EXISTS谓词</strong><br>不返回任何实际数据，只产生逻辑值真、假<br>查询担任C2课程的教师性名&#96;&#96;&#96;&#96;<br>SELECT TN FROM T WHERE EXISTS (SELECT * FROM TC WHERE TNO &#x3D; T.TNO AND CNO&#x3D;’C2’)</p>
-</li>
-</ul>
-<p>分组聚集查询<br>完整的数据查询语句的格式<br>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[,&lt;目标列表达式2&gt;, … ] FROM &lt;表名或视图名1&gt; [, &lt;表名或视图名2&gt; , …] [ WHERE &lt;元组选择条件表达式&gt; ] [ GROUP BY &lt;属性列名1&gt;[, &lt;属性列名2&gt;, …][ HAVING &lt;组选择条件表达式&gt;]] [ ORDER BY &lt;目标列名1&gt; [ASC|DESC] [, &lt;目标列名2&gt; [ASC|DESC], …]]<br>语句格式<br>GROUP BY &lt;属性列名1&gt;[ ,&lt;属性列名2&gt; , …] [HAVING条件] 依次按属性列名1,属性列名2…的值进行分组 HAVING子句对分组进行筛选 聚集函数将以每一分组中的元组为计算对象<br>查询选修了课程的学生学号和平均成绩。<br>SELECT SNO,AVG(GRADE) FROM SC GROUP BY SNO;<br>注意：聚集函数是不允许用于Where子句中的：Where子句是对每一元组进行条件过滤，而不是对集合进行条件过滤。<br>分组过滤：若要对集合(即分组)进行条件过滤，即满足条件的集合&#x2F;分组留下，不满足条件的集合&#x2F;分组剔除。<br>Having子句，又称分组过滤子句。需要有Group by子句支持，换句话说，没有Group by子句，便不能有Having子句。<br>Select 列名| expr | agfunc(列名) [[, 列名| expr | agfunc(列名) ] … ] ​From 表名1 [, 表名2 … ] ​[ Where 检索条件] ​[ Group by 分组条件[ Having 分组过滤条件] ] ;<br>查找男生人数超过2名的系的名称。<br>SELECT SD FROM S WHERE SEX&#x3D;’男’ GROUP BY SD HAVING COUNT(*)&gt;2;<br>总括：</p>
-<ul>
-<li>WHERE 子句从由FROM指定的数据对象中选择满足条件的元组</li>
-<li>GROUP BY 子句对WHERE 子句选择出来的元组进行分组</li>
-<li>HAVING对GROUP BY的分组进行选择</li>
-<li>SELECT 子句对选择出来的分组产生查询结果<br><strong>连接查询</strong><br><strong>一个完整的数据查询语句的格式</strong><br>SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[,&lt;目标列表达式2&gt;, … ] FROM&lt;表名或视图名1&gt;[&lt;表名或视图名2&gt;，…] [ WHERE &lt;元组选择条件表达式&gt; ] [ GROUP BY &lt;属性列名1&gt;[ &lt;属性列名2&gt;00] [ HAVING &lt;组选择条件表达式&gt;]] [ ORDER BY &lt;目标列名1&gt; [ASC|DESC] [, &lt;目标列名2&gt; [ASC|DESC]，…]1<br><strong>多表连接查询</strong><br>查询选修课程号为”C01”的学生学号和成绩。<br>SELECT SNO,GRADE FROM SC WHERE CNO&#x3D;’C01’;<br>查询选修课程号为”C01”的学生姓名和成绩。<br>SELECT SN,GRADE FROM SC,S(SC和S进行广义笛卡尔积运算) WHERE CNO&#x3D;’C01’ AND SC.CNO&#x3D;S.SNO;<br>多表连接时，如两个表的属性名相同，则需采用表名. 属性名方式来限定该属性是属于哪一个表。<br><strong>外连接查询</strong><br>在SQL语句中，外连接在FROM子包中指定，其语法规则如下:<br>FROM &lt;左关系&gt; LEFT| RIGHT|FULL [OUTER] JOIN &lt;右关系&gt; ON &lt;连接条件&gt;</li>
-<li>左连接：LEFT [OUTER] JION</li>
-<li>右连接：RIGHT [OUTER] JION</li>
-<li>全外连接：FULL [OUTER] JION<br>连接条件可包含对参与连接的关系进行元组选择的条件</li>
-<li>如“表1 Left Outer Join 表2”，则连接后，表1的任何元组t都会出现在结果表中，如表2中有满足连接条件的元组s, 则t与s连接；否则t与空值元组连接；</li>
-<li>如“表1 Right Outer Join 表2”，则连接后，表2的任何元组s都会出现在结果表中，如表1中有满足连接条件的元组t, 则t与s连接；否则s与空值元组连接；</li>
-<li>如“表1 Full Outer Join 表2”，是前两者的并。<br>查询所有学生姓名及选修课程号为“C01”的成绩，没有选修该课程的学生，成绩显示为空。<br>SELECT SN,GRADE FROM S LEFT OUTER JOIN SC ON SC.SNO&#x3D;S.SNO AND CNO&#x3D;’C01’;<br><strong>内连接查询</strong><br>常规连接查询也称为内连接查询，在FROM子句中指定，其语法规则如下: FROM &lt;左关系&gt; [ INNER] JOIN &lt;右关系&gt; ON &lt;连接条件&gt;<br>inner join(等值连接) 只返回两个表中联结字段相等的行<br>求所有教师的任课情况并按教师号排序(没有任课的教师也需列在表中)。<br>Select Teacher.T#, Tname, Cname ​From Teacher Inner Join Course ​ ON Teacher.T# &#x3D; Course.T# ​Order by Teacher.T# ASC;<br>重名之处理<br>连接运算涉及到重名的问题，如两个表中的属性重名，连接的两个表重名(同一表的连接)等，因此需要使用别名以便区分<br>select中采用别名的方式<br>Select 列名as 列别名[ [, 列名as 列别名] … ] ​From 表名1 as 表别名1, 表名2 as 表别名2, … ​Where 检索条件;<br>上述定义中的as 可以省略当定义了别名后，在检索条件中可以使用别名来限定属性<br>求有薪水差额的任意两位教师<br>Select T1.Tname as Teacher1, T2.Tname as Teacher2 ​From Teacher T1, Teacher T2 ​Where T1.Salary &gt; T2.Salary ;<br><strong>合并查询</strong><br>使用UNION操作符将来自不同查询的数据组合起来形成一个综合信息的查询结果。<br>UNION操作会自动将重复的数据行剔除。<br>注意：参加合并查询结果的各子查询的数据数目相同，对应的数据类型要相容。<br>从TC表中查询出教师编号为S4和S5教师编号和总教龄<br>SELECT TNO AS 教师编号，SUM(YEAR) AS 总教龄 FROM TC WHERE (TNO&#x3D;’S4’) GROUP BY TNO UNION SELECT TNO AS 教师编号，SUM(YEAR) AS 总教龄 ​ FROM TC ​WHERE (TNO&#x3D;’S5’) ​GROUP BY TNO<br><strong>θ-连接之不等值连接</strong><br>查询课程编号’C01’有成绩差的任意两位同学学号<br>SELECT SC1.SNO AS SNO1 , SC2.SNO AS SNO2 ​FROM SC SC1, SC SC2 ​WHERE SC1.GRADE &gt; SC2.GRADE AND ​SC1.CNO &#x3D; SC2.CNO AND SC1.CNO &#x3D; ‘C01’ AND ​ SC2.CNO &#x3D; ‘C01’<br>外连接：FROM &lt;左关系&gt; LEFT | RIGHT |FULL [OUTER] JION &lt;右关系&gt; ON &lt;连接条件&gt;<br><strong>自身连接：</strong><blockquote>
-<p>对一个表进行多次扫描时使用</p>
-</blockquote>
-</li>
-</ul>
-<p>查询比周老师年龄大的老师的姓名、年龄、和周的年龄<br>SELECT X.TN AS 姓名，X.AGE AS 年龄，Y.AGE AS 周年龄 ​ FROM T AS X,T AS Y WHERE X.AGE&gt;Y.AGE AND Y.TN&#x3D;’周’<br><strong>视图</strong></p>
-<ul>
-<li><strong>创建视图</strong><br>  一般格式：CREATE VIEW &lt;视图名&gt;[（&lt;列名&gt;，&lt;列名&gt;）…] AS &lt;子查询&gt;</li>
-<li><strong>删除视图</strong><br>  格式：DROP VIEW &lt;视图名&gt;</li>
-<li><strong>删除视图名</strong><br>  格式：DROP VIEW 视图名</li>
-<li><strong>更新视图</strong><br>  插入、删除、修改<br>  将视图STO2中的教师编号S1的教师改名为“王明”<br>  UPDATE STO2 SET TN&#x3D;’王明’ WHERE TNO&#x3D;’S1’</li>
-<li><strong>限制条件</strong><br>  如果一个视图是从多个基本表使用联接操作导出的，则此视图不允许更新。<br>  如果在导出视图的过程中，使用了分组和聚合操作，也不允许该视图更新。<br>  若视图的字段来自字段表达式或常量、操作，则不允许对此视图执行INSERT和UPDATE操作，但可以进行DELETE操作。<br>  若视图定义中含有GROUP BY、DISTINCT短语或或嵌套查询，且内层查询的FROM子句中涉及的表也是导出该视图的基本表，则此视图不允许更新。</li>
-</ul>
-
-      </div>
-      <div class="post-tags-categories">
-        
-        <div class="tags">
-          
-            <a href="/tags/%E5%90%8E%E7%AB%AF/" class="">
-              后端
-            </a>
-          
-            <a href="/tags/SQL/" class="">
-              SQL
-            </a>
-          
-        </div>
-        
-      </div>
-      
-        <div class="copyright">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-    <strong>作者:  </strong>繁星ツ</a>
-    </li>
-    <li class="post-copyright-link">
-    <strong>文章链接:  </strong>
-    <a href="/2023/11/28/数据库/【SQL】语言概述/" target="_blank" title="SQL语言概述">https://fanxing28.github.io/2023/11/28/数据库/【SQL】语言概述/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明:   </strong>
-      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-      许可协议。转载请注明出处!
-    </li>
-  </ul>
-<div>
-      
-    </article>
-    <!-- 上一篇文章和下一篇文章 -->
-    
-      <!-- 文章详情页的上一页和下一页 -->
-<div class="post-nav">
-
-
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2023/11/28/%E5%85%B6%E4%BB%96/SVG/%E3%80%90SVG%E3%80%91%E4%BD%BF%E7%94%A8/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">SVG 使用</div>
-      </div>
-      
-      <!-- <div class="content">
-        定义SVG 意为可缩放矢量图形（Scalable Vector Graphics）。 SVG 使用 XML 格式定义图像
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
-    </div>
-    <a href="/2023/11/28/%E5%89%8D%E7%AB%AF/CSS/%E3%80%90CSS3%E3%80%91%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-nav-link">
-      <div class="title">
-        下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">CSS3 新特性</div>
-      </div>
-      <!-- <div class="content">
-        一. CSS基础知识渐进增强 progressive enhancement： 针对低版本浏览器进行构建页面，保证最基本
-      </div> -->
-    </a>
-  </div>
-
-</div>
-
-    
-    
-
-    <!-- 打赏 -->
-    
-      <div id="appDonate" class="post-donate">
-  <div id="donate_board" class="donate_bar center" ref="donate">
-    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
-  </div>
-  <transition name="fade">
-    <div 
-      class="donate-box-mask"
-      v-cloak 
-      v-show="visible"
-      @click="cancelDialogDrawer()"
-    >
-    </div>
-  </transition>
-  <transition name="bounce">
-    <div class="donate-box" v-cloak v-show="visible">
-      <div class="donate-box_close">
-        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
-      </div>
-      <div class="donate-box_title">
-        <h4>
-          你的赏识是我前进的动力
-        </h4>
-      </div>
-      <div class="donate-box_tab">
-        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
-          支付宝
-        </div>
-        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
-          微信
-        </div>
-      </div>
-      <div class="donate-box_img">
-        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
-        </div> 
-        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
-        </div>
-      </div>
-    </div>
-  </transition>
-</div>
-
-<script>
-  var body = document.body || document.documentElement || window;
-  var vm = new Vue({
-    el: '#appDonate',
-    data: {
-      visible: false,
-      tabActive: 'Alipay',
-      top: 0,
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-      showDialogDrawer() {
-        this.visible = true;
-        // 防止页面滚动，只能让弹框滚动
-        // function getScroll() {
-        //   return {
-        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-        //   };
-        // }
-        this.top = $(document).scrollTop() // or getScroll().top
-        // console.log('aa', $('.main-content'));
-        body.style.cssText = 'overflow: hidden;';
-      },
-      cancelDialogDrawer() {
-        this.visible = false;
-        body.removeAttribute('style');
-        $(document).scrollTop(this.top)
-      },
-      changeTabActive(name) {
-        this.tabActive = name;
-      }
-    },
-    created() {}
-  })
-</script>
-    
-
-    <!-- 分享 -->
-    
-      <!-- https://github.com/overtrue/share.js -->
-<!-- 文章详情页的分享 -->
-<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-
-<script src="/js/shareJs/social-share.min.js"></script>
-</script>
-
-<style>
-  .social-share {
-    margin: 20px 0;
+    <span class="title" id="tag-header-desc"></span>
+    <script>
+  function typedFn() {
+    const el = '#tag-header-desc';
+    const type = 'tagDetail';
+    let desc = '愿你如风，被人温柔以待'
+    var typed = new Typed(el, {
+      strings: [desc],
+      startDelay: 100,
+      typeSpeed: 100,
+      loop: true,
+      backSpeed: 50,
+      showCursor: true
+    });
   }
-</style>
-
-
-    
-    
-    <!-- 评论 -->
-    <!-- 评论 -->
-
-  <div id="myComment">
-    
-      
-<section id="comments" style="padding: 1em;"
-	class="animated bounceInUp">
-	<div id="vcomment" class="comment"></div>
-</section>
-<style>
-	#comments {
-		background: rgba(255,255,255,0.9);
-	}
-	#veditor {
-		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: right;
-		background-color: rgba(255, 255, 255, 0);
-		resize: vertical;
-	}
-	#veditor:focus{
-		background-position-y: 200px;
-		transition: all 0.2s ease-in-out 0s;
-	}
-	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
-		background-color: #42b983;
-	}
-	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
-		color: #42b983;
-		border-color: #42b983;
-	}
-	#vcomment .vcards .vcard .vhead .vsys i {
-		display: none;
-	}
-	/* 底部valine链接 */
-	#vcomment .vpower {
-		display: none;
-	}
-	
-	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
-	/* #vcomment .vheader {
-		display: flex;
-		justify-content: space-around;
-	}
-	
-	#vcomment .vheader .vnick {
-		width: 31%;
-		border: 2px solid #dedede;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 5px
-	}
-
-	#vcomment .vheader .vmail {
-		width: 31%;
-		border: 2px solid #dedede;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 5px
-	}
-
-	#vcomment .vheader .vlink {
-		width: 31%;
-		border: 2px solid #dedede;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 5px
-	} */
-
-	img.vimg {
-		transition: all 1s;
-		/* 头像旋转时间为 1s */
-	}
-
-	img.vimg:hover {
-		transform: rotate(360deg);
-		-webkit-transform: rotate(360deg);
-		-moz-transform: rotate(360deg);
-		-o-transform: rotate(360deg);
-		-ms-transform: rotate(360deg);
-	}
-
-	#vcomment .vcards .vcard {
-		padding: 15px 20px 0 20px;
-		border-radius: 10px;
-		margin-bottom: 15px;
-		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
-		transition: all .3s
-	}
-
-	#vcomment .vcards .vcard:hover {
-		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
-	}
-
-	#vcomment .vcards .vcard .vh .vcard {
-		border: none;
-		box-shadow: none;
-	}
-</style>
+  typedFn();
+</script>
     
   </div>
+  <div class="mask-box"></div>
+</div>
 
-<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
 
 
+<div class="tag">
+  <div class="tag-name">
+    <div class="name" style="background-color: #85C1E9;">Uniapp 分类</div>
   </div>
+  <!-- 每一篇文章卡片 -->
+  <!-- hash算法 -->
 
-  <!-- 目录 -->
-  <aside id='l_side'>
+<section class="posts">
   
     
-      <section class="widget side_blogger">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img src='https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/hexo_blog/author.jpg'/>
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2023-12-03</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/">Uniapp 功能实现</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Uniapp/" rel="tag">Uniapp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            Uniapp 小程序开发过程中使用到的功能实现总结
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
         </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>繁星ツ</h2>
-        
-        
-        
-          <p><span id="jinrishici-sentence">FanXing28</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
       </div>
+    </article>
+  
     
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2023-12-03</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Uniapp 基础知识</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Uniapp/" rel="tag">Uniapp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
             </a>
-          
-        
-          
-            <a href="mailto:wei861097416@outlook.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/yuang01/hexo-theme-bamboo"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=861097416"
-              class="social fab fa-qq flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
+          </div>
+          <div class="post-content">
+            uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
       </div>
-    
-  </div>
+      <div class="post-img">
+        <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
 </section>
-
-    
-  
-  
-  
-    
-  
-
-  <div class="layout_sticky">    
-    
-      
-<section class="widget side_toc">
-  
-  <header>
-    
-      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="toc-main">
-      <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E5%8F%91%E5%B1%95"><span class="toc-text">SQL发展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%AF%AD%E8%A8%80%E5%8A%9F%E8%83%BD"><span class="toc-text">SQL语言功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89"><span class="toc-text">SQL的数据定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建和使用数据库</span></a></li></ol></li></ol> -->
-        <div class="toc"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- 手机端目录按钮 -->
-<div id="toc-mobile-btn">
-  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
 
-      
-  <section class="widget side_recent_post">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      
-      <!-- hash算法 -->
-      
-      <div class="aside-list">
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/JavaScript/%E3%80%90ES6%E3%80%91%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">12-03</span>
-                
-              </div>
-              <a class="post-title" href="/2023/12/03/%E5%89%8D%E7%AB%AF/JavaScript/%E3%80%90ES6%E3%80%91%E6%96%B0%E7%89%B9%E6%80%A7/">【ES6】 新特性</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">12-03</span>
-                
-              </div>
-              <a class="post-title" href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/">Uniapp 功能实现</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">12-03</span>
-                
-              </div>
-              <a class="post-title" href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Uniapp 基础知识</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/12/03/%E5%85%B6%E4%BB%96/MarkDown/MarkDown%E8%AF%AD%E6%B3%95%20%E6%B7%BB%E5%8A%A0emoji%E8%A1%A8%E6%83%85/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">12-03</span>
-                
-              </div>
-              <a class="post-title" href="/2023/12/03/%E5%85%B6%E4%BB%96/MarkDown/MarkDown%E8%AF%AD%E6%B3%95%20%E6%B7%BB%E5%8A%A0emoji%E8%A1%A8%E6%83%85/">MarkDown语法 添加emoji表情</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/12/02/%E5%B7%A5%E5%85%B7/%E5%8A%9F%E8%83%BD%E4%BB%A3%E7%A0%81%E5%9D%97/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">12-02</span>
-                
-              </div>
-              <a class="post-title" href="/2023/12/02/%E5%B7%A5%E5%85%B7/%E5%8A%9F%E8%83%BD%E4%BB%A3%E7%A0%81%E5%9D%97/">功能代码块</a>
-            </div>
-          </div>
-        
-      </div>
-    </div>
-  </section>
-
-    
-  </div>
-</aside>
-
-  <!-- 图片放大 Wrap images with fancybox support -->
-  <script src="/js/wrapImage.js"></script>
-</div>
-
-<!-- 文章详情页背景图 -->
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
-	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
-	<transition-group tag="ul" :name="names">
-		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-			<img :src="image" class="bg-swiper-img no-lazy">
-		</li>
-	</transition-group>
-</div>
-<script>
-	var vm = new Vue({
-		el: '#appBgSwiper',
-		data: {
-			names: '' || 'fade' || 'fade', // translate-fade fade
-			mark: 0,
-			img: [],
-			bgColor: '',
-			time: null
-		},
-		methods: {   //添加方法
-			change(i, m) {
-				if (i > m) {
-					// this.names = 'fade';
-				} else if (i < m) {
-					// this.names = 'fade';
-				} else {
-					return;
-				}
-				this.mark = i;
-			},
-			prev() {
-				// this.names = 'fade';
-				this.mark--;
-				if (this.mark === -1) {
-					this.mark = 3;
-					return
-				}
-			},
-			next() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			autoPlay() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			play() {
-				let bgImgDelay = '' || '180000'
-				let delay = parseInt(bgImgDelay) || 180000;
-				this.time = setInterval(this.autoPlay, delay);
-			},
-			enter() {
-				clearInterval(this.time);
-			},
-			leave() {
-				this.play();
-			}
-		},
-		created() {
-			this.play()
-		},
-		beforeDestroy() {
-			clearInterval(this.time);
-		},
-		mounted() {
-			let prop = '' || '';
-			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
-			if (isImg) {
-				let img = prop.split(',');
-				let configRoot = '/'
-				let arrImg = [];
-				img.forEach(el => {
-					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-					var objExp = new RegExp(Expression);
-
-					if (objExp.test(el)) {
-						// http or https
-						arrImg.push(el);
-					} else {
-						// 非http or https开头
-						// 本地文件
-						let firstStr = el.charAt(0);
-						if (firstStr == '/') {
-							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-						}
-						el = configRoot + el;
-						arrImg.push(el);
-					}
-				})
-				this.img = arrImg;
-			} else {
-				this.bgColor = prop;
-			}
-		}
-	})
-</script>
-
-<style>
-	.bg-swiper-box {
-		position: absolute;
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-
-	.bg-swiper-img {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-</style>
-
-
-
-
-  <script>
-  function loadMermaid() {
-    if (document.getElementsByClassName('mermaid').length) {
-      if (window.mermaidJsLoad) mermaid.init()
-      else {
-        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
-          window.mermaidJsLoad = true
-          mermaid.initialize({
-            theme: 'default',
-          })
-          if ('false') {
-            mermaid.init();
-          }
-        })
-      }
-    }
-  };
-  document.addEventListener("DOMContentLoaded", function () {
-    loadMermaid();
-  })
-
-  document.addEventListener('pjax:complete', function () {
-    loadMermaid();
-  })
+<div class="w-70">
   
-</script>
-
+</div>
 
       </main>
     </div>

@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Github 绑定自己的域名(无须备案） | FanXing28</title>
+  <title>PHP 常用方法 | FanXing28</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -535,21 +535,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        Github 绑定自己的域名(无须备案）
+        PHP 常用方法
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2023-12-03 |
+          <i class="fas fa-calendar"></i> 发表于：2023-12-17 |
         </span>
       
 
@@ -557,12 +557,12 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> 分类：
           
-            <a href="/categories/%E5%85%B6%E4%BB%96/" class="post-detail-header_category">
-              其他
+            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-detail-header_category">
+              后端
             </a>
           
-            <a href="/categories/%E5%85%B6%E4%BB%96/Hexo/" class="post-detail-header_category">
-              Hexo
+            <a href="/categories/%E5%90%8E%E7%AB%AF/PHP/" class="post-detail-header_category">
+              PHP
             </a>
           
         </span>
@@ -586,29 +586,93 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <p>现在常用的在阿里云购买的域名或者在腾讯云购买的域名。<br>下面以腾讯云购买的域名为列子详细介绍一下如何用github绑定自己域名<br>本文前提是你已经搭建好了博客，已经可以通过类似：<a href="https://fanxing28.github.io/%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%BF%E9%97%AE%E3%80%82">https://fanxing28.github.io/的方法访问。</a><br>具体步骤：</p>
-<ol>
-<li><strong>注册一个域名</strong><br> 如果你没有域名的话，可以先到阿里云：<code>https://mi.aliyun.com/</code> 购买一个域名，购买完成之后不用备案就可以。或者到腾讯云<code>https://buy.cloud.tencent.com/domain</code>等其他平台购买域名</li>
-<li>在github仓库里<strong>添加CNAME文件</strong>并在文件中填写绑定的域名<br> <img src="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6.png" class="lazyload placeholder" data-srcset="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="github项目域名绑定创建CNAME文件.png"><br> 文件内容如下：（文件里填写要绑定的域名且不要包含Http:&#x2F;&#x2F;和www）就是直接填写购买的(例如：fanxing28.top)域名<br> <img src="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6%E5%A1%AB%E5%86%99.png" class="lazyload placeholder" data-srcset="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6%E5%A1%AB%E5%86%99.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="github项目域名绑定创建CNAME文件填写.png"><br> 进入设置，找到 Custom domain添加域名后保存即可（添加CNAME文件并在文件中填写绑定的域名后应该会自动保存，看看有没有自动保存）<br> <img src="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6%E5%9F%9F%E5%90%8D%E4%BF%9D%E5%AD%98.png" class="lazyload placeholder" data-srcset="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6%E5%9F%9F%E5%90%8D%E4%BF%9D%E5%AD%98.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="github项目域名绑定创建CNAME文件域名保存.png"></li>
-<li><strong>添加域名解析</strong><br> ping你的<a target="_blank" rel="noopener" href="http://github.io域名,得到一个ip;/">http://github.io域名，得到一个IP；</a><br> <img src="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6ping%E8%87%AA%E5%B7%B1%E7%9A%84githubio.png" class="lazyload placeholder" data-srcset="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6ping%E8%87%AA%E5%B7%B1%E7%9A%84githubio.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="github项目域名绑定创建CNAME文件ping自己的githubio.png"></li>
-<li><strong>修改你的域名解析记录</strong><br> 添加两个A记录，用得到的IP：<br> 一个主机记录为：“www”，一个为“@”，这样通过fanxing28.top和<a target="_blank" rel="noopener" href="http://www.fanxing.top都能访问到你的博客了./">www.fanxing.top都能访问到你的博客了。</a><br> <img src="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6%E5%9F%9F%E5%90%8D%E6%B7%BB%E5%8A%A0%E8%AE%B0%E5%BD%95.png" class="lazyload placeholder" data-srcset="https://fanxingnotes.oss-cn-beijing.aliyuncs.com/images/others/github%E9%A1%B9%E7%9B%AE%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6%E5%9F%9F%E5%90%8D%E6%B7%BB%E5%8A%A0%E8%AE%B0%E5%BD%95.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="github项目域名绑定创建CNAME文件域名添加记录.png"></li>
-<li><strong>等待你的 DNS 配置生效</strong><br>对DNS的配置不是立即生效的，<u>过10分钟</u>再去访问你的域名看看有没有配置成功 : )</li>
-<li><strong>启用 HTTPS</strong><br>自 2018 年 5 月 1 日，Github 支持自定义域名的 HTTPS 请求了。<br>配置也相当简单，<u>只需要更新 DNS 配置里的 A 记录</u>，将其指向以下4个 IP 地址中的至少一个。</li>
-</ol>
-<ul>
-<li>185.199.108.153</li>
-<li>185.199.109.153</li>
-<li>185.199.110.153</li>
-<li>185.199.111.153<br>HTTPS 让你的网站和网站访客更安全，并且 Github 提供的这些 IP 地址自动将你的站点加入了 CDN，提高了访问速度。<br>并且还可以在 GiHub Pages 仓库的设置里勾选 **’Enforce HTTPS’**，这样<u>所有访问你站点的请求都会走 HTTPS</u>。<br><strong>最后访问你的域名：</strong> <a target="_blank" rel="noopener" href="https://fanxing28.top/">https://fanxing28.top</a></li>
+        <h1 id="常见处理函数-方法"><a href="#常见处理函数-方法" class="headerlink" title="常见处理函数(方法)"></a>常见处理函数(方法)</h1><ol>
+<li>字符串处理函数：<ul>
+<li><code>strlen()</code>：获取字符串的长度</li>
+<li><code>strtolower()</code>：将字符串转换为小写</li>
+<li><code>strtoupper()</code>：将字符串转换为大写</li>
+<li><code>substr()</code>：提取字符串的一部分</li>
+<li><code>str_replace()</code>：替换字符串中的指定内容</li>
+<li><code>trim()</code>：删除字符串首尾的空白字符</li>
 </ul>
+</li>
+<li>数组处理函数：<ul>
+<li><code>count()</code>：获取数组元素个数</li>
+<li><code>array_push()</code>：将一个或多个元素添加到数组末尾</li>
+<li><code>array_pop()</code>：从数组末尾删除并返回一个元素</li>
+<li><code>array_merge()</code>：合并一个或多个数组</li>
+<li><code>array_search()</code>：在数组中搜索指定的值，并返回其键名</li>
+</ul>
+</li>
+<li>文件操作函数：<ul>
+<li><code>file_get_contents()</code>：将整个文件读取到一个字符串中</li>
+<li><code>file_put_contents()</code>：将一个字符串写入文件</li>
+<li><code>fopen()</code>：打开文件或 URL</li>
+<li><code>fwrite()</code>：向文件写入数据</li>
+<li><code>fclose()</code>：关闭打开的文件</li>
+</ul>
+</li>
+<li>数据库相关函数：<ul>
+<li><code>mysqli_connect()</code>：连接到 MySQL 数据库</li>
+<li><code>mysqli_query()</code>：执行数据库查询</li>
+<li><code>mysqli_fetch_assoc()</code>：从结果集中获取一行作为关联数组</li>
+<li><code>mysqli_insert_id()</code>：获取最后插入行的 ID</li>
+<li><code>mysqli_close()</code>：关闭与数据库的连接</li>
+</ul>
+</li>
+</ol>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="1-数组排序相关的方法"><a href="#1-数组排序相关的方法" class="headerlink" title="(1) 数组排序相关的方法"></a>(1) 数组排序相关的方法</h2><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">sort()</td>
+<td align="left">对数组进行升序排序</td>
+</tr>
+<tr>
+<td align="left">rsort()</td>
+<td align="left">对数组进行降序排序</td>
+</tr>
+<tr>
+<td align="left">asort()</td>
+<td align="left">根据值对数组进行升序排序，并保持键值关联</td>
+</tr>
+<tr>
+<td align="left">arsort()</td>
+<td align="left">根据值对数组进行降序排序，并保持键值关联</td>
+</tr>
+<tr>
+<td align="left">ksort()</td>
+<td align="left">根据键名对数组进行升序排序</td>
+</tr>
+<tr>
+<td align="left">krsort()</td>
+<td align="left">根据键名对数组进行降序排序</td>
+</tr>
+</tbody></table>
+<ol>
+<li><code>sort()</code>：对数组进行升序排序<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$array</span> = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>];</span><br><span class="line"><span class="title function_ invoke__">sort</span>(<span class="variable">$array</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$array</span>); <span class="comment">// 输出：Array ( [0] =&gt; 1 [1] =&gt; 2 [2] =&gt; 3 [3] =&gt; 4 [4] =&gt; 5 )</span></span><br></pre></td></tr></table></figure></li>
+<li><code>rsort()</code>：对数组进行降序排序<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$array</span> = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>];</span><br><span class="line"><span class="title function_ invoke__">rsort</span>(<span class="variable">$array</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$array</span>); <span class="comment">// 输出：Array ( [0] =&gt; 5 [1] =&gt; 4 [2] =&gt; 3 [3] =&gt; 2 [4] =&gt; 1 )</span></span><br></pre></td></tr></table></figure></li>
+<li><code>asort()</code>：根据值对数组进行升序排序，并保持键值关联<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$array</span> = [<span class="string">&#x27;b&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span> =&gt; <span class="number">2</span>];</span><br><span class="line"><span class="title function_ invoke__">asort</span>(<span class="variable">$array</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$array</span>); <span class="comment">// 输出：Array ( [a] =&gt; 1 [c] =&gt; 2 [b] =&gt; 3 )</span></span><br></pre></td></tr></table></figure></li>
+<li><code>arsort()</code>：根据值对数组进行降序排序，并保持键值关联<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$array</span> = [<span class="string">&#x27;b&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span> =&gt; <span class="number">2</span>];</span><br><span class="line"><span class="title function_ invoke__">arsort</span>(<span class="variable">$array</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$array</span>); <span class="comment">// 输出：Array ( [b] =&gt; 3 [c] =&gt; 2 [a] =&gt; 1 )</span></span><br></pre></td></tr></table></figure></li>
+<li><code>ksort()</code>：根据键名对数组进行升序排序<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$array</span> = [<span class="string">&#x27;b&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span> =&gt; <span class="number">2</span>];</span><br><span class="line"><span class="title function_ invoke__">ksort</span>(<span class="variable">$array</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$array</span>); <span class="comment">// 输出：Array ( [a] =&gt; 1 [b] =&gt; 3 [c] =&gt; 2 )</span></span><br></pre></td></tr></table></figure></li>
+<li><code>krsort()</code> ：根据键名对数组进行降序排序<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$array</span> = [<span class="string">&#x27;b&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span> =&gt; <span class="number">2</span>];</span><br><span class="line"><span class="title function_ invoke__">krsort</span>(<span class="variable">$array</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$array</span>); <span class="comment">// 输出：Array ( [c] =&gt; 2 [b] =&gt; 3 [a] =&gt; 1 )</span></span><br></pre></td></tr></table></figure></li>
+</ol>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/Github/" class="">
-              Github
+            <a href="/tags/%E5%90%8E%E7%AB%AF/" class="">
+              后端
+            </a>
+          
+            <a href="/tags/PHP/" class="">
+              PHP
             </a>
           
         </div>
@@ -622,7 +686,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2023/12/03/其他/Hexo/Github 绑定自己的域名(无须备案）/" target="_blank" title="Github 绑定自己的域名(无须备案）">https://fanxing28.github.io/2023/12/03/其他/Hexo/Github 绑定自己的域名(无须备案）/</a>
+    <a href="/2023/12/17/后端/PHP/PHP 常用方法/" target="_blank" title="PHP 常用方法">https://fanxing28.github.io/2023/12/17/后端/PHP/PHP 常用方法/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -640,39 +704,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2023/12/03/%E5%89%8D%E7%AB%AF/Uniapp/Uniapp%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">Uniapp 基础知识</div>
-      </div>
-      
-      <!-- <div class="content">
-        官网介绍： uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、And
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/03/%E5%85%B6%E4%BB%96/MarkDown/MarkDown%E8%AF%AD%E6%B3%95%20%E6%B7%BB%E5%8A%A0emoji%E8%A1%A8%E6%83%85/" class="post-nav-link">
+    <a href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">MarkDown语法 添加emoji表情</div>
+        <div class="title-text">JS 面向对象和构造函数</div>
       </div>
       <!-- <div class="content">
-        Markdown语法支持添加 emoji 表情，输入不同的符号码（两个冒号包围的字符）可以显示出不同的表情使用方式：直接
+        一. 面向对象和面向过程(1) 面向过程的基本概念面向过程(Procedure Oriented)是一种以过程为中心的编
       </div> -->
     </a>
   </div>
@@ -986,7 +1032,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!--  -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0-%E6%96%B9%E6%B3%95"><span class="toc-text">常见处理函数(方法)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">(1) 数组排序相关的方法</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

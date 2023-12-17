@@ -634,6 +634,45 @@
 </ul>
 <h2 id="vue2和vue3的响应式原理"><a href="#vue2和vue3的响应式原理" class="headerlink" title="vue2和vue3的响应式原理"></a>vue2和vue3的响应式原理</h2><p>vue2的响应式原理用<strong>Object.defineProperty的get和set进行数据劫持</strong>，从而实现响应式 vue2中只有get和set方法去进行属性的读取和修改操作，当我们进行新增，删除时，页面不会实时更新 直接通过下标改数组，页面也不会实时更新<br>vue3中响应式原理使用Proxy进行代理，使用window内置对象Reflect反射，学了Es6的语法的就知道我们在使用Proxy进行代理，好比甲方公司给出需要什么技术的前端攻城狮，让乙方去干招聘、面试等环节 Proxy可以拦截对象中任意的属性变化，当然包括读写，添加，删除等 Reflect对源对象属性进行操作</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p=<span class="keyword">new</span> <span class="title class_">Proxy</span>(data, &#123;</span><br><span class="line"><span class="comment">// 读取属性时调用</span></span><br><span class="line">    get (target, propName) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(target, propName)</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="comment">//修改属性或添加属性时调用</span></span><br><span class="line">    set (target, propName, value) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">set</span>(target, propName, value)</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="comment">//删除属性时调用</span></span><br><span class="line">    deleteProperty (target, propName) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">deleteProperty</span>(target, propName)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
+<h1 id="Vue2和Vue3的区别点"><a href="#Vue2和Vue3的区别点" class="headerlink" title="Vue2和Vue3的区别点"></a>Vue2和Vue3的区别点</h1><h2 id="一-Vue2-深层响应失效"><a href="#一-Vue2-深层响应失效" class="headerlink" title="(一) Vue2 深层响应失效"></a>(一) Vue2 深层响应失效</h2><p>响应式原理不同：</p>
+<ul>
+<li>vue2：Object.defineProperty</li>
+<li>vue3：proxy<br>有三种情况在 vue2 里面响应式会失效:</li>
+</ul>
+<ol>
+<li>在对象里面挂载新属性</li>
+<li>直接修改数组的长度</li>
+<li>通过索引改变数组项<br>vue3不存在响应式失效<br><strong>解决方法</strong>：</li>
+<li><code>$forceUpdate()</code>：强制将该组件重新渲染</li>
+<li>利用扩展运算符进行浅拷贝（重新创建新地址）、深拷贝</li>
+<li><code>$set()</code></li>
+</ol>
+<h2 id="二-v-if与v-for一起使用的问题"><a href="#二-v-if与v-for一起使用的问题" class="headerlink" title="(二) v-if与v-for一起使用的问题"></a>(二) v-if与v-for一起使用的问题</h2><blockquote>
+<p><strong>vue2 中 v-for 的优先级更高</strong> <strong>vue3 中 v-if 的优先级更高</strong></p>
+</blockquote>
+<p>当 v-if 和 v-for 使用在同一个标签中时：</p>
+<ul>
+<li><strong>vue2</strong> 中：当需要一开始就隐藏时，先通过 v-for 进行循环渲染后在去隐藏，会导致性能的浪费。</li>
+<li><strong>vue3</strong> 中：v-if的优先级更高，所以当判断的条件和 item 有关的时候，会找不到item变量，就会报错<br><strong>Vue2和Vue3的共同解决方式</strong>：</li>
+<li>当判断的条件和 item 有关的时候，先通过获取数据，在计算属性中过滤，在遍历计算属性过滤后的结果</li>
+<li>当判断的条件和 item 无关的时候，可以将 v-if 放入当前标签的外层标签，在必要的时候添加 template 标签</li>
+</ul>
+<h2 id="三-按键修饰符"><a href="#三-按键修饰符" class="headerlink" title="(三) 按键修饰符"></a>(三) 按键修饰符</h2><ul>
+<li>在vue2里面按键修饰符既可以使用 .enter 也可以使用 <strong>按键码</strong>（keyCode）但是最新的浏览器不一定有用（已经被废弃）</li>
+<li>在vue3里面按键修饰符只可以使用 .enter</li>
+</ul>
+<h2 id="四-生命周期销毁阶段的名字"><a href="#四-生命周期销毁阶段的名字" class="headerlink" title="(四) 生命周期销毁阶段的名字"></a>(四) 生命周期销毁阶段的名字</h2><ul>
+<li>vue2的销毁阶段的生命周期名字为<strong>beforeDestory 和 destoryed</strong></li>
+<li>在vue3名字改成了<strong>beforeUnmount 和 unmounted</strong><br>其次在vue2中有一个<code>$destory()</code>（自动销毁的API）</li>
+</ul>
+<h2 id="五-this-watch"><a href="#五-this-watch" class="headerlink" title="(五) this.$watch()"></a>(五) this.$watch()</h2><p>vue3的侦听器添加了this.$watch()方法，可以开启和关闭监听</p>
+<h2 id="六-唯一根元素"><a href="#六-唯一根元素" class="headerlink" title="(六) 唯一根元素"></a>(六) 唯一根元素</h2><blockquote>
+<p>只会在指令的表达式返回真值时才被渲染</p>
+</blockquote>
+<h2 id="七-条件渲染"><a href="#七-条件渲染" class="headerlink" title="(七)条件渲染"></a>(七)条件渲染</h2><ul>
+<li>在vue2中，需要保证每个组件都只有一个唯一的根元素<br>ts和js区别<br>nextTick<br>promise低版本浏览器兼容</li>
+</ul>
+
       </div>
       <div class="post-tags-categories">
         
@@ -1021,7 +1060,7 @@ setup是组合式api的入口，同时
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E4%B8%8Ereactive%E5%8C%BA%E5%88%AB"><span class="toc-text">ref与reactive区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue2%E5%92%8Cvue3%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="toc-text">vue2和vue3的响应式原理</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E4%B8%8Ereactive%E5%8C%BA%E5%88%AB"><span class="toc-text">ref与reactive区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue2%E5%92%8Cvue3%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="toc-text">vue2和vue3的响应式原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue2%E5%92%8CVue3%E7%9A%84%E5%8C%BA%E5%88%AB%E7%82%B9"><span class="toc-text">Vue2和Vue3的区别点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-Vue2-%E6%B7%B1%E5%B1%82%E5%93%8D%E5%BA%94%E5%A4%B1%E6%95%88"><span class="toc-text">(一) Vue2 深层响应失效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-v-if%E4%B8%8Ev-for%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">(二) v-if与v-for一起使用的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%8C%89%E9%94%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">(三) 按键修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%94%80%E6%AF%81%E9%98%B6%E6%AE%B5%E7%9A%84%E5%90%8D%E5%AD%97"><span class="toc-text">(四) 生命周期销毁阶段的名字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-this-watch"><span class="toc-text">(五) this.$watch()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%94%AF%E4%B8%80%E6%A0%B9%E5%85%83%E7%B4%A0"><span class="toc-text">(六) 唯一根元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="toc-text">(七)条件渲染</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -1047,6 +1086,27 @@ setup是组合式api的入口，同时
       <!-- hash算法 -->
       
       <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/12/17/%E5%90%8E%E7%AB%AF/PHP/PHP%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-17</span>
+                
+              </div>
+              <a class="post-title" href="/2023/12/17/%E5%90%8E%E7%AB%AF/PHP/PHP%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">PHP 常用方法</a>
+            </div>
+          </div>
         
           <div class="aside-list-item">
             
@@ -1129,27 +1189,6 @@ setup是组合式api的入口，同时
                 
               </div>
               <a class="post-title" href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E4%BA%8B%E4%BB%B6%E8%BD%AE%E8%AF%A2%E6%9C%BA%E5%88%B6/">JS 事件轮询机制</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">12-14</span>
-                
-              </div>
-              <a class="post-title" href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">JS 设计模式</a>
             </div>
           </div>
         

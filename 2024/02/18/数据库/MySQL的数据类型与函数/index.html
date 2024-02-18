@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>SQL语言概述 | FanXing28</title>
+  <title>MySQL的数据类型与函数 | FanXing28</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -535,21 +535,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        SQL语言概述
+        MySQL的数据类型与函数
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2023-11-28 |
+          <i class="fas fa-calendar"></i> 发表于：2024-02-18 |
         </span>
       
 
@@ -582,358 +582,762 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="SQL发展"><a href="#SQL发展" class="headerlink" title="SQL发展"></a>SQL发展</h2><p>1972年，IBM在System R中实现SQUARE语言。 1974年，Boyce和Chamberlin改进SQUARE为SEQUEL。 1981年，IBM推出SQL&#x2F;DS，用SQL代替SEQUEL。 1986年ANSI公布第一个SQL标准。 1987年ISO将SQL采纳为国际标准。 ​</p>
-<h2 id="SQL语言功能"><a href="#SQL语言功能" class="headerlink" title="SQL语言功能"></a>SQL语言功能</h2><p><strong>定义</strong></p>
-<ul>
-<li>创建CREATE</li>
-<li>修改ALTER</li>
-<li>删除DROP<br><strong>查询</strong></li>
-<li>选择SELECT<br><strong>更新</strong></li>
-<li>插入INSERT</li>
-<li>更新UPDATE</li>
-<li>删除DELETE<br><strong>控制</strong></li>
-<li>授权GRANT</li>
-<li>收权REVOKE</li>
-</ul>
-<h2 id="SQL的数据定义"><a href="#SQL的数据定义" class="headerlink" title="SQL的数据定义"></a>SQL的数据定义</h2><h3 id="创建和使用数据库"><a href="#创建和使用数据库" class="headerlink" title="创建和使用数据库"></a>创建和使用数据库</h3><h4 id="1-创建数据库"><a href="#1-创建数据库" class="headerlink" title="(1) 创建数据库"></a>(1) 创建数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE&lt;数据库名&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例：创建“学生选课”数据库 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 学生选课；</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="2-使用数据库"><a href="#2-使用数据库" class="headerlink" title="(2)使用数据库"></a>(2)使用数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE&lt;数据库名&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例：打开“学生选课”数据库<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE 学生选课；</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="基本表创建的一般格式"><a href="#基本表创建的一般格式" class="headerlink" title="基本表创建的一般格式"></a>基本表创建的一般格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE&lt;表名&gt; （ &lt;属性列名&gt;&lt;数据类型&gt;[列名完整性约束条件] [,&lt;属性列名&gt;&lt;数据类型&gt;[列名完整性约束条件],…] [,&lt;表级完整性约束条件&gt;] ​）</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE S ​( SNO CHAR(6), SN CHAR(10), SD CHAR(16), SB DATA ​);</span><br></pre></td></tr></table></figure>
-<strong>注意点</strong></li>
-<li>在一个数据库中，不允许有两个基本表同名。</li>
-<li>一个表中不能有两列同名。</li>
-</ul>
-<h3 id="数据类型及其含义"><a href="#数据类型及其含义" class="headerlink" title="数据类型及其含义"></a>数据类型及其含义</h3><table>
+        <h2 id="MySQL-数据类型（8-0-版）"><a href="#MySQL-数据类型（8-0-版）" class="headerlink" title="MySQL 数据类型（8.0 版）"></a>MySQL 数据类型（8.0 版）</h2><p>列的数据类型定义了该列可以保存的值：整数、字符、货币、日期和时间、二进制等。<br>数据库表中的<u>每一列都必须有名称和数据类型</u>。<br>SQL 开发人员必须<strong>在创建表时决定将在每列中存储的数据类型</strong>。<br>数据类型是 SQL 了解每列中预期的数据类型的指南，它还标识 SQL 将如何与存储的数据交互。<br>在 MySQL 中有三种主要的数据类型：<strong>字符串、数字、日期和时间</strong>。</p>
+<h3 id="字符串数据类型"><a href="#字符串数据类型" class="headerlink" title="字符串数据类型"></a>字符串数据类型</h3><table>
 <thead>
 <tr>
-<th align="left">数据类型</th>
-<th align="left">含义</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">CHAR (n)</td>
-<td align="left">长度为n的定长字符串</td>
+<td>CHAR(size)</td>
+<td>一个固定长度的字符串（可以包含字母、数字和特殊字符）。 <em>size</em> 参数指定以字符为单位的列长度 - 可以从 0 到 255。默认为 1</td>
 </tr>
 <tr>
-<td align="left">VARCHAR (n)</td>
-<td align="left">最大长度为n的变长字符串</td>
+<td>VARCHAR(size)</td>
+<td>可变长度字符串（可以包含字母、数字和特殊字符）。 <em>size</em> 参数指定字符的最大列长度 - 可以从 0 到 65535</td>
 </tr>
 <tr>
-<td align="left">INT</td>
-<td align="left">长整数</td>
+<td>BINARY(size)</td>
+<td>等于 CHAR()，但存储二进制字节字符串。 <em>size</em> 参数以字节为单位指定列长度。默认为 1</td>
 </tr>
 <tr>
-<td align="left">SMALLINT</td>
-<td align="left">短整数</td>
+<td>VARBINARY(size)</td>
+<td>等于 VARCHAR()，但存储二进制字节字符串。 <em>size</em> 参数指定最大列长度（以字节为单位）。</td>
 </tr>
 <tr>
-<td align="left">REAL</td>
-<td align="left">取决于机器精度的浮点数</td>
+<td>TINYBLOB</td>
+<td>对于 BLOB（二进制大对象）。最大长度：255 字节</td>
 </tr>
 <tr>
-<td align="left">FLOAT(n)</td>
-<td align="left">浮点数，精度至少为n位</td>
+<td>TINYTEXT</td>
+<td>保存一个最大长度为 255 个字符的字符串</td>
 </tr>
 <tr>
-<td align="left">NUMERIC(p,d)、DECIMAL(p,d)</td>
-<td align="left">定点数，由p位数字(符号、小数点除外)组成，小数后面有d位数字</td>
+<td>TEXT(size)</td>
+<td>保存一个最大长度为 65,535 字节的字符串</td>
 </tr>
 <tr>
-<td align="left">DATE</td>
-<td align="left">日期，包含年、月、日，格式为YYYY-MM-DD</td>
+<td>BLOB(size)</td>
+<td>对于 BLOB（二进制大对象）。最多可容纳 65,535 字节的数据</td>
 </tr>
 <tr>
-<td align="left">TIME</td>
-<td align="left">时间，包含一日的时、分、秒，格式为HH:MM:SS</td>
+<td>MEDIUMTEXT</td>
+<td>保存最大长度为 16,777,215 个字符的字符串</td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>对于 BLOB（二进制大对象）。最多可容纳 16,777,215 字节的数据</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>保存最大长度为 4,294,967,295 个字符的字符串</td>
+</tr>
+<tr>
+<td>LONGBLOB</td>
+<td>对于 BLOB（二进制大对象）。最多可容纳 4,294,967,295 字节的数据</td>
+</tr>
+<tr>
+<td>ENUM(val1, val2, val3, …)</td>
+<td>只能有一个值的字符串对象，从可能值列表中选择。您最多可以在一个 ENUM 列表中列出 65535 个值。如果插入的值不在列表中，则将插入一个空白值。 这些值按您输入的顺序排序</td>
+</tr>
+<tr>
+<td>SET(val1, val2, val3, …)</td>
+<td>可以有 0 个或多个值的字符串对象，从可能的值列表中选择。一个 SET 列表中最多可以列出 64 个值</td>
 </tr>
 </tbody></table>
-<h3 id="定义主键"><a href="#定义主键" class="headerlink" title="定义主键"></a>定义主键</h3><p>保证属性值的唯一性和非空型。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PRIMARY KEY[(&lt;属性列（组）&gt;)]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE S ( SNO CHAR(6) _PRIMARY KEY_, SN CHAR(10), SD CHAR(16), SB DATA ); </span><br><span class="line"># 或者 </span><br><span class="line">CREATE TABLE S ( SNO CHAR(6), CHAR(10), SD CHAR(16), SB DATA, PRIMARY KEY(SNO) ​);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="定义外键"><a href="#定义外键" class="headerlink" title="定义外键"></a>定义外键</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FOREIGN KEY (&lt;外键&gt;) REFERENCES&lt;被参照表名&gt;(&lt;与外键对应的主键名&gt;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE SC ( SNO CHAR(6), CNO CHAR(6), GRADE DEC(4,1), PRIMARY KEY (SNO, CNO), FOREIGN KEY (SNO) REFERENCES S(SNO), FOREIGN KEY (CNO) REFERENCES C(CNO) );</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="增加列或表约束规则"><a href="#增加列或表约束规则" class="headerlink" title="增加列或表约束规则"></a>增加列或表约束规则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt; ADD &lt;属性列名&gt; &lt;数据类型&gt; [完整性约束| &lt;完整性约束&gt;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例1：在学生表S中加入一属性列SH表示学生的籍贯<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE S ADD SH CHAR(30);</span><br></pre></td></tr></table></figure></li>
-<li>例1：在学生关系表S补充定义SNO为主键<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE S ADD PRIMARY KEY (SNO);</span><br></pre></td></tr></table></figure>
-<strong>注意点</strong>：新增加的属性不能定义为NOT NULL。</li>
-</ul>
-<h3 id="修改原有列的类型"><a href="#修改原有列的类型" class="headerlink" title="修改原有列的类型"></a>修改原有列的类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt; ALTER COLUMN &lt;属性列名&gt; &lt;数据类型&gt; ;</span><br></pre></td></tr></table></figure>
-<p>例：将基本表S中的学生姓名SN长度修改为12 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE S ALTER COLUMN SN CHAR(12);</span><br></pre></td></tr></table></figure>
-<h3 id="删除原有的列或约束规则"><a href="#删除原有的列或约束规则" class="headerlink" title="删除原有的列或约束规则"></a>删除原有的列或约束规则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt; DROP &#123;[CONSTRAINT] &lt;完整性约束&gt;| COLUMN &lt;列名&gt; [CASCADE|RESTRICT]&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>RESTRICT：在没有视图或约束引用该属性列时，该属性列才能被删除<br>CASCADE：表示删除某列时，所有引|用该列的视图和约束也被自动删除 </p>
-</blockquote>
-<ul>
-<li>例1：删除基本表S中学生的性别SEX属性列 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE S DROP COLUMN SEX;</span><br></pre></td></tr></table></figure></li>
-<li>例2：删除基本表S <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE S</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="INSERT-INTO向表中追加元组的值"><a href="#INSERT-INTO向表中追加元组的值" class="headerlink" title="INSERT INTO向表中追加元组的值"></a>INSERT INTO向表中追加元组的值</h3><ul>
-<li>例1：将一个新学生记录，插入学生关系表S中。 (‘S31’,’王浩’,’计算机’,’1999-10-15’,’男’) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO S （SNO，SN，SD，SB，SEX） VALUES (‘S31’, ‘王浩’, ‘计算机’, ‘1999-10-15’, ‘男’) ； </span><br></pre></td></tr></table></figure></li>
-<li>例2：向表SC中插入一条选课元组(‘S31’，‘C01’） ​<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO S （SNO，CNO） ​VALUES (&#x27;S31&#x27;,&#x27;C01&#x27;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="一个完整的数据查询语句的格式"><a href="#一个完整的数据查询语句的格式" class="headerlink" title="一个完整的数据查询语句的格式"></a>一个完整的数据查询语句的格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[&lt;目标列表达2&gt;, …] </span><br><span class="line">FROM &lt;表名或视图名1&gt; [, &lt;表名或视图名2&gt;, …] </span><br><span class="line">[ WHERE &lt;元组选择条件表达式&gt;] </span><br><span class="line">[ GROUP BY &lt;属性列名1&gt;[ ,&lt;属性列名2&gt;, …] </span><br><span class="line">[ HAVING &lt;组选择条件表达式&gt;]] </span><br><span class="line">[ ORDER BY &lt;目标列名1&gt; </span><br><span class="line">[ ASC|DESC ] [,&lt;目标列名2&gt; </span><br><span class="line">[ ASC|DESC ], …]]</span><br></pre></td></tr></table></figure>
-<h3 id="投影属性列"><a href="#投影属性列" class="headerlink" title="投影属性列"></a>投影属性列</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[&lt;目标列表达2&gt;, …] FROM &lt;表名&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例1：查询显示所有学生的信息<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * ​FROM S;</span><br></pre></td></tr></table></figure>
-表示所有属性信息</li>
-</ul>
-<h3 id="去掉重复元组（distinct）"><a href="#去掉重复元组（distinct）" class="headerlink" title="去掉重复元组（distinct）"></a>去掉重复元组（distinct）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[&lt;目标列表达2&gt;, …] FROM &lt;表名&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例1：查询选修了课程的学生的学号<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT SNO ​FROM SC;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>DISTINCT：去掉结果中重复行</strong></p>
-</blockquote>
-</li>
-<li>例2：统计学生的总人数<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT( * ) ​FROM S</span><br></pre></td></tr></table></figure></li>
-<li>例3：查询所有学生的学号和年龄<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT SNO, datediff(Year, SB, Getdate()) + 1 ​FROM S;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Getdata():获取系统当前的日期<br>datediff(datepart, startdate, enddate)</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h3><table>
+<h3 id="数值数据类型"><a href="#数值数据类型" class="headerlink" title="数值数据类型"></a>数值数据类型</h3><table>
 <thead>
 <tr>
-<th align="left">聚集函数</th>
-<th align="left">描述</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">COUNT( * )</td>
-<td align="left">统计元组个数</td>
+<td>BIT(<em>size</em>)</td>
+<td>位值类型。每个值的位数在 <em>size</em> 中指定。 <em>size</em> 参数可以保存从 1 到 64 的值。<em>size</em> 的默认值为 1。</td>
 </tr>
 <tr>
-<td align="left">COUNT([DISTINCT</td>
-<td align="left">ALL] &lt;列名&gt;)</td>
+<td>TINYINT(<em>size</em>)</td>
+<td>一个非常小的整数。有符号范围是-128 到 127。无符号范围是 0 到 255。<em>size</em> 参数指定最大显示宽度（即 255）</td>
 </tr>
 <tr>
-<td align="left">SUM([DISTINCT</td>
-<td align="left">ALL] &lt;列名&gt;)</td>
+<td>BOOL</td>
+<td>零被认为是false，非零值被认为是true。</td>
 </tr>
 <tr>
-<td align="left">AVG([DISTINCT</td>
-<td align="left">ALL] &lt;列名&gt;)</td>
+<td>BOOLEAN</td>
+<td>等同 BOOL</td>
 </tr>
 <tr>
-<td align="left">MAX([DISTINCT</td>
-<td align="left">ALL] &lt;列名&gt;)</td>
+<td>SMALLINT(<em>size</em>)</td>
+<td>一个小整数。有符号范围是 -32768 到 32767。无符号范围是 0 到 65535。<em>size</em> 参数指定最大显示宽度（即 255）</td>
 </tr>
 <tr>
-<td align="left">MIN([DISTINCT</td>
-<td align="left">ALL] &lt;列名&gt;)</td>
+<td>MEDIUMINT(<em>size</em>)</td>
+<td>一个中等整数。有符号范围是 -8388608 到 8388607。无符号范围是 0 到 16777215。<em>size</em> 参数指定最大显示宽度（即 255）</td>
+</tr>
+<tr>
+<td>INT(<em>size</em>)</td>
+<td>一个中等整数。有符号范围是 -2147483648 到 2147483647。无符号范围是 0 到 4294967295。<em>size</em> 参数指定最大显示宽度（即 255）</td>
+</tr>
+<tr>
+<td>INTEGER(<em>size</em>)</td>
+<td>等于 INT(size)</td>
+</tr>
+<tr>
+<td>BIGINT(<em>size</em>)</td>
+<td>一个大整数。有符号范围是-9223372036854775808到9223372036854775807。无符号范围是0到18446744073709551615。_size_参数指定最大显示宽度（即255）</td>
+</tr>
+<tr>
+<td>FLOAT(<em>size</em>, <em>d</em>)</td>
+<td>一个浮点数。 <em>size</em> 中指定了总位数。小数点后的位数在 <em>d</em> 参数中指定。此语法在 MySQL 8.0.17 中已弃用，并将在未来的 MySQL 版本中删除</td>
+</tr>
+<tr>
+<td>FLOAT(<em>p</em>)</td>
+<td>一个浮点数。 MySQL 使用 <em>p</em> 值来确定是使用 FLOAT 还是 DOUBLE 作为结果数据类型。如果 <em>p</em> 是从 0 到 24，则数据类型变为 FLOAT()。如果 <em>p</em> 是从 25 到 53，则数据类型变为 DOUBLE()</td>
+</tr>
+<tr>
+<td>DOUBLE(<em>size</em>, <em>d</em>)</td>
+<td>一个正常大小的浮点数。 <em>size</em> 中指定了总位数。 _d_参数中指定小数点后的位数</td>
+</tr>
+<tr>
+<td>双精度(<em>size</em>, <em>d</em>)</td>
+<td></td>
+</tr>
+<tr>
+<td>DECIMAL(<em>size</em>, <em>d</em>)</td>
+<td>一个精确的定点数。 <em>size</em> 中指定了总位数。小数点后的位数在 <em>d</em> 参数中指定。 <em>size</em> 的最大数为 65。<em>d</em> 的最大数为 30。<em>size</em> 的默认值为 10。&lt; em&gt;d 为 0。</td>
+</tr>
+<tr>
+<td>DEC(<em>size</em>, <em>d</em>)</td>
+<td>等于 DECIMAL(size,d)</td>
+</tr>
+<tr>
+<td><strong>注意：</strong> 所有数字数据类型都可能有一个额外的选项：UNSIGNED 或 ZEROFILL。如果添加 UNSIGNED 选项，MySQL 不允许该列使用负值。如果添加 ZEROFILL 选项，MySQL 还会自动将 UNSIGNED 属性添加到列中。</td>
+<td></td>
 </tr>
 </tbody></table>
-<h3 id="目标列命名"><a href="#目标列命名" class="headerlink" title="目标列命名"></a>目标列命名</h3><p>查询所有学生的学号和年龄</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT SNO (AS) ‘学号’, ‘年龄’ = </span><br><span class="line">datediff(Year, SB, </span><br><span class="line">Getdate()) + 1 </span><br><span class="line">​FROM S;</span><br></pre></td></tr></table></figure>
-<p><strong>查询结果的排序</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[ ,&lt;目标列表达式2&gt;, …] </span><br><span class="line">FROM &lt;表名&gt; </span><br><span class="line">ORDER BY &lt;目标列1&gt; </span><br><span class="line">[ASC|DESC][，&lt;目标列2 &gt; [ASCIDESC]，…]</span><br></pre></td></tr></table></figure>
-<p>查询所有选修信息，按课程号升序排列，同一课程内的学生成绩降序排列</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * ​</span><br><span class="line">FROM SC </span><br><span class="line">​ORDER BY CNO ,</span><br><span class="line">GRADE DESC </span><br><span class="line"># 或用CNO和GRADE对应的第几列数字表示</span><br></pre></td></tr></table></figure>
-<ul>
-<li>&lt;目标列1&gt;：先按第一列排序 </li>
-<li>ASC:升序（默认值）</li>
-<li>DESC:降序</li>
-<li>&lt;目标列2&gt;：第一列相同，再按第二列排序</li>
-<li>关键字：ORDER BY<br><strong>查询满足条件的元组</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[ ,&lt;目标列表达式2&gt;, …] </span><br><span class="line">FROM &lt;表名或视图名1&gt; [,&lt;表名或视图名2&gt;, …] </span><br><span class="line">[ WHERE &lt;元组选择条件表达式&gt;]</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><table>
+<h3 id="日期和时间数据类型"><a href="#日期和时间数据类型" class="headerlink" title="日期和时间数据类型"></a>日期和时间数据类型</h3><table>
 <thead>
 <tr>
-<th align="left">运算符</th>
-<th align="left">描述</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">算术运算</td>
-<td align="left">+, -,  * ,  &#x2F; , % (取余)</td>
+<td>DATE</td>
+<td>日期。格式：YYYY-MM-DD。支持的范围是从 ‘1000-01-01’ 到 ‘9999-12-31’</td>
 </tr>
 <tr>
-<td align="left">比较运算</td>
-<td align="left">&#x3D;, &lt;&gt;, &gt;&#x3D;, &gt;, &lt;&#x3D;, &lt;</td>
+<td>DATETIME(<em>fsp</em>)</td>
+<td>日期和时间组合。格式：YYYY-MM-DD hh:mm:ss。支持的范围是从”1000-01-01 00:00:00”到”9999-12-31 23:59:59”。 在列定义中添加 DEFAULT 和 ON UPDATE 以获得自动初始化并更新到当前日期和时间</td>
 </tr>
 <tr>
-<td align="left">逻辑运算</td>
-<td align="left">AND，OR，NOT</td>
+<td>TIMESTAMP(<em>fsp</em>)</td>
+<td>时间戳。 TIMESTAMP 值存储为自 Unix 纪元 (‘1970-01-01 00:00:00’ UTC) 以来的秒数。格式：YYYY-MM-DD hh:mm:ss。支持的范围是从 ‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-09 03:14:07’ UTC。 可以使用列定义中的 DEFAULT CURRENT_TIMESTAMP 和 ON UPDATE CURRENT_TIMESTAMP 指定自动初始化和更新到当前日期和时间</td>
 </tr>
 <tr>
-<td align="left">谓词运算</td>
-<td align="left">[NOT] BETWEEN…AND、[NOT] LIKE、[NOT] IN、IS [NOT] NULL</td>
+<td>TIME(<em>fsp</em>)</td>
+<td>一次。格式：hh:mm:ss。支持的范围是从 ‘-838:59:59’ 到 ‘838:59:59’</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>四位数格式的年份。允许采用四位数格式的值：1901 到 2155 和 0000。  <br>MySQL 8.0 不支持两位数格式的年份。</td>
 </tr>
 </tbody></table>
-<h4 id="运算符的优先顺序（由高到低）"><a href="#运算符的优先顺序（由高到低）" class="headerlink" title="运算符的优先顺序（由高到低）"></a>运算符的优先顺序（由高到低）</h4><table>
+<h1 id="MySQL-函数"><a href="#MySQL-函数" class="headerlink" title="MySQL 函数"></a>MySQL 函数</h1><p>MySQL 有很多内置函数。<br>此参考包含字符串、数字、日期和 MySQL 中的一些高级函数。</p>
+<h2 id="MySQL-字符串函数"><a href="#MySQL-字符串函数" class="headerlink" title="MySQL 字符串函数"></a>MySQL 字符串函数</h2><table>
 <thead>
 <tr>
-<th align="left">运算符</th>
-<th align="left">优先顺序（由高到低）</th>
+<th>函数</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">算术运算</td>
-<td align="left">+, -, * , &#x2F;, % (取余)</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_ascii.html">ASCII</a></td>
+<td>返回特定字符的 ASCII 值</td>
 </tr>
 <tr>
-<td align="left">比较运算</td>
-<td align="left">&#x3D;, &lt;&gt;, &gt;&#x3D;, &gt;, &lt;&#x3D;, &lt;</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_char_length.html">CHAR_LENGTH</a></td>
+<td>返回字符串的长度（以字符为单位）</td>
 </tr>
 <tr>
-<td align="left">谓词运算</td>
-<td align="left">[NOT] BETWEEN…AND</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_character_length.html">CHARACTER_LENGTH</a></td>
+<td>返回字符串的长度（以字符为单位）</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">[NOT] LIKE</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_concat.html">CONCAT</a></td>
+<td>将两个或多个表达式加在一起</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">[NOT] IN</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_concat_ws.html">CONCAT_WS</a></td>
+<td>使用分隔符将两个或多个表达式添加在一起</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">IS [NOT] NULL</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_field.html">FIELD</a></td>
+<td>返回值在值列表中的索引位置</td>
 </tr>
 <tr>
-<td align="left">逻辑运算</td>
-<td align="left">AND，OR，NOT</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_find_in_set.html">FIND_IN_SET</a></td>
+<td>返回字符串在字符串列表中的位置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_format.html">FORMAT</a></td>
+<td>将数字格式化为类似”#,###,###.##”的格式，四舍五入到指定的小数位数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_insert.html">INSERT</a></td>
+<td>在字符串中的指定位置插入字符串，并插入一定数量的字符</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_instr.html">INSTR</a></td>
+<td>返回一个字符串在另一个字符串中第一次出现的位置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_lcase.html">LCASE</a></td>
+<td>将字符串转换为小写</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_left.html">LEFT</a></td>
+<td>从字符串中提取多个字符（从左开始）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_length.html">LENGTH</a></td>
+<td>返回字符串的长度（以字节为单位）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_locate.html">LOCATE</a></td>
+<td>返回字符串中子字符串第一次出现的位置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_lower.html">LOWER</a></td>
+<td>将字符串转换为小写</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_lpad.html">LPAD</a></td>
+<td>用另一个字符串向左填充一个字符串，达到一定的长度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_ltrim.html">LTRIM</a></td>
+<td>从字符串中删除前导空格</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_mid.html">MID</a></td>
+<td>从字符串中提取子字符串（从任意位置开始）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_position.html">POSITION</a></td>
+<td>返回字符串中子字符串第一次出现的位置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_repeat.html">REPEAT</a></td>
+<td>按照指定的次数重复一个字符串</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_replace.html">REPLACE</a></td>
+<td>用新的子字符串替换字符串中所有出现的子字符串</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_reverse.html">REVERSE</a></td>
+<td>反转一个字符串并返回结果</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_right.html">RIGHT</a></td>
+<td>从字符串中提取多个字符（从右开始）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_rpad.html">RPAD</a></td>
+<td>用另一个字符串右填充一个字符串到一定长度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_rtrim.html">RTRIM</a></td>
+<td>从字符串中删除尾随空格</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_space.html">SPACE</a></td>
+<td>返回指定空格数的字符串</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_strcmp.html">STRCMP</a></td>
+<td>比较两个字符串</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_substr.html">SUBSTR</a></td>
+<td>从字符串中提取子字符串（从任意位置开始）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_substring.html">SUBSTRING</a></td>
+<td>从字符串中提取子字符串（从任意位置开始）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_substring_index.html">SUBSTRING_INDEX</a></td>
+<td>在出现指定数量的分隔符之前返回字符串的子字符串</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_trim.html">TRIM</a></td>
+<td>从字符串中删除前导和尾随空格</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_ucase.html">UCASE</a></td>
+<td>将字符串转换为大写</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_upper.html">UPPER</a></td>
+<td>将字符串转换为大写</td>
 </tr>
 </tbody></table>
-<h4 id="BETWEEN谓词"><a href="#BETWEEN谓词" class="headerlink" title="BETWEEN谓词"></a>BETWEEN谓词</h4><p><strong>BETWEEN谓词用于判断某个值是否属于一个指定的区间</strong><br>一般形式为:<br><code>E [NOT] BETWEEN E1 AND E2</code><br>其语义为:<br><code>[NOT] (E&gt;=E1 AND E&lt;=E2)</code> E、E1和E2都是表达式，且E1&lt;E2。</p>
-<ul>
-<li>例：查询出生时间在1998-01-01到1999-12-31之间的学生的姓名和出生时间<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT SN,SB </span><br><span class="line">FROM S </span><br><span class="line">WHERE SB </span><br><span class="line">BETWEEN &#x27;1998-01-01&#x27; </span><br><span class="line">AND &#x27;1999-12-31&#x27;; </span><br><span class="line"># 或 </span><br><span class="line">WHERE SB&gt;= &#x27;1998-01-01&#x27; </span><br><span class="line">AND SB&lt;=&#x27;1999-12-31&#x27;;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="LIKE谓词"><a href="#LIKE谓词" class="headerlink" title="LIKE谓词"></a>LIKE谓词</h4><p><strong>LIKE谓词用于部分匹配查询（模糊查询）</strong><br>一般形式为:</p>
-<ul>
-<li>“字符串表达式”中通配符:</li>
-<li>字符”_”:代表任意一个单字符</li>
-<li>字符“%”:代表长度可为零的任意长字符串<br><strong>&lt;属性列名&gt; [NOT] LIKE字符串表达式</strong></li>
-<li>例：查询姓“王”的所有学生的学号和姓名。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT SNO,SN </span><br><span class="line">FROM S </span><br><span class="line">WHERE SN </span><br><span class="line">LIKE &#x27; % _ 王（ % ）&#x27;；</span><br></pre></td></tr></table></figure>
-<code>“ \ ”</code> 转义字符:用于去掉一些特殊字符的特定含义，使其被作为普通字符看待, 如用“%”去匹配字符%，用_ 去匹配字符_</li>
-</ul>
-<h4 id="IN谓词"><a href="#IN谓词" class="headerlink" title="IN谓词"></a>IN谓词</h4><p><strong>IN谓词适用于判断一个值是否属于一个集合</strong><br>与比较运算符中“&#x3D;”含义相同。<br>一般形式为:<br><code>E [NOT] IN (V1, V2,…, Vn)</code><br>其语义为:<br><code>[NOT] (E= V1 OR E= V2 OR… OR E= Vn)</code></p>
-<ul>
-<li>例：查询非数学系和非计算机系的学生的学号、姓名和所在系<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT SNO,SN,SD </span><br><span class="line">FROM S </span><br><span class="line">WHERE SD </span><br><span class="line">NOT IN(&#x27;数学&#x27;，‘计算机’)；</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="NULL谓词"><a href="#NULL谓词" class="headerlink" title="NULL谓词"></a>NULL谓词</h4><p><strong>NULL谓词适用于判断属性值是否为空</strong><br>一般形式为：<br><code>&lt;属性列名&gt;IS [NOT] NULL</code></p>
-<ul>
-<li>例：查询所有缺少选课成绩的学生的学号和相应的课程号<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT SNO,CNO </span><br><span class="line">FROM SC </span><br><span class="line">WHERE GRADE IS NULL;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="ANY或ALL谓词"><a href="#ANY或ALL谓词" class="headerlink" title="ANY或ALL谓词"></a>ANY或ALL谓词</h4><p><strong>常与比较运算符连用</strong></p>
-<ul>
-<li><p>例：查询其他专业中比软件工程专业所有老师年龄大的教师姓名年龄</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT TN,AGE </span><br><span class="line">FROM T </span><br><span class="line">WHERE AGE&gt;ALL(SELECT AGE FROM T WHERE DEPT=&#x27;软件工程&#x27;) </span><br><span class="line">and DEPT&lt;&gt;&#x27;软件工程&#x27; </span><br><span class="line">order by age desc</span><br></pre></td></tr></table></figure>
-<p><strong>ANY、ALL谓词与集函数及IN谓词的等价关系</strong></p>
-</li>
-<li><p>ANY ALL</p>
-</li>
-<li><p>&#x3D; IN -</p>
-</li>
-<li><p>&lt; &lt;MAX &lt;MIN</p>
-</li>
-<li><p>&lt;&#x3D; &lt;&#x3D;MAX &lt;&#x3D;MIN</p>
-</li>
-<li><blockquote>
-<blockquote>
-<p>MAX &gt;MIN</p>
-</blockquote>
-</blockquote>
-</li>
-<li><blockquote>
-<p>&#x3D; &gt;&#x3D;MAX &gt;&#x3D;MIN</p>
-</blockquote>
-</li>
-<li><p>&lt;&gt;或!&#x3D; - NOT IN</p>
-</li>
-</ul>
-<h4 id="EXISTS谓词"><a href="#EXISTS谓词" class="headerlink" title="EXISTS谓词"></a>EXISTS谓词</h4><p><strong>不返回任何实际数据，只产生逻辑值真、假</strong></p>
-<ul>
-<li>例：查询担任C2课程的教师性名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT TN </span><br><span class="line">FROM T </span><br><span class="line">WHERE EXISTS </span><br><span class="line">(SELECT * FROM TC WHERE TNO = T.TNO AND CNO=&#x27;C2&#x27;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="分组聚集查询"><a href="#分组聚集查询" class="headerlink" title="分组聚集查询"></a>分组聚集查询</h3><p>完整的数据查询语句的格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[,&lt;目标列表达式2&gt;, … ] </span><br><span class="line">FROM &lt;表名或视图名1&gt; [, &lt;表名或视图名2&gt; , …] </span><br><span class="line">[ WHERE &lt;元组选择条件表达式&gt; ] </span><br><span class="line">[ GROUP BY &lt;属性列名1&gt;[, &lt;属性列名2&gt;, …]</span><br><span class="line">[ HAVING &lt;组选择条件表达式&gt;]] </span><br><span class="line">[ ORDER BY &lt;目标列名1&gt; </span><br><span class="line">[ASC|DESC] [, &lt;目标列名2&gt; [ASC|DESC], …]]</span><br></pre></td></tr></table></figure>
-<p><strong>语句格式</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GROUP BY &lt;属性列名1&gt;[ ,&lt;属性列名2&gt; , …] [HAVING条件]</span><br></pre></td></tr></table></figure>
-<p>依次按属性列名1,属性列名2…的值进行分组<br>HAVING子句对分组进行筛选 聚集函数将以每一分组中的元组为计算对象</p>
-<ul>
-<li>例：查询选修了课程的学生学号和平均成绩。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT SNO,AVG(GRADE) </span><br><span class="line">FROM SC </span><br><span class="line">GROUP BY SNO;</span><br></pre></td></tr></table></figure>
-<strong>注意：</strong> 聚集函数是不允许用于Where子句中的：Where子句是对每一元组进行条件过滤，而不是对集合进行条件过滤。<br><strong>分组过滤：</strong> 若要对集合(即分组)进行条件过滤，即满足条件的集合&#x2F;分组留下，不满足条件的集合&#x2F;分组剔除。<br><strong>Having子句，又称分组过滤子句</strong>。需要有Group by子句支持，换句话说，没有Group by子句，便不能有Having子句。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Select 列名| expr | agfunc(列名) [[, 列名| expr | agfunc(列名) ] … ] ​</span><br><span class="line">From 表名1 [, 表名2 … ] </span><br><span class="line">​[ Where 检索条件] ​</span><br><span class="line">[ Group by 分组条件</span><br><span class="line">[ Having 分组过滤条件] ] ;</span><br></pre></td></tr></table></figure></li>
-<li>例：查找男生人数超过2名的系的名称。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT SD </span><br><span class="line">FROM S </span><br><span class="line">WHERE SEX=&#x27;男&#x27; </span><br><span class="line">GROUP BY SD </span><br><span class="line">HAVING COUNT(*)&gt;2;</span><br></pre></td></tr></table></figure>
-<strong>总括：</strong></li>
-<li>WHERE 子句从由FROM指定的数据对象中选择满足条件的元组</li>
-<li>GROUP BY 子句对WHERE 子句选择出来的元组进行分组</li>
-<li>HAVING对GROUP BY的分组进行选择</li>
-<li>SELECT 子句对选择出来的分组产生查询结果</li>
-</ul>
-<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p><strong>一个完整的数据查询语句的格式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ ALL|DISTINCT ]&lt;目标列表达式1&gt;[,&lt;目标列表达式2&gt;, … ] </span><br><span class="line">FROM&lt;表名或视图名1&gt;[&lt;表名或视图名2&gt;，…] </span><br><span class="line">[ WHERE &lt;元组选择条件表达式&gt; ] </span><br><span class="line">[ GROUP BY &lt;属性列名1&gt;[ &lt;属性列名2&gt;] </span><br><span class="line">[ HAVING &lt;组选择条件表达式&gt;]] </span><br><span class="line">[ ORDER BY &lt;目标列名1&gt; </span><br><span class="line">[ASC|DESC] [, &lt;目标列名2&gt; [ASC|DESC]，…]</span><br></pre></td></tr></table></figure>
-<h4 id="多表连接查询"><a href="#多表连接查询" class="headerlink" title="多表连接查询"></a>多表连接查询</h4><ul>
-<li>例1：查询选修课程号为”C01”的学生学号和成绩。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT SNO,GRADE </span><br><span class="line">FROM SC </span><br><span class="line">WHERE CNO=&#x27;C01&#x27;;</span><br></pre></td></tr></table></figure></li>
-<li>例2：查询选修课程号为”C01”的学生姓名和成绩。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT SN,GRADE </span><br><span class="line">FROM SC,S(SC和S进行广义笛卡尔积运算) </span><br><span class="line">WHERE CNO=&#x27;C01&#x27; </span><br><span class="line">AND SC.CNO=S.SNO;</span><br></pre></td></tr></table></figure>
-多表连接时，如两个表的属性名相同，则需采用表名. 属性名方式来限定该属性是属于哪一个表。</li>
-</ul>
-<h4 id="外连接查询"><a href="#外连接查询" class="headerlink" title="外连接查询"></a>外连接查询</h4><p>在SQL语句中，外连接在FROM子包中指定，其语法规则如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM &lt;左关系&gt; </span><br><span class="line">LEFT| RIGHT|FULL [OUTER] </span><br><span class="line">JOIN &lt;右关系&gt; </span><br><span class="line">ON &lt;连接条件&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>左连接：LEFT [OUTER] JION</li>
-<li>右连接：RIGHT [OUTER] JION</li>
-<li>全外连接：FULL [OUTER] JION<br>连接条件可包含对参与连接的关系进行元组选择的条件</li>
-<li>如“表1 Left Outer Join 表2”，则连接后，表1的任何元组t都会出现在结果表中，如表2中有满足连接条件的元组s, 则t与s连接；否则t与空值元组连接；</li>
-<li>如“表1 Right Outer Join 表2”，则连接后，表2的任何元组s都会出现在结果表中，如表1中有满足连接条件的元组t, 则t与s连接；否则s与空值元组连接；</li>
-<li>如“表1 Full Outer Join 表2”，是前两者的并。</li>
-<li>例：查询所有学生姓名及选修课程号为“C01”的成绩，没有选修该课程的学生，成绩显示为空。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT SN,GRADE </span><br><span class="line">FROM S </span><br><span class="line">LEFT OUTER </span><br><span class="line">JOIN SC ON SC.SNO=S.SNO </span><br><span class="line">AND CNO=&#x27;C01&#x27;;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="内连接查询"><a href="#内连接查询" class="headerlink" title="内连接查询"></a>内连接查询</h4><p>常规连接查询也称为内连接查询，在FROM子句中指定，其语法规则如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM &lt;左关系&gt; [ INNER] JOIN &lt;右关系&gt; ON &lt;连接条件&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>inner join(等值连接) 只返回两个表中联结字段相等的行</strong></p>
-<ul>
-<li>例：求所有教师的任课情况并按教师号排序(没有任课的教师也需列在表中)。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Select Teacher.T#, Tname, Cname ​From Teacher </span><br><span class="line">Inner Join Course ​ </span><br><span class="line">ON Teacher.T# = Course.T# </span><br><span class="line">​Order by Teacher.T# </span><br><span class="line">ASC;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="重名之处理"><a href="#重名之处理" class="headerlink" title="重名之处理"></a>重名之处理</h4><p>连接运算涉及到重名的问题，如两个表中的属性重名，连接的两个表重名(同一表的连接)等，因此需要使用别名以便区分<br>select中采用别名的方式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Select 列名as 列别名[ [, 列名as 列别名] … ] ​From 表名1 as 表别名1, 表名2 as 表别名2, … </span><br><span class="line">​Where 检索条件;</span><br></pre></td></tr></table></figure>
-<p>上述定义中的as 可以省略当定义了别名后，在检索条件中可以使用别名来限定属性</p>
-<ul>
-<li>例：求有薪水差额的任意两位教师<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select T1.Tname as Teacher1, T2.Tname as Teacher2 ​From Teacher T1, Teacher T2 ​Where T1.Salary &gt; T2.Salary ;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="合并查询"><a href="#合并查询" class="headerlink" title="合并查询"></a>合并查询</h4><p>使用UNION操作符将来自不同查询的数据组合起来形成一个综合信息的查询结果。<br>UNION操作会自动将重复的数据行剔除。<br><strong>注意：</strong> 参加合并查询结果的各子查询的数据数目相同，对应的数据类型要相容。<br>从TC表中查询出教师编号为S4和S5教师编号和总教龄</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT TNO AS 教师编号，SUM(YEAR) AS 总教龄 </span><br><span class="line">FROM TC </span><br><span class="line">WHERE (TNO=&#x27;S4&#x27;) </span><br><span class="line">GROUP BY TNO </span><br><span class="line">UNION </span><br><span class="line">SELECT TNO AS 教师编号，SUM(YEAR) AS 总教龄 ​ </span><br><span class="line">FROM TC ​WHERE (TNO=&#x27;S5&#x27;) </span><br><span class="line">​GROUP BY TNO</span><br></pre></td></tr></table></figure>
-<h4 id="θ-连接之不等值连接"><a href="#θ-连接之不等值连接" class="headerlink" title="θ-连接之不等值连接"></a>θ-连接之不等值连接</h4><ul>
-<li>例：查询课程编号’C01’有成绩差的任意两位同学学号<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT SC1.SNO AS SNO1 , SC2.SNO AS SNO2 </span><br><span class="line">​FROM SC SC1, SC SC2 ​WHERE SC1.GRADE &gt; SC2.</span><br><span class="line">GRADE AND ​SC1.CNO = SC2.CNO AND SC1.CNO = &#x27;C01&#x27; AND ​ SC2.CNO = &#x27;C01&#x27;</span><br></pre></td></tr></table></figure>
-<strong>外连接：</strong> <code>FROM &lt;左关系&gt; LEFT | RIGHT |FULL [OUTER] JION &lt;右关系&gt; ON &lt;连接条件&gt;</code><br><strong>自身连接：</strong> 对一个表进行多次扫描时使用</li>
-<li>例：查询比周老师年龄大的老师的姓名、年龄、和周的年龄<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT X.TN AS 姓名，X.AGE AS 年龄，Y.AGE AS 周年龄 ​ </span><br><span class="line">FROM T AS X,T AS Y </span><br><span class="line">WHERE X.AGE&gt;Y.AGE </span><br><span class="line">AND Y.TN=&#x27;周&#x27;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><ul>
-<li><strong>创建视图</strong><br>  一般格式：<br>  <code>CREATE VIEW &lt;视图名&gt;[（&lt;列名&gt;，&lt;列名&gt;）…] AS &lt;子查询&gt;</code></li>
-<li><strong>删除视图</strong><br>  格式：<br>  <code>DROP VIEW &lt;视图名&gt;</code></li>
-<li><strong>删除视图名</strong><br>  格式：<br>  <code>DROP VIEW 视图名</code></li>
-<li><strong>更新视图</strong><br>  插入、删除、修改<br>  例：将视图STO2中的教师编号S1的教师改名为“王明”<br>  <code>UPDATE STO2 SET TN=&#39;王明&#39; WHERE TNO=&#39;S1&#39;</code></li>
-<li><strong>限制条件</strong> <ul>
-<li>如果一个视图是从多个基本表使用联接操作导出的，则此视图不允许更新。</li>
-<li>如果在导出视图的过程中，使用了分组和聚合操作，也不允许该视图更新。</li>
-<li>若视图的字段来自字段表达式或常量、操作，则不允许对此视图执行INSERT和UPDATE操作，但可以进行DELETE操作。</li>
-<li>若视图定义中含有GROUP BY、DISTINCT短语或或嵌套查询，且内层查询的FROM子句中涉及的表也是导出该视图的基本表，则此视图不允许更新。</li>
-</ul>
-</li>
-</ul>
+<h2 id="MySQL-数值函数"><a href="#MySQL-数值函数" class="headerlink" title="MySQL 数值函数"></a>MySQL 数值函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_abs.html">ABS</a></td>
+<td>返回一个数字的绝对值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_acos.html">ACOS</a></td>
+<td>返回数字的反余弦</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_asin.html">ASIN</a></td>
+<td>返回数字的反正弦</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_atan.html">ATAN</a></td>
+<td>返回一个或两个数字的反正切</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_atan2.html">ATAN2</a></td>
+<td>返回两个数的反正切</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_avg.html">AVG</a></td>
+<td>返回表达式的平均值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_ceil.html">CEIL</a></td>
+<td>将 &gt;&#x3D; 的最小整数值返回为数字</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_ceiling.html">CEILING</a></td>
+<td>将 &gt;&#x3D; 的最小整数值返回为数字</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_cos.html">COS</a></td>
+<td>返回数字的余弦</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_cot.html">COT</a></td>
+<td>返回数字的余切</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_count.html">COUNT</a></td>
+<td>返回选择查询返回的记录数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_degrees.html">DEGREES</a></td>
+<td>将弧度值转换为度数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_div.html">DIV</a></td>
+<td>用于整数除法</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_exp.html">EXP</a></td>
+<td>返回 e 的指定数次方</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_floor.html">FLOOR</a></td>
+<td>将 &lt;&#x3D; 的最大整数值返回为数字</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_greatest.html">GREATEST</a></td>
+<td>返回参数列表的最大值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_least.html">LEAST</a></td>
+<td>返回参数列表中的最小值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_ln.html">LN</a></td>
+<td>返回数字的自然对数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_log.html">LOG</a></td>
+<td>返回一个数字的自然对数，或者一个数字的对数到指定底数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_log10.html">LOG10</a></td>
+<td>返回一个以 10 为底的自然对数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_log2.html">LOG2</a></td>
+<td>返回以 2 为底的数字的自然对数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_max.html">MAX</a></td>
+<td>返回一组值中的最大值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_min.html">MIN</a></td>
+<td>返回一组值中的最小值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_mod.html">MOD</a></td>
+<td>返回一个数除以另一个数的余数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_pi.html">PI</a></td>
+<td>返回 PI 的值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_pow.html">POW</a></td>
+<td>返回一个数字的另一个数字的幂</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_power.html">POWER</a></td>
+<td>返回一个数字的另一个数字的幂</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_radians.html">RADIANS</a></td>
+<td>将度数转换为弧度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_rand.html">RAND</a></td>
+<td>返回一个随机数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_round.html">ROUND</a></td>
+<td>将数字四舍五入到指定的小数位数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_sign.html">SIGN</a></td>
+<td>返回一个数字的符号</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_sin.html">SIN</a></td>
+<td>返回数字的正弦</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_sqrt.html">SQRT</a></td>
+<td>返回数字的平方根</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_sum.html">SUM</a></td>
+<td>计算一组值的总和</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_tan.html">TAN</a></td>
+<td>返回数字的正切</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_truncate.html">TRUNCATE</a></td>
+<td>将数字截断到指定的小数位数</td>
+</tr>
+</tbody></table>
+<h2 id="MySQL-日期函数"><a href="#MySQL-日期函数" class="headerlink" title="MySQL 日期函数"></a>MySQL 日期函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_adddate.html">ADDDATE</a></td>
+<td>将时间&#x2F;日期间隔添加到日期，然后返回日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_addtime.html">ADDTIME</a></td>
+<td>将时间间隔添加到时间&#x2F;日期时间，然后返回时间&#x2F;日期时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_curdate.html">CURDATE</a></td>
+<td>返回当前日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_current_date.html">CURRENT_DATE</a></td>
+<td>返回当前日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_current_time.html">CURRENT_TIME</a></td>
+<td>返回当前时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_current_timestamp.html">CURRENT_TIMESTAMP</a></td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_curtime.html">CURTIME</a></td>
+<td>返回当前时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_date.html">DATE</a></td>
+<td>从日期时间表达式中提取日期部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_datediff.html">DATEDIFF</a></td>
+<td>返回两个日期值之间的天数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_date_add.html">DATE_ADD</a></td>
+<td>将时间&#x2F;日期间隔添加到日期，然后返回日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_date_format.html">DATE_FORMAT</a></td>
+<td>格式化日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_date_sub.html">DATE_SUB</a></td>
+<td>从日期中减去时间&#x2F;日期间隔，然后返回日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_day.html">DAY</a></td>
+<td>返回给定日期的月份日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_dayname.html">DAYNAME</a></td>
+<td>返回给定日期的工作日名称</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_dayofmonth.html">DAYOFMONTH</a></td>
+<td>返回给定日期的月份日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_dayofweek.html">DAYOFWEEK</a></td>
+<td>返回给定日期的工作日索引</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_dayofyear.html">DAYOFYEAR</a></td>
+<td>返回给定日期的一年中的哪一天</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_extract.html">EXTRACT</a></td>
+<td>从给定日期提取部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_from_days.html">FROM_DAYS</a></td>
+<td>从数字日期值返回日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_hour.html">HOUR</a></td>
+<td>返回给定日期的小时部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_last_day.html">LAST_DAY</a></td>
+<td>提取给定日期当月的最后一天</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_localtime.html">LOCALTIME</a></td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_localtimestamp.html">LOCALTIMESTAMP</a></td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_makedate.html">MAKEDATE</a></td>
+<td>根据年份和天数值创建并返回日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_maketime.html">MAKETIME</a></td>
+<td>根据小时、分钟和秒值创建并返回时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_microsecond.html">MICROSECOND</a></td>
+<td>返回时间&#x2F;日期时间的微秒部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_minute.html">MINUTE</a></td>
+<td>返回时间&#x2F;日期时间的分钟部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_month.html">MONTH</a></td>
+<td>返回给定日期的月份部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_monthname.html">MONTHNAME</a></td>
+<td>返回给定日期的月份名称</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_now.html">NOW</a></td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_period_add.html">PERIOD_ADD</a></td>
+<td>将指定的月数添加到期间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_period_diff.html">PERIOD_DIFF</a></td>
+<td>返回两个句点之间的差</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_quarter.html">QUARTER</a></td>
+<td>返回给定日期值的一年中的季度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_second.html">SECOND</a></td>
+<td>返回时间&#x2F;日期时间的秒部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_sec_to_time.html">SEC_TO_TIME</a></td>
+<td>根据指定的秒数返回一个时间值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_str_to_date.html">STR_TO_DATE</a></td>
+<td>根据字符串和格式返回日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_subdate.html">SUBDATE</a></td>
+<td>从日期中减去时间&#x2F;日期间隔，然后返回日期</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_subtime.html">SUBTIME</a></td>
+<td>从日期时间中减去一个时间间隔，然后返回时间&#x2F;日期时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_sysdate.html">SYSDATE</a></td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_time.html">TIME</a></td>
+<td>从给定时间&#x2F;日期时间中提取时间部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_time_format.html">TIME_FORMAT</a></td>
+<td>按指定格式格式化时间</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_time_to_sec.html">TIME_TO_SEC</a></td>
+<td>将时间值转换为秒</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_timediff.html">TIMEDIFF</a></td>
+<td>返回两个时间&#x2F;日期时间表达式之间的差异</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_timestamp.html">TIMESTAMP</a></td>
+<td>根据日期或日期时间值返回一个日期时间值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_to_days.html">TO_DAYS</a></td>
+<td>返回日期和日期”0000-00-00”之间的天数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_week.html">WEEK</a></td>
+<td>返回给定日期的周数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_weekday.html">WEEKDAY</a></td>
+<td>返回给定日期的工作日编号</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_weekofyear.html">WEEKOFYEAR</a></td>
+<td>返回给定日期的周数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_year.html">YEAR</a></td>
+<td>返回给定日期的年份部分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_yearweek.html">YEARWEEK</a></td>
+<td>返回给定日期的年和周数</td>
+</tr>
+</tbody></table>
+<h2 id="MySQL-高级函数"><a href="#MySQL-高级函数" class="headerlink" title="MySQL 高级函数"></a>MySQL 高级函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_bin.html">BIN</a></td>
+<td>返回数字的二进制表示</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_binary.html">BINARY</a></td>
+<td>将值转换为二进制字符串</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_case.html">CASE</a></td>
+<td>遍历条件并在满足第一个条件时返回一个值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_cast.html">CAST</a></td>
+<td>将（任何类型的）值转换为指定的数据类型</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_coalesce.html">COALESCE</a></td>
+<td>返回列表中的第一个非空值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_connection_id.html">CONNECTION_ID</a></td>
+<td>返回当前连接的唯一连接 ID</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_conv.html">CONV</a></td>
+<td>将数字从一种数字基系统转换为另一种数字系统</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_convert.html">CONVERT</a></td>
+<td>将值转换为指定的数据类型或字符集</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_current_user.html">CURRENT_USER</a></td>
+<td>返回服务器用来验证当前客户端的 MySQL 帐户的用户名和主机名</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_database.html">DATABASE</a></td>
+<td>返回当前数据库的名称</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_if.html">IF</a></td>
+<td>如果条件为 TRUE，则返回一个值，如果条件为 FALSE，则返回另一个值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_ifnull.html">IFNULL</a></td>
+<td>如果表达式为NULL，则返回指定值，否则返回表达式</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_isnull.html">ISNULL</a></td>
+<td>根据表达式是否为 NULL 返回 1 或 0</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_last_insert_id.html">LAST_INSERT_ID</a></td>
+<td>返回表中已插入或更新的最后一行的 AUTO_INCREMENT id</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_nullif.html">NULLIF</a></td>
+<td>比较两个表达式，如果相等则返回 NULL。否则返回第一个表达式</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_session_user.html">SESSION_USER</a></td>
+<td>返回当前 MySQL 用户名和主机名</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_system_user.html">SYSTEM_USER</a></td>
+<td>返回当前 MySQL 用户名和主机名</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_user.html">USER</a></td>
+<td>返回当前 MySQL 用户名和主机名</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/func_mysql_version.html">VERSION</a></td>
+<td>返回 MySQL 数据库的当前版本</td>
+</tr>
+</tbody></table>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p><strong>注：</strong> 本文参考 <a target="_blank" rel="noopener" href="https://www.w3schools.cn/mysql/">MySQL 教程 (w3schools.cn)</a>需了解更详细内容可以点击链接前往</p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
-          
-            <a href="/tags/%E5%90%8E%E7%AB%AF/" class="">
-              后端
-            </a>
           
             <a href="/tags/SQL/" class="">
               SQL
@@ -950,7 +1354,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2023/11/28/数据库/SQL 语法基础/" target="_blank" title="SQL语言概述">https://fanxing28.github.io/2023/11/28/数据库/SQL 语法基础/</a>
+    <a href="/2024/02/18/数据库/MySQL的数据类型与函数/" target="_blank" title="MySQL的数据类型与函数">https://fanxing28.github.io/2024/02/18/数据库/MySQL的数据类型与函数/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -972,16 +1376,16 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2023/11/28/%E5%89%8D%E7%AB%AF/CSS/CSS%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-nav-link">
+    <a href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">CSS 基础知识</div>
+        <div class="title-text">MySQL的数据库</div>
       </div>
       
       <!-- <div class="content">
-        一. CSS 选择器选择器CSS选择器是CSS规则的第一部分它是元素和其他部分组合起来告诉浏览器哪个HTML元素应当是被
+        简介什么是 RDBMS?RDBMS 代表关系数据库管理系统。RDBMS 是一个用于维护关系数据库的程序。RDBMS 是所
       </div> -->
     </a>
   </div>
@@ -992,16 +1396,19 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/11/28/%E5%85%B6%E4%BB%96/Obsidian/Obsidian%E6%8F%92%E4%BB%B6/" class="post-nav-link">
+    <a href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">Obsidian插件</div>
+        <div class="title-text">MySQL的SQL语句</div>
       </div>
       <!-- <div class="content">
-        开始主题： Blue Topaz主题色： rgb: (47,147,228)
-Chat Gpt(API Keys)1sk
+        简介什么是 MySQL?
+MySQL 是一个关系型数据库管理系统
+MySQL 是开源的
+MySQL 是免费的
+MySQL
       </div> -->
     </a>
   </div>
@@ -1297,8 +1704,6 @@ Chat Gpt(API Keys)1sk
   
   
   
-    
-  
 
   <div class="layout_sticky">    
     
@@ -1315,7 +1720,7 @@ Chat Gpt(API Keys)1sk
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E5%8F%91%E5%B1%95"><span class="toc-text">SQL发展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%AF%AD%E8%A8%80%E5%8A%9F%E8%83%BD"><span class="toc-text">SQL语言功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89"><span class="toc-text">SQL的数据定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建和使用数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">(1) 创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">(2)使用数据库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%A1%A8%E5%88%9B%E5%BB%BA%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F"><span class="toc-text">基本表创建的一般格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E5%90%AB%E4%B9%89"><span class="toc-text">数据类型及其含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%94%AE"><span class="toc-text">定义主键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%A4%96%E9%94%AE"><span class="toc-text">定义外键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%88%97%E6%88%96%E8%A1%A8%E7%BA%A6%E6%9D%9F%E8%A7%84%E5%88%99"><span class="toc-text">增加列或表约束规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8E%9F%E6%9C%89%E5%88%97%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">修改原有列的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%8E%9F%E6%9C%89%E7%9A%84%E5%88%97%E6%88%96%E7%BA%A6%E6%9D%9F%E8%A7%84%E5%88%99"><span class="toc-text">删除原有的列或约束规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INSERT-INTO%E5%90%91%E8%A1%A8%E4%B8%AD%E8%BF%BD%E5%8A%A0%E5%85%83%E7%BB%84%E7%9A%84%E5%80%BC"><span class="toc-text">INSERT INTO向表中追加元组的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-text">一个完整的数据查询语句的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%95%E5%BD%B1%E5%B1%9E%E6%80%A7%E5%88%97"><span class="toc-text">投影属性列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E6%8E%89%E9%87%8D%E5%A4%8D%E5%85%83%E7%BB%84%EF%BC%88distinct%EF%BC%89"><span class="toc-text">去掉重复元组（distinct）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0"><span class="toc-text">聚集函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E5%88%97%E5%91%BD%E5%90%8D"><span class="toc-text">目标列命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E9%A1%BA%E5%BA%8F%EF%BC%88%E7%94%B1%E9%AB%98%E5%88%B0%E4%BD%8E%EF%BC%89"><span class="toc-text">运算符的优先顺序（由高到低）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BETWEEN%E8%B0%93%E8%AF%8D"><span class="toc-text">BETWEEN谓词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LIKE%E8%B0%93%E8%AF%8D"><span class="toc-text">LIKE谓词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IN%E8%B0%93%E8%AF%8D"><span class="toc-text">IN谓词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NULL%E8%B0%93%E8%AF%8D"><span class="toc-text">NULL谓词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ANY%E6%88%96ALL%E8%B0%93%E8%AF%8D"><span class="toc-text">ANY或ALL谓词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EXISTS%E8%B0%93%E8%AF%8D"><span class="toc-text">EXISTS谓词</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E8%81%9A%E9%9B%86%E6%9F%A5%E8%AF%A2"><span class="toc-text">分组聚集查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-text">连接查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-text">多表连接查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-text">外连接查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-text">内连接查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%90%8D%E4%B9%8B%E5%A4%84%E7%90%86"><span class="toc-text">重名之处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E6%9F%A5%E8%AF%A2"><span class="toc-text">合并查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%CE%B8-%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%8D%E7%AD%89%E5%80%BC%E8%BF%9E%E6%8E%A5"><span class="toc-text">θ-连接之不等值连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-text">视图</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%888-0-%E7%89%88%EF%BC%89"><span class="toc-text">MySQL 数据类型（8.0 版）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">字符串数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数值数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">日期和时间数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL-%E5%87%BD%E6%95%B0"><span class="toc-text">MySQL 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="toc-text">MySQL 字符串函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E6%95%B0%E5%80%BC%E5%87%BD%E6%95%B0"><span class="toc-text">MySQL 数值函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-text">MySQL 日期函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E9%AB%98%E7%BA%A7%E5%87%BD%E6%95%B0"><span class="toc-text">MySQL 高级函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="toc-text">结束语</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -1348,18 +1753,18 @@ Chat Gpt(API Keys)1sk
             
 
             <div class="post-img-box">
-              <a href="/2024/01/08/%E5%90%8E%E7%AB%AF/PHP/CodeIgniter%204%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="post-img " style="background-size: cover; 
+              <a href="/2024/02/18/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%B6%89%E5%8F%8A%E7%9F%A5%E8%AF%86/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">01-08</span>
+                  <span class="post-date">02-18</span>
                 
               </div>
-              <a class="post-title" href="/2024/01/08/%E5%90%8E%E7%AB%AF/PHP/CodeIgniter%204%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/">CodeIgniter 4框架使用</a>
+              <a class="post-title" href="/2024/02/18/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%B6%89%E5%8F%8A%E7%9F%A5%E8%AF%86/">开发环境涉及知识</a>
             </div>
           </div>
         
@@ -1369,18 +1774,18 @@ Chat Gpt(API Keys)1sk
             
 
             <div class="post-img-box">
-              <a href="/2023/12/17/%E5%90%8E%E7%AB%AF/PHP/PHP%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="post-img " style="background-size: cover; 
+              <a href="/2024/02/18/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">12-17</span>
+                  <span class="post-date">02-18</span>
                 
               </div>
-              <a class="post-title" href="/2023/12/17/%E5%90%8E%E7%AB%AF/PHP/PHP%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">PHP 常用方法</a>
+              <a class="post-title" href="/2024/02/18/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">个人后台管理系统</a>
             </div>
           </div>
         
@@ -1390,18 +1795,18 @@ Chat Gpt(API Keys)1sk
             
 
             <div class="post-img-box">
-              <a href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="post-img " style="background-size: cover; 
+              <a href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">12-14</span>
+                  <span class="post-date">02-18</span>
                 
               </div>
-              <a class="post-title" href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">JS 面向对象和构造函数</a>
+              <a class="post-title" href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/">MySQL的数据库</a>
             </div>
           </div>
         
@@ -1411,18 +1816,18 @@ Chat Gpt(API Keys)1sk
             
 
             <div class="post-img-box">
-              <a href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%BB%A5%E5%8F%8A%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E5%BC%8F/" class="post-img " style="background-size: cover; 
+              <a href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%87%BD%E6%95%B0/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">12-14</span>
+                  <span class="post-date">02-18</span>
                 
               </div>
-              <a class="post-title" href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%BB%A5%E5%8F%8A%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E5%BC%8F/">JS 原型与原型链以及判断数据类型方式</a>
+              <a class="post-title" href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%87%BD%E6%95%B0/">MySQL的数据类型与函数</a>
             </div>
           </div>
         
@@ -1432,18 +1837,18 @@ Chat Gpt(API Keys)1sk
             
 
             <div class="post-img-box">
-              <a href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E7%BB%A7%E6%89%BF/" class="post-img " style="background-size: cover; 
+              <a href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">12-14</span>
+                  <span class="post-date">02-18</span>
                 
               </div>
-              <a class="post-title" href="/2023/12/14/%E5%89%8D%E7%AB%AF/JavaScript/JS%20%E7%BB%A7%E6%89%BF/">JS 继承</a>
+              <a class="post-title" href="/2024/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/">MySQL的SQL语句</a>
             </div>
           </div>
         
